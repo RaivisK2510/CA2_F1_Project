@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('seasons', function (Blueprint $table) {
             $table->id();
-            $table->integer('year')->unique();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
-            $table->integer('total_races')->default(0);
+            $table->year('year')->unique();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('total_races');
             $table->integer('completed_races')->default(0);
-            $table->foreignId('champion_driver_id')->nullable()->constrained('drivers')->nullOnDelete();
-            $table->foreignId('champion_team_id')->nullable()->constrained('teams')->nullOnDelete();
+            $table->string('champion_driver_id')->nullable();
+            $table->string('champion_team_id')->nullable();
             $table->text('description')->nullable();
             $table->string('season_image')->nullable();
             $table->boolean('is_active')->default(true);

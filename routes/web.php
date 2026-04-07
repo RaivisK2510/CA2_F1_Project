@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\F1Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +38,12 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// F1 Stats Hub Routes
+Route::prefix('f1')->name('f1.')->group(function () {
+    Route::get('/', [F1Controller::class, 'dashboard'])->name('dashboard');
+    Route::get('/drivers', [F1Controller::class, 'drivers'])->name('drivers');
+    Route::get('/teams', [F1Controller::class, 'teams'])->name('teams');
+    Route::get('/circuits', [F1Controller::class, 'circuits'])->name('circuits');
+    Route::get('/seasons', [F1Controller::class, 'seasons'])->name('seasons');
+});
