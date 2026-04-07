@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\F1Controller;
 use Illuminate\Support\Facades\Route;
 
@@ -17,13 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return redirect()->route('f1.dashboard');
 })->name('home');
-
-Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
-
-// Blog routes
-Route::resource('posts', PostController::class);
 
 Auth::routes();
 
@@ -34,10 +28,6 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/users', [AdminController::class, 'users'])->name('admin.users.index');
     Route::delete('/users/{user}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // F1 Stats Hub Routes
 Route::prefix('f1')->name('f1.')->group(function () {

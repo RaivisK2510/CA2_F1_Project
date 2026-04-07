@@ -34,10 +34,18 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                            <a class="nav-link {{ request()->routeIs('f1.dashboard') ? 'active' : '' }}" href="{{ route('f1.dashboard') }}">🏎️ F1 Dashboard</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('blog.*') || request()->routeIs('posts.*') ? 'active' : '' }}" href="{{ route('blog.index') }}">Blog</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="f1Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                F1 Stats
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="f1Dropdown">
+                                <li><a class="dropdown-item {{ request()->routeIs('f1.drivers') ? 'active' : '' }}" href="{{ route('f1.drivers') }}">Drivers</a></li>
+                                <li><a class="dropdown-item {{ request()->routeIs('f1.teams') ? 'active' : '' }}" href="{{ route('f1.teams') }}">Teams</a></li>
+                                <li><a class="dropdown-item {{ request()->routeIs('f1.circuits') ? 'active' : '' }}" href="{{ route('f1.circuits') }}">Circuits</a></li>
+                                <li><a class="dropdown-item {{ request()->routeIs('f1.seasons') ? 'active' : '' }}" href="{{ route('f1.seasons') }}">Seasons</a></li>
+                            </ul>
                         </li>
                     </ul>
 
@@ -93,17 +101,16 @@
             <div class="container py-5">
                 <div class="row">
                     <div class="col-md-4 mb-4 mb-md-0">
-                        <h5 class="fw-bold mb-3">{{ config('app.name', 'Laravel Blog') }}</h5>
-                        <p class="text-muted">A modern blogging platform built with Laravel. Share your coding journey, tutorials, and experiences with the developer community.</p>
+                        <h5 class="fw-bold mb-3">{{ config('app.name', 'F1 Stats Hub') }}</h5>
+                        <p class="text-muted">Your ultimate destination for Formula 1 statistics, driver standings, team performance, and race results.</p>
                     </div>
                     <div class="col-md-2 mb-4 mb-md-0">
-                        <h6 class="fw-bold mb-3">Quick Links</h6>
+                        <h6 class="fw-bold mb-3">F1 Stats</h6>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><a href="{{ route('home') }}" class="text-muted text-decoration-none">Home</a></li>
-                            <li class="mb-2"><a href="{{ route('blog.index') }}" class="text-muted text-decoration-none">Blog</a></li>
-                            @auth
-                                <li class="mb-2"><a href="{{ route('posts.create') }}" class="text-muted text-decoration-none">Write Post</a></li>
-                            @endauth
+                            <li class="mb-2"><a href="{{ route('f1.dashboard') }}" class="text-muted text-decoration-none">Dashboard</a></li>
+                            <li class="mb-2"><a href="{{ route('f1.drivers') }}" class="text-muted text-decoration-none">Drivers</a></li>
+                            <li class="mb-2"><a href="{{ route('f1.teams') }}" class="text-muted text-decoration-none">Teams</a></li>
+                            <li class="mb-2"><a href="{{ route('f1.circuits') }}" class="text-muted text-decoration-none">Circuits</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 mb-4 mb-md-0">

@@ -21,14 +21,6 @@
         <div class="col-md-6 col-xl-3">
             <div class="card shadow-sm border-0 h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Posts</h5>
-                    <p class="card-text display-6 mb-0">{{ $counts['posts'] }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-xl-3">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body">
                     <h5 class="card-title">Races</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['races'] }}</p>
                 </div>
@@ -39,6 +31,14 @@
                 <div class="card-body">
                     <h5 class="card-title">Teams</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['teams'] }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Circuits</h5>
+                    <p class="card-text display-6 mb-0">{{ $counts['circuits'] }}</p>
                 </div>
             </div>
         </div>
@@ -84,11 +84,12 @@
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
                     <h3 class="card-title">Quick actions</h3>
-                    <p class="text-muted">Use these links to access database sections and manage records.</p>
+                    <p class="text-muted">Use these links to access F1 database sections and manage records.</p>
                     <div class="d-flex flex-wrap gap-2">
                         <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Manage Users</a>
-                        <a href="{{ route('posts.index') }}" class="btn btn-outline-primary">Manage Posts</a>
-                        <a href="{{ route('blog.index') }}" class="btn btn-outline-secondary">View Blog</a>
+                        <a href="{{ route('f1.dashboard') }}" class="btn btn-outline-danger">🏎️ View F1 Dashboard</a>
+                        <a href="{{ route('f1.drivers') }}" class="btn btn-outline-secondary">👨‍🏎️ Manage Drivers</a>
+                        <a href="{{ route('f1.teams') }}" class="btn btn-outline-info">🏭 Manage Teams</a>
                     </div>
                 </div>
             </div>

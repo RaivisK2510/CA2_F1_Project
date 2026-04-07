@@ -1,62 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1 Teams - F1 Stats Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100">
-    <nav class="bg-red-600 text-white p-4 shadow-lg">
-        <div class="container mx-auto">
-            <a href="{{ route('f1.dashboard') }}" class="text-2xl font-bold">🏎️ F1 Stats Hub</a>
-        </div>
-    </nav>
+@extends('layouts.app')
 
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6 text-gray-800">🏭 F1 Teams</h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            @forelse($teams as $team)
-                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-blue-600 text-white rounded-lg w-12 h-12 flex items-center justify-center font-bold mr-4">
-                            {{ $team->code }}
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold">{{ $team->name }}</h3>
-                            <p class="text-sm text-gray-600">{{ $team->full_name }}</p>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 gap-2 text-sm mb-4">
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">🏆 Championships:</span> {{ $team->world_championships }}
-                        </div>
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">🏁 Wins:</span> {{ $team->race_wins }}
-                        </div>
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">🥈 Podiums:</span> {{ $team->podiums }}
-                        </div>
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">🚀 Poles:</span> {{ $team->pole_positions }}
+@section('content')
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-5 fw-bold mb-2">🏭 F1 Teams</h1>
+            <p class="text-muted">Complete list of Formula 1 teams and their performance statistics</p>
+        </div>
+        <a href="{{ route('f1.dashboard') }}" class="btn btn-secondary">← Back to Dashboard</a>
+    </div>
+
+    <div class="row g-4">
+        @forelse($teams as $team)
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-primary text-white">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-white text-primary rounded d-flex align-items-center justify-content-center fw-bold me-3" style="width: 50px; height: 50px;">
+                                {{ $team->code }}
+                            </div>
+                            <div>
+                                <h5 class="card-title mb-0">{{ $team->name }}</h5>
+                                <small>{{ $team->full_name }}</small>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="border-t pt-4">
-                        <h4 class="font-semibold mb-2">Team Details:</h4>
-                        <div class="text-sm text-gray-600 space-y-1">
-                            <p>🌍 {{ $team->country }} | 🏢 {{ $team->headquarters }}</p>
-                            <p>👨‍💼 {{ $team->team_chief }} | 🔧 {{ $team->technical_chief }}</p>
-                            <p>🏎️ {{ $team->chassis }} | ⚡ {{ $team->power_unit }}</p>
+                    <div class="card-body">
+                        <div class="row g-2 mb-4">
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded text-center">
+                                    <div class="fw-bold text-warning">🏆</div>
+                                    <div class="small text-muted">Championships</div>
+                                    <div class="fw-bold">{{ $team->world_championships }}</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded text-center">
+                                    <div class="fw-bold text-danger">🏁</div>
+                                    <div class="small text-muted">Wins</div>
+                                    <div class="fw-bold">{{ $team->race_wins }}</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded text-center">
+                                    <div class="fw-bold text-secondary">🥈</div>
+                                    <div class="small text-muted">Podiums</div>
+                                    <div class="fw-bold">{{ $team->podiums }}</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded text-center">
+                                    <div class="fw-bold text-info">🚀</div>
+                                    <div class="small text-muted">Pole Positions</div>
+                                    <div class="fw-bold">{{ $team->pole_positions }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-top pt-3">
+                            <h6 class="fw-bold mb-2">Team Details</h6>
+                            <div class="row g-2 text-sm">
+                                <div class="col-6">
+                                    <div class="text-muted">🌍 Country</div>
+                                    <div class="fw-semibold">{{ $team->country }}</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-muted">🏢 Headquarters</div>
+                                    <div class="fw-semibold">{{ $team->headquarters }}</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-muted">👨‍💼 Team Chief</div>
+                                    <div class="fw-semibold">{{ $team->team_chief }}</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-muted">🔧 Technical Chief</div>
+                                    <div class="fw-semibold">{{ $team->technical_chief }}</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-muted">🏎️ Chassis</div>
+                                    <div class="fw-semibold">{{ $team->chassis }}</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-muted">⚡ Power Unit</div>
+                                    <div class="fw-semibold">{{ $team->power_unit }}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            @empty
-                <p class="col-span-full text-center text-gray-500">No teams found</p>
-            @endforelse
-        </div>
+            </div>
+        @empty
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="bi bi-building-x fs-1 text-muted"></i>
+                    <h4 class="mt-3 text-muted">No teams found</h4>
+                    <p class="text-muted">There are currently no teams in the database.</p>
+                </div>
+            </div>
+        @endforelse
     </div>
-</body>
-</html>
+</div>
+@endsection

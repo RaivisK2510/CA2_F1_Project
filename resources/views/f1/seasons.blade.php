@@ -1,66 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1 Seasons - F1 Stats Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100">
-    <nav class="bg-red-600 text-white p-4 shadow-lg">
-        <div class="container mx-auto">
-            <a href="{{ route('f1.dashboard') }}" class="text-2xl font-bold">🏎️ F1 Stats Hub</a>
-        </div>
-    </nav>
+@extends('layouts.app')
 
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6 text-gray-800">📅 F1 Seasons</h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @forelse($seasons as $season)
-                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
-                    <div class="mb-4">
-                        <h3 class="text-2xl font-bold text-red-600">{{ $season->year }}</h3>
-                        <p class="text-sm text-gray-600">{{ $season->description }}</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 gap-2 text-sm mb-4">
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">🏁 Total Races:</span> {{ $season->total_races }}
-                        </div>
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">✅ Completed:</span> {{ $season->completed_races }}
-                        </div>
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">📊 Progress:</span> {{ $season->completion_percentage }}%
-                        </div>
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">📅 Status:</span> 
+@section('content')
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-5 fw-bold mb-2">📅 F1 Seasons</h1>
+            <p class="text-muted">Explore Formula 1 seasons, champions, and race statistics</p>
+        </div>
+        <a href="{{ route('f1.dashboard') }}" class="btn btn-secondary">← Back to Dashboard</a>
+    </div>
+
+    <div class="row g-4">
+        @forelse($seasons as $season)
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-warning text-dark">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0 fw-bold">{{ $season->year }}</h5>
                             @if($season->is_active)
-                                <span class="text-green-600 font-semibold">Active</span>
+                                <span class="badge bg-success">Active</span>
                             @else
-                                <span class="text-gray-600">Completed</span>
+                                <span class="badge bg-secondary">Completed</span>
                             @endif
                         </div>
+                        @if($season->description)
+                            <small class="text-muted">{{ $season->description }}</small>
+                        @endif
                     </div>
-                    
-                    <div class="border-t pt-4">
-                        <h4 class="font-semibold mb-2">Champions:</h4>
-                        <div class="text-sm text-gray-600 space-y-1">
-                            @if($season->championDriver)
-                                <p>👨‍🏎️ Driver: {{ $season->championDriver->full_name }}</p>
-                            @endif
-                            @if($season->championTeam)
-                                <p>🏭 Team: {{ $season->championTeam->name }}</p>
-                            @endif
-                            <p>📅 {{ $season->start_date->format('M d, Y') }} - {{ $season->end_date->format('M d, Y') }}</p>
+                    <div class="card-body">
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded text-center">
+                                    <div class="fw-bold text-primary">🏁</div>
+                                    <div class="small text-muted">Total Races</div>
+                                    <div class="fw-bold">{{ $season->total_races }}</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded text-center">
+                                    <div class="fw-bold text-success">✅</div>
+                                    <div class="small text-muted">Completed</div>
+                                    <div class="fw-bold">{{ $season->completed_races }}</div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="p-2 bg-light rounded text-center">
+                                    <div class="fw-bold text-info">📊</div>
+                                    <div class="small text-muted">Progress</div>
+                                    <div class="progress mt-1" style="height: 6px;">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: {{ $season->completion_percentage }}%" aria-valuenow="{{ $season->completion_percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="fw-bold small mt-1">{{ $season->completion_percentage }}%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-top pt-3">
+                            <h6 class="fw-bold mb-2">Champions</h6>
+                            <div class="row g-2 text-sm">
+                                @if($season->championDriver)
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-center">
+                                            <span class="me-2">👨‍🏎️</span>
+                                            <div>
+                                                <div class="text-muted small">Driver Champion</div>
+                                                <div class="fw-semibold">{{ $season->championDriver->full_name }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if($season->championTeam)
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-center">
+                                            <span class="me-2">🏭</span>
+                                            <div>
+                                                <div class="text-muted small">Team Champion</div>
+                                                <div class="fw-semibold">{{ $season->championTeam->name }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                <div class="col-12">
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2">📅</span>
+                                        <div>
+                                            <div class="text-muted small">Season Dates</div>
+                                            <div class="fw-semibold">{{ $season->start_date->format('M d, Y') }} - {{ $season->end_date->format('M d, Y') }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            @empty
-                <p class="col-span-full text-center text-gray-500">No seasons found</p>
-            @endforelse
-        </div>
+            </div>
+        @empty
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="bi bi-calendar-x fs-1 text-muted"></i>
+                    <h4 class="mt-3 text-muted">No seasons found</h4>
+                    <p class="text-muted">There are currently no seasons in the database.</p>
+                </div>
+            </div>
+        @endforelse
     </div>
-</body>
-</html>
+</div>
+@endsection

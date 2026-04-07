@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Circuit;
 use App\Models\Driver;
-use App\Models\Post;
 use App\Models\Race;
 use App\Models\RaceResult;
 use App\Models\Season;
@@ -23,7 +22,6 @@ class AdminController extends Controller
     {
         $counts = [
             'users' => User::count(),
-            'posts' => Post::count(),
             'drivers' => Driver::count(),
             'teams' => Team::count(),
             'circuits' => Circuit::count(),

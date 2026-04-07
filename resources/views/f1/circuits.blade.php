@@ -1,59 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1 Circuits - F1 Stats Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100">
-    <nav class="bg-red-600 text-white p-4 shadow-lg">
-        <div class="container mx-auto">
-            <a href="{{ route('f1.dashboard') }}" class="text-2xl font-bold">🏎️ F1 Stats Hub</a>
-        </div>
-    </nav>
+@extends('layouts.app')
 
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6 text-gray-800">🏁 F1 Circuits</h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @forelse($circuits as $circuit)
-                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
-                    <div class="mb-4">
-                        <h3 class="text-xl font-bold">{{ $circuit->name }}</h3>
-                        <p class="text-sm text-gray-600">{{ $circuit->full_name }}</p>
+@section('content')
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-5 fw-bold mb-2">🏁 F1 Circuits</h1>
+            <p class="text-muted">Explore the world's most iconic Formula 1 race tracks</p>
+        </div>
+        <a href="{{ route('f1.dashboard') }}" class="btn btn-secondary">← Back to Dashboard</a>
+    </div>
+
+    <div class="row g-4">
+        @forelse($circuits as $circuit)
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title mb-0">{{ $circuit->name }}</h5>
+                        <small>{{ $circuit->full_name }}</small>
                     </div>
-                    
-                    <div class="grid grid-cols-2 gap-2 text-sm mb-4">
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">🌍 Country:</span> {{ $circuit->country }}
+                    <div class="card-body">
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded text-center">
+                                    <div class="fw-bold text-primary">🌍</div>
+                                    <div class="small text-muted">Country</div>
+                                    <div class="fw-bold">{{ $circuit->country }}</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded text-center">
+                                    <div class="fw-bold text-info">🏙️</div>
+                                    <div class="small text-muted">City</div>
+                                    <div class="fw-bold">{{ $circuit->city }}</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded text-center">
+                                    <div class="fw-bold text-secondary">📏</div>
+                                    <div class="small text-muted">Length</div>
+                                    <div class="fw-bold">{{ $circuit->length_km }} km</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded text-center">
+                                    <div class="fw-bold text-warning">🔄</div>
+                                    <div class="small text-muted">Corners</div>
+                                    <div class="fw-bold">{{ $circuit->corners }}</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">🏙️ City:</span> {{ $circuit->city }}
-                        </div>
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">📏 Length:</span> {{ $circuit->length_km }} km
-                        </div>
-                        <div class="bg-gray-100 p-2 rounded">
-                            <span class="font-semibold">🔄 Corners:</span> {{ $circuit->corners }}
-                        </div>
-                    </div>
-                    
-                    <div class="border-t pt-4">
-                        <h4 class="font-semibold mb-2">Circuit Info:</h4>
-                        <div class="text-sm text-gray-600 space-y-1">
-                            <p>🏁 First GP: {{ $circuit->first_grand_prix }} | 🏆 Races: {{ $circuit->races_held }}</p>
-                            <p>🔄 Direction: {{ $circuit->direction }} | 🚀 DRS Zones: {{ $circuit->drs_zones }}</p>
+
+                        <div class="border-top pt-3">
+                            <h6 class="fw-bold mb-2">Circuit Information</h6>
+                            <div class="row g-2 text-sm">
+                                <div class="col-6">
+                                    <div class="text-muted">🏁 First GP</div>
+                                    <div class="fw-semibold">{{ $circuit->first_grand_prix }}</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-muted">🏆 Races Held</div>
+                                    <div class="fw-semibold">{{ $circuit->races_held }}</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-muted">🔄 Direction</div>
+                                    <div class="fw-semibold">{{ $circuit->direction }}</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-muted">🚀 DRS Zones</div>
+                                    <div class="fw-semibold">{{ $circuit->drs_zones }}</div>
+                                </div>
+                            </div>
+
                             @if($circuit->lap_record_driver)
-                                <p>🏃 Lap Record: {{ $circuit->lap_record_time }} by {{ $circuit->lap_record_driver }} ({{ $circuit->lap_record_year }})</p>
+                                <div class="mt-3 p-2 bg-warning bg-opacity-10 rounded">
+                                    <div class="text-muted small mb-1">🏃‍♂️ Lap Record</div>
+                                    <div class="fw-semibold small">
+                                        {{ $circuit->lap_record_time }} by {{ $circuit->lap_record_driver }} ({{ $circuit->lap_record_year }})
+                                    </div>
+                                </div>
                             @endif
                         </div>
                     </div>
                 </div>
-            @empty
-                <p class="col-span-full text-center text-gray-500">No circuits found</p>
-            @endforelse
-        </div>
+            </div>
+        @empty
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="bi bi-geo-alt-x fs-1 text-muted"></i>
+                    <h4 class="mt-3 text-muted">No circuits found</h4>
+                    <p class="text-muted">There are currently no circuits in the database.</p>
+                </div>
+            </div>
+        @endforelse
     </div>
-</body>
-</html>
+</div>
+@endsection
