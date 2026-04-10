@@ -64,10 +64,10 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="principal" class="form-label">Team Principal</label>
-                                    <input type="text" class="form-control @error('principal') is-invalid @enderror" 
-                                           id="principal" name="principal" value="{{ old('principal', $team->principal) }}" required>
-                                    @error('principal')
+                                    <label for="team_chief" class="form-label">Team Chief</label>
+                                    <input type="text" class="form-control @error('team_chief') is-invalid @enderror" 
+                                           id="team_chief" name="team_chief" value="{{ old('team_chief', $team->team_chief) }}" required>
+                                    @error('team_chief')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

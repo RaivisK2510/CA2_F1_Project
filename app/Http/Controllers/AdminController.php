@@ -69,7 +69,7 @@ class AdminController extends Controller
     // Drivers CRUD
     public function driversIndex()
     {
-        $drivers = Driver::with('team')->orderBy('name')->paginate(15);
+        $drivers = Driver::with('team')->orderBy('first_name')->paginate(15);
         return view('admin.f1.drivers.index', compact('drivers'));
     }
 
@@ -82,12 +82,13 @@ class AdminController extends Controller
     public function driversStore(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'code' => 'required|string|max:3|unique:drivers,code',
-            'number' => 'required|integer|min:1|max:99|unique:drivers,number',
+            'driver_number' => 'required|integer|min:1|max:99|unique:drivers,driver_number',
             'nationality' => 'required|string|max:100',
             'date_of_birth' => 'required|date',
-            'team_id' => 'required|exists:teams,id',
+            'team_id' => 'nullable|exists:teams,id',
             'is_active' => 'boolean',
         ]);
 
@@ -105,12 +106,13 @@ class AdminController extends Controller
     public function driversUpdate(Request $request, Driver $driver)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'code' => 'required|string|max:3|unique:drivers,code,' . $driver->id,
-            'number' => 'required|integer|min:1|max:99|unique:drivers,number,' . $driver->id,
+            'driver_number' => 'required|integer|min:1|max:99|unique:drivers,driver_number,' . $driver->id,
             'nationality' => 'required|string|max:100',
             'date_of_birth' => 'required|date',
-            'team_id' => 'required|exists:teams,id',
+            'team_id' => 'nullable|exists:teams,id',
             'is_active' => 'boolean',
         ]);
 
@@ -143,8 +145,8 @@ class AdminController extends Controller
             'name' => 'required|string|max:255|unique:teams,name',
             'full_name' => 'required|string|max:255',
             'country' => 'required|string|max:100',
-            'founded_year' => 'required|integer|min:1900|max:' . date('Y'),
-            'principal' => 'required|string|max:255',
+            'founded_year' => 'required|date',
+            'team_chief' => 'required|string|max:255',
             'is_active' => 'boolean',
         ]);
 
@@ -164,8 +166,8 @@ class AdminController extends Controller
             'name' => 'required|string|max:255|unique:teams,name,' . $team->id,
             'full_name' => 'required|string|max:255',
             'country' => 'required|string|max:100',
-            'founded_year' => 'required|integer|min:1900|max:' . date('Y'),
-            'principal' => 'required|string|max:255',
+            'founded_year' => 'required|date',
+            'team_chief' => 'required|string|max:255',
             'is_active' => 'boolean',
         ]);
 
@@ -250,7 +252,7 @@ class AdminController extends Controller
 
     public function seasonsCreate()
     {
-        $drivers = Driver::orderBy('name')->get();
+        $drivers = Driver::orderBy('first_name')->get();
         $teams = Team::orderBy('name')->get();
         return view('admin.f1.seasons.create', compact('drivers', 'teams'));
     }
@@ -272,7 +274,7 @@ class AdminController extends Controller
 
     public function seasonsEdit(Season $season)
     {
-        $drivers = Driver::orderBy('name')->get();
+        $drivers = Driver::orderBy('first_name')->get();
         $teams = Team::orderBy('name')->get();
         return view('admin.f1.seasons.edit', compact('season', 'drivers', 'teams'));
     }

@@ -32,7 +32,7 @@
                                     <th>Full Name</th>
                                     <th>Country</th>
                                     <th>Founded</th>
-                                    <th>Principal</th>
+                                    <th>Team Chief</th>
                                     <th>Drivers</th>
                                     <th>Status</th>
                                     <th>Actions</th>
@@ -45,7 +45,7 @@
                                         <td>{{ $team->full_name }}</td>
                                         <td>{{ $team->country }}</td>
                                         <td>{{ $team->founded_year }}</td>
-                                        <td>{{ $team->principal }}</td>
+                                        <td>{{ $team->team_chief }}</td>
                                         <td>
                                             <span class="badge bg-info">{{ $team->drivers_count }}</span>
                                         </td>

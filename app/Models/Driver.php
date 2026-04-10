@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
@@ -32,6 +33,7 @@ class Driver extends Model
         'career_points',
         'world_championships',
         'is_active',
+        'team_id',
     ];
 
     protected $casts = [
@@ -48,6 +50,11 @@ class Driver extends Model
         'world_championships' => 'integer',
         'is_active' => 'boolean',
     ];
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
+    }
 
     public function raceResults(): HasMany
     {

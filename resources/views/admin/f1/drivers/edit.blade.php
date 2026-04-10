@@ -18,19 +18,29 @@
                         @method('PUT')
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Driver Name</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" 
-                                           id="name" name="name" value="{{ old('name', $driver->name) }}" required>
-                                    @error('name')
+                                    <label for="first_name" class="form-label">First Name</label>
+                                    <input type="text" class="form-control @error('first_name') is-invalid @enderror" 
+                                           id="first_name" name="first_name" value="{{ old('first_name', $driver->first_name) }}" required>
+                                    @error('first_name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="code" class="form-label">Driver Code (3 letters)</label>
+                                    <label for="last_name" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control @error('last_name') is-invalid @enderror" 
+                                           id="last_name" name="last_name" value="{{ old('last_name', $driver->last_name) }}" required>
+                                    @error('last_name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label for="code" class="form-label">Code</label>
                                     <input type="text" class="form-control @error('code') is-invalid @enderror" 
                                            id="code" name="code" value="{{ old('code', $driver->code) }}" maxlength="3" required>
                                     @error('code')
@@ -38,12 +48,12 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label for="number" class="form-label">Car Number</label>
-                                    <input type="number" class="form-control @error('number') is-invalid @enderror" 
-                                           id="number" name="number" value="{{ old('number', $driver->number) }}" min="1" max="99" required>
-                                    @error('number')
+                                    <label for="driver_number" class="form-label">Number</label>
+                                    <input type="number" class="form-control @error('driver_number') is-invalid @enderror" 
+                                           id="driver_number" name="driver_number" value="{{ old('driver_number', $driver->driver_number) }}" min="1" max="99" required>
+                                    @error('driver_number')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

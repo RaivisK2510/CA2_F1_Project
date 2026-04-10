@@ -41,7 +41,7 @@
                             <tbody>
                                 @forelse($drivers as $driver)
                                     <tr>
-                                        <td>{{ $driver->name }}</td>
+                                        <td>{{ $driver->first_name }} {{ $driver->last_name }}</td>
                                         <td><span class="badge bg-secondary">{{ $driver->code }}</span></td>
                                         <td>{{ $driver->number }}</td>
                                         <td>{{ $driver->nationality }}</td>
