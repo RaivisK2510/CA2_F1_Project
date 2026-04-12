@@ -61,22 +61,66 @@ a:focus {
   background-color: #111 !important;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-info,
+.btn-danger {
   background-color: #ff2d2d !important;
   border-color: #ff2d2d !important;
+  color: #ffffff !important;
 }
 
 .btn-primary:hover,
 .btn-primary:focus,
+.btn-success:hover,
+.btn-success:focus,
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-info:hover,
+.btn-info:focus,
+.btn-danger:hover,
+.btn-danger:focus,
 .btn-outline-primary:hover,
-.btn-outline-primary:focus {
+.btn-outline-primary:focus,
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus,
+.btn-outline-success:hover,
+.btn-outline-success:focus,
+.btn-outline-warning:hover,
+.btn-outline-warning:focus,
+.btn-outline-info:hover,
+.btn-outline-info:focus,
+.btn-outline-danger:hover,
+.btn-outline-danger:focus {
   background: #ff4242 !important;
   border-color: #ff4242 !important;
+  color: #ffffff !important;
 }
 
-.btn-outline-primary {
-  color: #ff2d2d !important;
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-success,
+.btn-outline-warning,
+.btn-outline-info,
+.btn-outline-danger {
+  color: #ffffff !important;
   border-color: #ff2d2d !important;
+  background-color: transparent !important;
+}
+
+.btn-primary *,
+.btn-success *,
+.btn-warning *,
+.btn-info *,
+.btn-danger *,
+.btn-outline-primary *,
+.btn-outline-secondary *,
+.btn-outline-success *,
+.btn-outline-warning *,
+.btn-outline-info *,
+.btn-outline-danger * {
+  color: inherit !important;
 }
 
 .btn-secondary {
