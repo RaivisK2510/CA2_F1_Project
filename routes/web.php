@@ -90,3 +90,7 @@ Route::prefix('f1')->name('f1.')->group(function () {
     Route::get('/seasons', [F1Controller::class, 'seasons'])->name('seasons');
     Route::get('/races', [F1Controller::class, 'races'])->name('races');
 });
+
+Route::fallback(function () {
+    return redirect()->route('f1.dashboard');
+});
