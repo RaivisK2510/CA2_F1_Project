@@ -104,9 +104,9 @@ a:focus {
 .btn-outline-warning,
 .btn-outline-info,
 .btn-outline-danger {
-  color: #ffffff !important;
+  color: #ff2d2d !important;
   border-color: #ff2d2d !important;
-  background-color: rgba(255, 45, 45, 0.05) !important;
+  background-color: transparent !important;
 }
 
 .btn-outline-primary:hover,
@@ -151,37 +151,17 @@ a:focus {
 .bg-success,
 .bg-info,
 .bg-warning,
-.bg-secondary,
-.bg-light,
+.bg-secondary {
+  background-color: #090909 !important;
+  color: #f2f2f2 !important;
+  border-color: #222 !important;
+}
+
 .badge.bg-primary,
 .badge.bg-success,
 .badge.bg-info,
 .badge.bg-warning,
 .badge.bg-secondary,
-.btn-secondary,
-.btn-light,
-.card.bg-primary,
-.card.bg-success,
-.card.bg-info,
-.card.bg-warning,
-.progress-bar.bg-info,
-.text-primary,
-.text-success,
-.text-info,
-.text-warning,
-.border-primary,
-.border-success,
-.border-info,
-.border-warning {
-  background-color: #ff2d2d !important;
-  border-color: #ff2d2d !important;
-  color: #ffffff !important;
-}
-
-.badge.bg-info,
-.badge.bg-warning,
-.badge.bg-secondary,
-.badge.bg-success,
 .badge.bg-danger {
   background-color: #ff2d2d !important;
   color: #ffffff !important;

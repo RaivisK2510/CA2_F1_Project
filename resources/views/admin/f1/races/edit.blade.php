@@ -8,7 +8,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">Edit Race: {{ $race->name }}</h4>
                     <a href="{{ route('admin.f1.races.index') }}" class="btn btn-secondary">
-                        <i class="fas fa-arrow-left"></i> Back to Races
+                        <i class="bi bi-arrow-left"></i> Back to Races
                     </a>
                 </div>
 
@@ -186,7 +186,7 @@
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="mb-0">Race Results</h5>
                             <a href="{{ route('admin.f1.races.results.create', $race) }}" class="btn btn-success btn-sm">
-                                <i class="fas fa-plus"></i> Add Result
+                                <i class="bi bi-plus"></i> Add Result
                             </a>
                         </div>
                         <div class="card-body">
@@ -218,13 +218,13 @@
                                                     <td>
                                                         <div class="btn-group" role="group">
                                                             <a href="{{ route('admin.f1.race_results.edit', $result) }}" class="btn btn-sm btn-outline-primary">
-                                                                <i class="fas fa-edit"></i>
+                                                                <i class="bi bi-pencil"></i>
                                                             </a>
                                                             <form action="{{ route('admin.f1.race_results.destroy', $result) }}" method="POST" style="display: inline;">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this result?')">
-                                                                    <i class="fas fa-trash"></i>
+                                                                    <i class="bi bi-trash"></i>
                                                                 </button>
                                                             </form>
                                                         </div>

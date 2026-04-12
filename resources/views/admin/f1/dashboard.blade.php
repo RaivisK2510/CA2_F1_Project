@@ -8,7 +8,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">F1 Data Management Dashboard</h4>
                     <a href="{{ route('admin.index') }}" class="btn btn-secondary">
-                        <i class="fas fa-arrow-left"></i> Back to Admin
+                        <i class="bi bi-arrow-left"></i> Back to Admin
                     </a>
                 </div>
 
@@ -59,15 +59,8 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Races</h5>
-                                    <h3 class="text-primary">{{ $stats['total_races'] }}</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Race Results</h5>
-                                    <h3 class="text-primary">{{ $stats['total_results'] }}</h3>
+                                    <h3 class="text-white">{{ $stats['total_races'] }}</h3>
+                                    <a href="{{ route('admin.f1.races.index') }}" class="btn btn-light btn-sm mt-2">Manage</a>
                                 </div>
                             </div>
                         </div>
@@ -82,27 +75,27 @@
                             <div class="row">
                                 <div class="col-md-3 mb-2">
                                     <a href="{{ route('admin.f1.drivers.create') }}" class="btn btn-primary btn-block">
-                                        <i class="fas fa-plus"></i> Add Driver
+                                        <i class="bi bi-plus"></i> Add Driver
                                     </a>
                                 </div>
                                 <div class="col-md-3 mb-2">
                                     <a href="{{ route('admin.f1.teams.create') }}" class="btn btn-success btn-block">
-                                        <i class="fas fa-plus"></i> Add Team
+                                        <i class="bi bi-plus"></i> Add Team
                                     </a>
                                 </div>
                                 <div class="col-md-3 mb-2">
                                     <a href="{{ route('admin.f1.circuits.create') }}" class="btn btn-info btn-block">
-                                        <i class="fas fa-plus"></i> Add Circuit
+                                        <i class="bi bi-plus"></i> Add Circuit
                                     </a>
                                 </div>
                                 <div class="col-md-3 mb-2">
                                     <a href="{{ route('admin.f1.seasons.create') }}" class="btn btn-warning btn-block">
-                                        <i class="fas fa-plus"></i> Add Season
+                                        <i class="bi bi-plus"></i> Add Season
                                     </a>
                                 </div>
                                 <div class="col-md-3 mb-2">
-                                    <a href="{{ route('admin.f1.races.index') }}" class="btn btn-secondary btn-block">
-                                        <i class="fas fa-flag-checkered"></i> Manage Races
+                                    <a href="{{ route('admin.f1.races.index') }}" class="btn btn-danger btn-block">
+                                        <i class="bi bi-flag-checkered"></i> Manage Races
                                     </a>
                                 </div>
                             </div>

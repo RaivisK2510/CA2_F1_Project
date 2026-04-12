@@ -8,7 +8,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">Add New Race</h4>
                     <a href="{{ route('admin.f1.races.index') }}" class="btn btn-secondary">
-                        <i class="fas fa-arrow-left"></i> Back to Races
+                        <i class="bi bi-arrow-left"></i> Back to Races
                     </a>
                 </div>
 

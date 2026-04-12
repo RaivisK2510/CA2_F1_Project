@@ -8,7 +8,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">Edit Team: {{ $team->name }}</h4>
                     <a href="{{ route('admin.f1.teams.index') }}" class="btn btn-secondary">
-                        <i class="fas fa-arrow-left"></i> Back to Teams
+                        <i class="bi bi-arrow-left"></i> Back to Teams
                     </a>
                 </div>
 

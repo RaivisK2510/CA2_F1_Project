@@ -9,10 +9,10 @@
                     <h4 class="mb-0">Manage Seasons</h4>
                     <div>
                         <a href="{{ route('admin.f1.dashboard') }}" class="btn btn-secondary">
-                            <i class="fas fa-arrow-left"></i> Back to Dashboard
+                            <i class="bi bi-arrow-left"></i> Back to Dashboard
                         </a>
                         <a href="{{ route('admin.f1.seasons.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Add Season
+                            <i class="bi bi-plus"></i> Add Season
                         </a>
                     </div>
                 </div>
@@ -65,13 +65,13 @@
                                         <td>
                                             <div class="btn-group" role="group">
                                                 <a href="{{ route('admin.f1.seasons.edit', $season) }}" class="btn btn-sm btn-outline-primary">
-                                                    <i class="fas fa-edit"></i>
+                                                    <i class="bi bi-pencil"></i>
                                                 </a>
                                                 <form action="{{ route('admin.f1.seasons.destroy', $season) }}" method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this season?')">
-                                                        <i class="fas fa-trash"></i>
+                                                        <i class="bi bi-trash"></i>
                                                     </button>
                                                 </form>
                                             </div>

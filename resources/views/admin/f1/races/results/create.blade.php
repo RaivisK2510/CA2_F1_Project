@@ -8,7 +8,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">Add Result for {{ $race->name }}</h4>
                     <a href="{{ route('admin.f1.races.edit', $race) }}" class="btn btn-secondary">
-                        <i class="fas fa-arrow-left"></i> Back to Race
+                        <i class="bi bi-arrow-left"></i> Back to Race
                     </a>
                 </div>
 

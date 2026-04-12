@@ -9,10 +9,10 @@
                     <h4 class="mb-0">Manage Races</h4>
                     <div>
                         <a href="{{ route('admin.f1.dashboard') }}" class="btn btn-secondary">
-                            <i class="fas fa-arrow-left"></i> Back to Dashboard
+                            <i class="bi bi-arrow-left"></i> Back to Dashboard
                         </a>
                         <a href="{{ route('admin.f1.races.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Add Race
+                            <i class="bi bi-plus"></i> Add Race
                         </a>
                     </div>
                 </div>
@@ -47,13 +47,13 @@
                                         <td>
                                             <div class="btn-group" role="group">
                                                 <a href="{{ route('admin.f1.races.edit', $race) }}" class="btn btn-sm btn-outline-primary">
-                                                    <i class="fas fa-edit"></i>
+                                                    <i class="bi bi-pencil"></i>
                                                 </a>
                                                 <form action="{{ route('admin.f1.races.destroy', $race) }}" method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this race?')">
-                                                        <i class="fas fa-trash"></i>
+                                                        <i class="bi bi-trash"></i>
                                                     </button>
                                                 </form>
                                             </div>
