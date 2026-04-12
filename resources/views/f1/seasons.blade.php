@@ -4,7 +4,7 @@
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h1 class="display-5 fw-bold mb-2">📅 F1 Seasons</h1>
+            <h1 class="display-5 fw-bold mb-2">F1 Seasons</h1>
             <p class="text-muted">Explore Formula 1 seasons, champions, and race statistics</p>
         </div>
         <a href="{{ route('f1.dashboard') }}" class="btn btn-secondary">← Back to Dashboard</a>
@@ -31,21 +31,21 @@
                         <div class="row g-2 mb-3">
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-primary">🏁</div>
+                                    <div class="fw-bold text-primary">Total Races</div>
                                     <div class="small text-muted">Total Races</div>
                                     <div class="fw-bold">{{ $season->total_races }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-success">✅</div>
+                                    <div class="fw-bold text-success">Completed</div>
                                     <div class="small text-muted">Completed</div>
                                     <div class="fw-bold">{{ $season->completed_races }}</div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-info">📊</div>
+                                    <div class="fw-bold text-info">Progress</div>
                                     <div class="small text-muted">Progress</div>
                                     <div class="progress mt-1" style="height: 6px;">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: {{ $season->completion_percentage }}%" aria-valuenow="{{ $season->completion_percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -61,7 +61,6 @@
                                 @if($season->championDriver)
                                     <div class="col-12">
                                         <div class="d-flex align-items-center">
-                                            <span class="me-2">👨‍🏎️</span>
                                             <div>
                                                 <div class="text-muted small">Driver Champion</div>
                                                 <div class="fw-semibold">{{ $season->championDriver->full_name }}</div>
@@ -72,7 +71,6 @@
                                 @if($season->championTeam)
                                     <div class="col-12">
                                         <div class="d-flex align-items-center">
-                                            <span class="me-2">🏭</span>
                                             <div>
                                                 <div class="text-muted small">Team Champion</div>
                                                 <div class="fw-semibold">{{ $season->championTeam->name }}</div>
@@ -82,7 +80,6 @@
                                 @endif
                                 <div class="col-12">
                                     <div class="d-flex align-items-center">
-                                        <span class="me-2">📅</span>
                                         <div>
                                             <div class="text-muted small">Season Dates</div>
                                             <div class="fw-semibold">{{ $season->start_date->format('M d, Y') }} - {{ $season->end_date->format('M d, Y') }}</div>

@@ -4,7 +4,7 @@
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h1 class="display-5 fw-bold mb-2">👨‍🏎️ F1 Drivers</h1>
+            <h1 class="display-5 fw-bold mb-2">F1 Drivers</h1>
             <p class="text-muted">Complete list of Formula 1 drivers and their career statistics</p>
         </div>
         <a href="{{ route('f1.dashboard') }}" class="btn btn-secondary">← Back to Dashboard</a>
@@ -29,35 +29,35 @@
                         <div class="row g-2 mb-3">
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-warning">🏆</div>
+                                    <div class="fw-bold text-warning">Championships</div>
                                     <div class="small text-muted">Championships</div>
                                     <div class="fw-bold">{{ $driver->world_championships }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-danger">🏁</div>
+                                    <div class="fw-bold text-danger">Wins</div>
                                     <div class="small text-muted">Wins</div>
                                     <div class="fw-bold">{{ $driver->wins }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-secondary">🥈</div>
+                                    <div class="fw-bold text-secondary">Podiums</div>
                                     <div class="small text-muted">Podiums</div>
                                     <div class="fw-bold">{{ $driver->podiums }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-primary">📊</div>
+                                    <div class="fw-bold text-primary">Points</div>
                                     <div class="small text-muted">Points</div>
                                     <div class="fw-bold">{{ $driver->career_points }}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="text-center text-muted small">
-                            🎂 {{ optional($driver->date_of_birth)->format('M j, Y') ?? 'Unknown birth' }} | 🏁 Debut: {{ optional($driver->debut_year)->format('Y') ?? 'Unknown' }}
+                            Born: {{ optional($driver->date_of_birth)->format('M j, Y') ?? 'Unknown birth' }} | Debut: {{ optional($driver->debut_year)->format('Y') ?? 'Unknown' }}
                         </div>
                     </div>
                 </div>

@@ -87,10 +87,10 @@
                     <p class="text-muted">Use these links to access F1 database sections and manage records.</p>
                     <div class="d-flex flex-wrap gap-2">
                         <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Manage Users</a>
-                        <a href="{{ route('admin.f1.dashboard') }}" class="btn btn-outline-danger">🏎️ View F1 Dashboard</a>
-                        <a href="{{ route('admin.f1.drivers.index') }}" class="btn btn-outline-secondary">👨‍🏎️ Manage Drivers</a>
-                        <a href="{{ route('admin.f1.teams.index') }}" class="btn btn-outline-info">🏭 Manage Teams</a>
-                        <a href="{{ route('admin.f1.races.index') }}" class="btn btn-outline-warning">🏁 Manage Races</a>
+                        <a href="{{ route('admin.f1.dashboard') }}" class="btn btn-outline-danger">View F1 Dashboard</a>
+                        <a href="{{ route('admin.f1.drivers.index') }}" class="btn btn-outline-secondary">Manage Drivers</a>
+                        <a href="{{ route('admin.f1.teams.index') }}" class="btn btn-outline-info">Manage Teams</a>
+                        <a href="{{ route('admin.f1.races.index') }}" class="btn btn-outline-warning">Manage Races</a>
                     </div>
                 </div>
             </div>

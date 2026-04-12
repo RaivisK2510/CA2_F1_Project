@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('f1.dashboard') ? 'active' : '' }}" href="{{ route('f1.dashboard') }}">🏎️ F1 Dashboard</a>
+                            <a class="nav-link {{ request()->routeIs('f1.dashboard') ? 'active' : '' }}" href="{{ route('f1.dashboard') }}">F1 Dashboard</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="f1Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

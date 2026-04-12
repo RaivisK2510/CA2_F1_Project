@@ -4,7 +4,7 @@
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h1 class="display-5 fw-bold mb-2">🏭 F1 Teams</h1>
+            <h1 class="display-5 fw-bold mb-2">F1 Teams</h1>
             <p class="text-muted">Complete list of Formula 1 teams and their performance statistics</p>
         </div>
         <a href="{{ route('f1.dashboard') }}" class="btn btn-secondary">← Back to Dashboard</a>
@@ -29,28 +29,28 @@
                         <div class="row g-2 mb-4">
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-warning">🏆</div>
+                                    <div class="fw-bold text-warning">Championships</div>
                                     <div class="small text-muted">Championships</div>
                                     <div class="fw-bold">{{ $team->world_championships }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-danger">🏁</div>
+                                    <div class="fw-bold text-danger">Wins</div>
                                     <div class="small text-muted">Wins</div>
                                     <div class="fw-bold">{{ $team->race_wins }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-secondary">🥈</div>
+                                    <div class="fw-bold text-secondary">Podiums</div>
                                     <div class="small text-muted">Podiums</div>
                                     <div class="fw-bold">{{ $team->podiums }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-info">🚀</div>
+                                    <div class="fw-bold text-info">Pole Positions</div>
                                     <div class="small text-muted">Pole Positions</div>
                                     <div class="fw-bold">{{ $team->pole_positions }}</div>
                                 </div>
@@ -61,27 +61,27 @@
                             <h6 class="fw-bold mb-2">Team Details</h6>
                             <div class="row g-2 text-sm">
                                 <div class="col-6">
-                                    <div class="text-muted">🌍 Country</div>
+                                    <div class="text-muted">Country</div>
                                     <div class="fw-semibold">{{ $team->country }}</div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="text-muted">🏢 Headquarters</div>
+                                    <div class="text-muted">Headquarters</div>
                                     <div class="fw-semibold">{{ $team->headquarters }}</div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="text-muted">👨‍💼 Team Chief</div>
+                                    <div class="text-muted">Team Chief</div>
                                     <div class="fw-semibold">{{ $team->team_chief }}</div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="text-muted">🔧 Technical Chief</div>
+                                    <div class="text-muted">Technical Chief</div>
                                     <div class="fw-semibold">{{ $team->technical_chief }}</div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="text-muted">🏎️ Chassis</div>
+                                    <div class="text-muted">Chassis</div>
                                     <div class="fw-semibold">{{ $team->chassis }}</div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="text-muted">⚡ Power Unit</div>
+                                    <div class="text-muted">Power Unit</div>
                                     <div class="fw-semibold">{{ $team->power_unit }}</div>
                                 </div>
                             </div>

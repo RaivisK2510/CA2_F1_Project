@@ -10,8 +10,8 @@
                 <p class="lead mb-4 text-secondary">Your command center for Formula 1 results, drivers, teams, and race history.</p>
                 <p class="fs-5 mb-4 text-secondary">Explore the latest F1 dashboards, manage race data, and follow every circuit in a sleek black and red interface.</p>
                 <div class="d-flex gap-3 justify-content-center">
-                    <a href="{{ route('f1.races') }}" class="btn btn-primary btn-lg px-4">View Races</a>
-                    <a href="{{ route('f1.drivers') }}" class="btn btn-outline-light btn-lg px-4">Drivers</a>
+                    <a href="{{ route('f1.races') }}" class="btn btn-danger btn-lg px-4">View Races</a>
+                    <a href="{{ route('f1.drivers') }}" class="btn btn-danger btn-lg px-4">Drivers</a>
                 </div>
             </div>
         </div>

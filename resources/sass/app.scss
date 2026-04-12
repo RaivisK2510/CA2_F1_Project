@@ -106,43 +106,138 @@ a:focus {
 .btn-outline-danger {
   color: #ffffff !important;
   border-color: #ff2d2d !important;
-  background-color: transparent !important;
+  background-color: rgba(255, 45, 45, 0.05) !important;
 }
 
-.btn-primary *,
-.btn-success *,
-.btn-warning *,
-.btn-info *,
-.btn-danger *,
-.btn-outline-primary *,
-.btn-outline-secondary *,
-.btn-outline-success *,
-.btn-outline-warning *,
-.btn-outline-info *,
-.btn-outline-danger * {
-  color: inherit !important;
+.btn-outline-primary:hover,
+.btn-outline-secondary:hover,
+.btn-outline-success:hover,
+.btn-outline-warning:hover,
+.btn-outline-info:hover,
+.btn-outline-danger:hover,
+.btn-outline-primary:focus,
+.btn-outline-secondary:focus,
+.btn-outline-success:focus,
+.btn-outline-warning:focus,
+.btn-outline-info:focus,
+.btn-outline-danger:focus {
+  color: #ffffff !important;
+  background-color: rgba(255, 45, 45, 0.18) !important;
+  border-color: #ff2d2d !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 45, 45, 0.18) !important;
 }
 
-.btn-secondary {
-  background-color: #1f1f1f !important;
-  border-color: #333 !important;
-  color: #f2f2f2 !important;
+.bg-danger,
+.border-danger,
+.badge.bg-danger,
+.btn-danger,
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-info {
+  background-color: #ff2d2d !important;
+  border-color: #ff2d2d !important;
 }
 
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-info,
+.btn-danger {
+  color: #ffffff !important;
+}
+
+.bg-primary,
+.bg-success,
+.bg-info,
+.bg-warning,
+.bg-secondary,
+.bg-light,
+.badge.bg-primary,
+.badge.bg-success,
+.badge.bg-info,
+.badge.bg-warning,
+.badge.bg-secondary,
+.btn-secondary,
+.btn-light,
+.card.bg-primary,
+.card.bg-success,
+.card.bg-info,
+.card.bg-warning,
+.progress-bar.bg-info,
+.text-primary,
+.text-success,
+.text-info,
+.text-warning,
+.border-primary,
+.border-success,
+.border-info,
+.border-warning {
+  background-color: #ff2d2d !important;
+  border-color: #ff2d2d !important;
+  color: #ffffff !important;
+}
+
+.badge.bg-info,
+.badge.bg-warning,
+.badge.bg-secondary,
+.badge.bg-success,
+.badge.bg-danger {
+  background-color: #ff2d2d !important;
+  color: #ffffff !important;
+}
+
+.btn-secondary,
 .btn-light {
-  background-color: #1a1a1a !important;
-  border-color: #333 !important;
-  color: #f2f2f2 !important;
+  background-color: #ff2d2d !important;
+  border-color: #ff2d2d !important;
+  color: #ffffff !important;
 }
 
-.table {
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-light:hover,
+.btn-light:focus {
+  background-color: #ff4242 !important;
+  border-color: #ff4242 !important;
+  color: #ffffff !important;
+}
+
+.text-muted,
+.text-secondary,
+.text-success,
+.text-info,
+.text-warning {
+  color: #ff2d2d !important;
+}
+
+.table,
+.table-dark,
+.table-dark > tbody > tr > th,
+.table-dark > tbody > tr > td,
+.table-dark > thead > tr > th,
+.table-dark > tbody > tr > th,
+.table-dark > tbody > tr > td {
+  background-color: #090909 !important;
   color: #f2f2f2 !important;
 }
 
 .table th,
 .table td,
-.table thead th {
+.table thead th,
+.table-dark th,
+.table-dark td,
+.table-dark thead th {
   border-color: #333 !important;
+  color: #f2f2f2 !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(255, 45, 45, 0.08) !important;
+}
+
+.table-striped > tbody > tr:hover {
+  background-color: rgba(255, 45, 45, 0.15) !important;
 }
 
 .form-control,
