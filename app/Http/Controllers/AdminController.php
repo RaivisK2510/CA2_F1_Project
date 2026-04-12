@@ -217,7 +217,7 @@ class AdminController extends Controller
             'length_km' => 'required|numeric|min:1|max:20',
             'corners' => 'required|integer|min:1|max:100',
             'lap_record' => 'nullable|string|max:50',
-            'first_grand_prix_year' => 'required|integer|min:1950|max:' . date('Y'),
+            'first_grand_prix' => 'required|integer|min:1950|max:' . date('Y'),
             'is_active' => 'boolean',
         ]);
 
@@ -241,7 +241,7 @@ class AdminController extends Controller
             'length_km' => 'required|numeric|min:1|max:20',
             'corners' => 'required|integer|min:1|max:100',
             'lap_record' => 'nullable|string|max:50',
-            'first_grand_prix_year' => 'required|integer|min:1950|max:' . date('Y'),
+            'first_grand_prix' => 'required|integer|min:1950|max:' . date('Y'),
             'is_active' => 'boolean',
         ]);
 

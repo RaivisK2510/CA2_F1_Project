@@ -48,7 +48,7 @@
                                         <td>{{ $circuit->city }}</td>
                                         <td>{{ $circuit->length_km }}</td>
                                         <td>{{ $circuit->corners }}</td>
-                                        <td>{{ $circuit->first_grand_prix_year }}</td>
+                                        <td>{{ $circuit->first_grand_prix }}</td>
                                         <td>
                                             @if($circuit->is_active)
                                                 <span class="badge bg-success">Active</span>

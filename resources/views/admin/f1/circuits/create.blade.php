@@ -62,11 +62,11 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="first_grand_prix_year" class="form-label">First Grand Prix Year</label>
-                                    <input type="number" class="form-control @error('first_grand_prix_year') is-invalid @enderror" 
-                                           id="first_grand_prix_year" name="first_grand_prix_year" value="{{ old('first_grand_prix_year') }}" 
+                                    <label for="first_grand_prix" class="form-label">First Grand Prix Year</label>
+                                    <input type="number" class="form-control @error('first_grand_prix') is-invalid @enderror" 
+                                           id="first_grand_prix" name="first_grand_prix" value="{{ old('first_grand_prix') }}" 
                                            min="1950" max="{{ date('Y') }}" required>
-                                    @error('first_grand_prix_year')
+                                    @error('first_grand_prix')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
