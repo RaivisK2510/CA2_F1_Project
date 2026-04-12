@@ -28,18 +28,38 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label for="races_count" class="form-label">Number of Races</label>
-                                    <input type="number" class="form-control @error('races_count') is-invalid @enderror" 
-                                           id="races_count" name="races_count" value="{{ old('races_count') }}" 
+                                    <label for="total_races" class="form-label">Number of Races</label>
+                                    <input type="number" class="form-control @error('total_races') is-invalid @enderror" 
+                                           id="total_races" name="total_races" value="{{ old('total_races') }}" 
                                            min="1" max="30" required>
-                                    @error('races_count')
+                                    @error('total_races')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="start_date" class="form-label">Start Date</label>
+                                    <input type="date" class="form-control @error('start_date') is-invalid @enderror" 
+                                           id="start_date" name="start_date" value="{{ old('start_date') }}" required>
+                                    @error('start_date')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="end_date" class="form-label">End Date</label>
+                                    <input type="date" class="form-control @error('end_date') is-invalid @enderror" 
+                                           id="end_date" name="end_date" value="{{ old('end_date') }}" required>
+                                    @error('end_date')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <div class="form-check mt-4">
                                         <input class="form-check-input @error('is_active') is-invalid @enderror" 

@@ -40,7 +40,7 @@
                                 @forelse($seasons as $season)
                                     <tr>
                                         <td><strong>{{ $season->year }}</strong></td>
-                                        <td>{{ $season->races_count }}</td>
+                                        <td>{{ $season->total_races }}</td>
                                         <td>
                                             @if($season->championDriver)
                                                 {{ $season->championDriver->name }}

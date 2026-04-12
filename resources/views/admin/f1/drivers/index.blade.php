@@ -52,7 +52,7 @@
                                                 <span class="text-muted">No Team</span>
                                             @endif
                                         </td>
-                                        <td>{{ $driver->date_of_birth->format('M d, Y') }}</td>
+                                        <td>{{ optional($driver->date_of_birth)->format('M d, Y') ?? 'Unknown' }}</td>
                                         <td>
                                             @if($driver->is_active)
                                                 <span class="badge bg-success">Active</span>

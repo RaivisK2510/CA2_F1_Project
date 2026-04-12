@@ -274,7 +274,9 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'year' => 'required|integer|min:1950|max:' . (date('Y') + 1) . '|unique:seasons,year',
-            'races_count' => 'required|integer|min:1|max:30',
+            'total_races' => 'required|integer|min:1|max:30',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
             'champion_driver_id' => 'nullable|exists:drivers,id',
             'champion_team_id' => 'nullable|exists:teams,id',
             'is_active' => 'boolean',
@@ -296,7 +298,9 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'year' => 'required|integer|min:1950|max:' . (date('Y') + 1) . '|unique:seasons,year,' . $season->id,
-            'races_count' => 'required|integer|min:1|max:30',
+            'total_races' => 'required|integer|min:1|max:30',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
             'champion_driver_id' => 'nullable|exists:drivers,id',
             'champion_team_id' => 'nullable|exists:teams,id',
             'is_active' => 'boolean',

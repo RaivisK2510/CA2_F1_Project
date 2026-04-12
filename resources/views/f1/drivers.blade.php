@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="text-center text-muted small">
-                            🎂 {{ $driver->date_of_birth->format('M j, Y') }} | 🏁 Debut: {{ $driver->debut_year->format('Y') }}
+                            🎂 {{ optional($driver->date_of_birth)->format('M j, Y') ?? 'Unknown birth' }} | 🏁 Debut: {{ optional($driver->debut_year)->format('Y') ?? 'Unknown' }}
                         </div>
                     </div>
                 </div>
