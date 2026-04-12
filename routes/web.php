@@ -63,6 +63,21 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/seasons/{season}/edit', [AdminController::class, 'seasonsEdit'])->name('seasons.edit');
         Route::put('/seasons/{season}', [AdminController::class, 'seasonsUpdate'])->name('seasons.update');
         Route::delete('/seasons/{season}', [AdminController::class, 'seasonsDestroy'])->name('seasons.destroy');
+
+        // Races CRUD
+        Route::get('/races', [AdminController::class, 'racesIndex'])->name('races.index');
+        Route::get('/races/create', [AdminController::class, 'racesCreate'])->name('races.create');
+        Route::post('/races', [AdminController::class, 'racesStore'])->name('races.store');
+        Route::get('/races/{race}/edit', [AdminController::class, 'racesEdit'])->name('races.edit');
+        Route::put('/races/{race}', [AdminController::class, 'racesUpdate'])->name('races.update');
+        Route::delete('/races/{race}', [AdminController::class, 'racesDestroy'])->name('races.destroy');
+
+        // Race Results CRUD
+        Route::get('/races/{race}/results/create', [AdminController::class, 'raceResultsCreate'])->name('races.results.create');
+        Route::post('/races/{race}/results', [AdminController::class, 'raceResultsStore'])->name('races.results.store');
+        Route::get('/race-results/{raceResult}/edit', [AdminController::class, 'raceResultsEdit'])->name('race_results.edit');
+        Route::put('/race-results/{raceResult}', [AdminController::class, 'raceResultsUpdate'])->name('race_results.update');
+        Route::delete('/race-results/{raceResult}', [AdminController::class, 'raceResultsDestroy'])->name('race_results.destroy');
     });
 });
 
@@ -73,4 +88,5 @@ Route::prefix('f1')->name('f1.')->group(function () {
     Route::get('/teams', [F1Controller::class, 'teams'])->name('teams');
     Route::get('/circuits', [F1Controller::class, 'circuits'])->name('circuits');
     Route::get('/seasons', [F1Controller::class, 'seasons'])->name('seasons');
+    Route::get('/races', [F1Controller::class, 'races'])->name('races');
 });

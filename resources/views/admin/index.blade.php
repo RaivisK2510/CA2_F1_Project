@@ -90,6 +90,7 @@
                         <a href="{{ route('admin.f1.dashboard') }}" class="btn btn-outline-danger">🏎️ View F1 Dashboard</a>
                         <a href="{{ route('admin.f1.drivers.index') }}" class="btn btn-outline-secondary">👨‍🏎️ Manage Drivers</a>
                         <a href="{{ route('admin.f1.teams.index') }}" class="btn btn-outline-info">🏭 Manage Teams</a>
+                        <a href="{{ route('admin.f1.races.index') }}" class="btn btn-outline-warning">🏁 Manage Races</a>
                     </div>
                 </div>
             </div>

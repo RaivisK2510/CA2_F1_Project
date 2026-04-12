@@ -6,6 +6,7 @@ use App\Models\Driver;
 use App\Models\Team;
 use App\Models\Circuit;
 use App\Models\Season;
+use App\Models\Race;
 
 class F1Controller extends Controller
 {
@@ -47,5 +48,14 @@ class F1Controller extends Controller
     {
         $seasons = Season::with(['championDriver', 'championTeam'])->get();
         return view('f1.seasons', compact('seasons'));
+    }
+
+    public function races()
+    {
+        $races = Race::with(['season', 'circuit', 'raceResults.driver', 'raceResults.team'])
+            ->orderByDesc('race_date')
+            ->get();
+
+        return view('f1.races', compact('races'));
     }
 }

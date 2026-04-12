@@ -159,6 +159,12 @@
                                 <span>Seasons</span>
                             </a>
                         </div>
+                        <div class="col-md-6 col-lg-3">
+                            <a href="{{ route('f1.races') }}" class="btn btn-secondary btn-lg w-100 d-flex align-items-center justify-content-center gap-2">
+                                <i class="bi bi-flag"></i>
+                                <span>Races</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

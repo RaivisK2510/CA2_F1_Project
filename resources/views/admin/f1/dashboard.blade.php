@@ -100,6 +100,11 @@
                                         <i class="fas fa-plus"></i> Add Season
                                     </a>
                                 </div>
+                                <div class="col-md-3 mb-2">
+                                    <a href="{{ route('admin.f1.races.index') }}" class="btn btn-secondary btn-block">
+                                        <i class="fas fa-flag-checkered"></i> Manage Races
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
