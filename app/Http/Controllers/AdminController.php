@@ -88,10 +88,13 @@ class AdminController extends Controller
             'code' => 'required|string|max:3|unique:drivers,code',
             'driver_number' => 'required|integer|min:1|max:99|unique:drivers,driver_number',
             'nationality' => 'required|string|max:100',
+            'place_of_birth' => 'nullable|string|max:255',
             'date_of_birth' => 'required|date',
             'team_id' => 'nullable|exists:teams,id',
             'is_active' => 'boolean',
         ]);
+
+        $validated['place_of_birth'] = $validated['place_of_birth'] ?? $validated['nationality'];
 
         Driver::create($validated);
 
@@ -112,10 +115,13 @@ class AdminController extends Controller
             'code' => 'required|string|max:3|unique:drivers,code,' . $driver->id,
             'driver_number' => 'required|integer|min:1|max:99|unique:drivers,driver_number,' . $driver->id,
             'nationality' => 'required|string|max:100',
+            'place_of_birth' => 'nullable|string|max:255',
             'date_of_birth' => 'required|date',
             'team_id' => 'nullable|exists:teams,id',
             'is_active' => 'boolean',
         ]);
+
+        $validated['place_of_birth'] = $validated['place_of_birth'] ?? $validated['nationality'];
 
         $driver->update($validated);
 
