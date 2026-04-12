@@ -45,6 +45,28 @@ class Team extends Model
         'is_active' => 'boolean',
     ];
 
+    protected static function booted(): void
+    {
+        static::creating(function (Team $team) {
+            if (empty($team->code)) {
+                $team->code = self::generateNextCode();
+            }
+        });
+    }
+
+    public static function generateNextCode(): string
+    {
+        $lastCode = self::orderByDesc('code')->value('code');
+        $next = is_numeric($lastCode) ? intval($lastCode) + 1 : 1;
+
+        return str_pad($next, 3, '0', STR_PAD_LEFT);
+    }
+
+    public function drivers(): HasMany
+    {
+        return $this->hasMany(Driver::class);
+    }
+
     public function raceResults(): HasMany
     {
         return $this->hasMany(RaceResult::class);

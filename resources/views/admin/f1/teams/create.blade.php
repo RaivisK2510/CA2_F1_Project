@@ -52,6 +52,16 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
+                                    <label for="headquarters" class="form-label">Headquarters</label>
+                                    <input type="text" class="form-control @error('headquarters') is-invalid @enderror" 
+                                           id="headquarters" name="headquarters" value="{{ old('headquarters') }}">
+                                    @error('headquarters')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
                                     <label for="founded_year" class="form-label">Founded Year</label>
                                     <input type="number" class="form-control @error('founded_year') is-invalid @enderror" 
                                            id="founded_year" name="founded_year" value="{{ old('founded_year') }}" 

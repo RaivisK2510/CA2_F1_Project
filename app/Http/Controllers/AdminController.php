@@ -9,6 +9,7 @@ use App\Models\RaceResult;
 use App\Models\Season;
 use App\Models\Team;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -145,10 +146,13 @@ class AdminController extends Controller
             'name' => 'required|string|max:255|unique:teams,name',
             'full_name' => 'required|string|max:255',
             'country' => 'required|string|max:100',
-            'founded_year' => 'required|date',
+            'headquarters' => 'nullable|string|max:255',
+            'founded_year' => 'required|integer|digits:4|min:1900|max:' . date('Y'),
             'team_chief' => 'required|string|max:255',
             'is_active' => 'boolean',
         ]);
+
+        $validated['founded_year'] = Carbon::createFromFormat('Y', $validated['founded_year'])->startOfYear();
 
         Team::create($validated);
 
@@ -166,10 +170,13 @@ class AdminController extends Controller
             'name' => 'required|string|max:255|unique:teams,name,' . $team->id,
             'full_name' => 'required|string|max:255',
             'country' => 'required|string|max:100',
-            'founded_year' => 'required|date',
+            'headquarters' => 'nullable|string|max:255',
+            'founded_year' => 'required|integer|digits:4|min:1900|max:' . date('Y'),
             'team_chief' => 'required|string|max:255',
             'is_active' => 'boolean',
         ]);
+
+        $validated['founded_year'] = Carbon::createFromFormat('Y', $validated['founded_year'])->startOfYear();
 
         $team->update($validated);
 
