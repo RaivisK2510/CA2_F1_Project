@@ -40,7 +40,7 @@
                                                 @php
                                                     $winner = $race->raceResults->firstWhere('position', 1);
                                                 @endphp
-                                                {{ optional($winner?->driver)->name ?? 'TBD' }}
+                                                {{ optional($winner?->driver)->full_name ?? 'TBD' }}
                                             </td>
                                         </tr>
                                     @endforeach

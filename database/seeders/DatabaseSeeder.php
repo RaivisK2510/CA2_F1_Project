@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             TeamSeeder::class,
             DriverSeeder::class,
             CircuitSeeder::class,
+            RaceSeeder::class,
+            RaceResultSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();
