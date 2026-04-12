@@ -1,6 +1,6 @@
-# Laravel Blog Boilerplate
+# F1 Stats Hub Boilerplate
 
-A modern, full-featured CRUD blog application built with Laravel 10, designed as a boilerplate for students to learn and build upon.
+A modern, full-featured motorsport data management application built with Laravel 10, designed as a boilerplate for students to learn and build upon.
 
 ## Features
 

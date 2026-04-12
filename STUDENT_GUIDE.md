@@ -99,17 +99,16 @@ Open your browser and go to: **http://localhost:8000**
 
 ---
 
-## Your First Blog Post
+## Your First Race Result
 
 Once logged in:
 
-1. Click **"Create New Post"** button
-2. Enter a **Title** (e.g., "My First Laravel Blog Post")
-3. Write a **Description** (the main content)
-4. Upload an **Image** (optional)
-5. Click **"Create Post"**
+1. Click **"Create New Result"** or the appropriate race result entry link
+2. Select a **Season**, **Circuit**, **Driver**, and **Team**
+3. Set the **Position**, **Points**, and **Status**
+4. Click **"Save"** to record the race outcome
 
-🎊 Congratulations! You just created your first post!
+🎊 Congratulations! You just added your first F1 race result!
 
 ---
 

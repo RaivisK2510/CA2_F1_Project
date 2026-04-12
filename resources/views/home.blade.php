@@ -2,161 +2,113 @@
 
 @section('content')
 <!-- Hero Section -->
-<div class="bg-primary text-white py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+<div class="bg-black text-white py-5" style="background: linear-gradient(135deg, #000000 0%, #230000 100%);">
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="display-3 fw-bold mb-4">Welcome to Laravel Blog</h1>
-                <p class="lead mb-4">Build, Learn, and Share Your Coding Journey</p>
-                <p class="fs-5 mb-4">A modern blogging platform built with Laravel. Share your thoughts, tutorials, and experiences with the developer community.</p>
+                <h1 class="display-3 fw-bold mb-4">F1 Stats Hub</h1>
+                <p class="lead mb-4 text-secondary">Your command center for Formula 1 results, drivers, teams, and race history.</p>
+                <p class="fs-5 mb-4 text-secondary">Explore the latest F1 dashboards, manage race data, and follow every circuit in a sleek black and red interface.</p>
                 <div class="d-flex gap-3 justify-content-center">
-                    <a href="{{ route('blog.index') }}" class="btn btn-light btn-lg px-4">Explore Blog Posts</a>
-                    @guest
-                        <a href="{{ route('register') }}" class="btn btn-outline-light btn-lg px-4">Get Started</a>
-                    @else
-                        <a href="{{ route('posts.create') }}" class="btn btn-outline-light btn-lg px-4">Write a Post</a>
-                    @endguest
+                    <a href="{{ route('f1.races') }}" class="btn btn-primary btn-lg px-4">View Races</a>
+                    <a href="{{ route('f1.drivers') }}" class="btn btn-outline-light btn-lg px-4">Drivers</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Three Column Feature Section -->
 <div class="container py-5 my-5">
     <div class="row text-center mb-5">
         <div class="col-lg-8 mx-auto">
-            <h2 class="display-5 fw-bold mb-3">Why Choose Our Platform?</h2>
-            <p class="lead text-muted">Everything you need to share your coding journey with the world</p>
+            <h2 class="display-5 fw-bold mb-3 text-white">Race Data Designed for F1 Fans</h2>
+            <p class="lead text-secondary">Track driver standings, team performance, circuits, and complete race results in one dashboard.</p>
         </div>
     </div>
     
     <div class="row g-4">
         <div class="col-md-4">
             <div class="card h-100 border-0 shadow-sm">
-                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=500&fit=crop" 
-                     class="card-img-top" 
-                     alt="Modern Development"
-                     style="height: 250px; object-fit: cover;">
                 <div class="card-body text-center p-4">
                     <div class="mb-3">
-                        <i class="bi bi-code-slash fs-1 text-primary"></i>
+                        <i class="bi bi-speedometer2 fs-1 text-danger"></i>
                     </div>
-                    <h3 class="h4 mb-3">Modern Development</h3>
-                    <p class="text-muted">Built with Laravel 10 and Bootstrap 5, featuring the latest web development practices and tools for a seamless experience.</p>
+                    <h3 class="h4 mb-3">Live Race Stats</h3>
+                    <p class="text-secondary">Stay on top of every race with up-to-date results, positions, and status details.</p>
                 </div>
             </div>
         </div>
         
         <div class="col-md-4">
             <div class="card h-100 border-0 shadow-sm">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop" 
-                     class="card-img-top" 
-                     alt="Community Driven"
-                     style="height: 250px; object-fit: cover;">
                 <div class="card-body text-center p-4">
                     <div class="mb-3">
-                        <i class="bi bi-people fs-1 text-primary"></i>
+                        <i class="bi bi-people-fill fs-1 text-danger"></i>
                     </div>
-                    <h3 class="h4 mb-3">Community Driven</h3>
-                    <p class="text-muted">Connect with fellow developers, share knowledge, and grow together in a supportive community of learners and experts.</p>
+                    <h3 class="h4 mb-3">Driver Profiles</h3>
+                    <p class="text-secondary">Explore driver bios, nationality, teams, and career results with fast access.</p>
                 </div>
             </div>
         </div>
         
         <div class="col-md-4">
             <div class="card h-100 border-0 shadow-sm">
-                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=500&fit=crop" 
-                     class="card-img-top" 
-                     alt="Easy to Use"
-                     style="height: 250px; object-fit: cover;">
                 <div class="card-body text-center p-4">
                     <div class="mb-3">
-                        <i class="bi bi-lightning-charge fs-1 text-primary"></i>
+                        <i class="bi bi-flag-fill fs-1 text-danger"></i>
                     </div>
-                    <h3 class="h4 mb-3">Easy to Use</h3>
-                    <p class="text-muted">Intuitive interface with powerful features. Start writing and publishing your blog posts in minutes, not hours.</p>
+                    <h3 class="h4 mb-3">Circuit Coverage</h3>
+                    <p class="text-secondary">Discover every track, first Grand Prix, distance, and racing history at a glance.</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Features Section -->
-<div class="bg-light py-5">
+<div class="bg-dark py-5">
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <h2 class="display-6 fw-bold mb-4">Powerful Features for Modern Blogging</h2>
-                <p class="lead text-muted mb-4">Everything you need to create, manage, and share your content effectively.</p>
-                <ul class="list-unstyled">
-                    <li class="mb-3">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i>
-                        <strong>Rich Text Editor</strong> - Write and format your posts with ease
-                    </li>
-                    <li class="mb-3">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i>
-                        <strong>Image Uploads</strong> - Add beautiful featured images to your posts
-                    </li>
-                    <li class="mb-3">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i>
-                        <strong>SEO Friendly</strong> - Automatic slug generation for better search visibility
-                    </li>
-                    <li class="mb-3">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i>
-                        <strong>User Authentication</strong> - Secure login and registration system
-                    </li>
-                    <li class="mb-3">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i>
-                        <strong>Post Management</strong> - Full CRUD operations for your content
-                    </li>
+                <h2 class="display-6 fw-bold mb-4">Built for Formula 1 Data Management</h2>
+                <p class="lead text-secondary mb-4">Easy admin controls for races, results, teams, drivers, circuits, and seasons — all in one unified interface.</p>
+                <ul class="list-unstyled text-secondary">
+                    <li class="mb-3"><i class="bi bi-check-circle-fill text-danger me-2"></i><strong>Admin race management</strong> with results and standings.</li>
+                    <li class="mb-3"><i class="bi bi-check-circle-fill text-danger me-2"></i><strong>Driver and team dashboards</strong> updated in real time.</li>
+                    <li class="mb-3"><i class="bi bi-check-circle-fill text-danger me-2"></i><strong>Fast navigation</strong> between seasons, circuits, and stats.</li>
                 </ul>
             </div>
             <div class="col-lg-6">
-                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop" 
-                     class="img-fluid rounded shadow" 
-                     alt="Coding workspace">
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- CTA Section -->
-<div class="container py-5 my-5">
-    <div class="row">
-        <div class="col-lg-8 mx-auto text-center">
-            <h2 class="display-5 fw-bold mb-4">Ready to Start Your Blogging Journey?</h2>
-            <p class="lead text-muted mb-4">Join our community of developers and start sharing your knowledge today.</p>
-            @guest
-                <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5 me-3">Sign Up Free</a>
-                <a href="{{ route('blog.index') }}" class="btn btn-outline-primary btn-lg px-5">View Posts</a>
-            @else
-                <a href="{{ route('posts.create') }}" class="btn btn-primary btn-lg px-5 me-3">Create Your First Post</a>
-                <a href="{{ route('blog.index') }}" class="btn btn-outline-primary btn-lg px-5">View All Posts</a>
-            @endguest
-        </div>
-    </div>
-</div>
-
-<!-- Statistics Section -->
-<div class="bg-dark text-white py-5">
-    <div class="container py-4">
-        <div class="row text-center">
-            <div class="col-md-3 mb-4 mb-md-0">
-                <div class="display-4 fw-bold text-primary">{{ \App\Models\Post::count() }}+</div>
-                <p class="lead mb-0">Blog Posts</p>
-            </div>
-            <div class="col-md-3 mb-4 mb-md-0">
-                <div class="display-4 fw-bold text-primary">{{ \App\Models\User::count() }}+</div>
-                <p class="lead mb-0">Active Users</p>
-            </div>
-            <div class="col-md-3 mb-4 mb-md-0">
-                <div class="display-4 fw-bold text-primary">100%</div>
-                <p class="lead mb-0">Free & Open</p>
-            </div>
-            <div class="col-md-3 mb-4 mb-md-0">
-                <div class="display-4 fw-bold text-primary">24/7</div>
-                <p class="lead mb-0">Available</p>
+                <div class="rounded-4 overflow-hidden shadow-sm" style="background: #111; padding: 2rem;">
+                    <div class="mb-4">
+                        <span class="badge bg-danger text-white px-3 py-2">Live</span>
+                    </div>
+                    <div class="row g-3 text-white">
+                        <div class="col-6">
+                            <div class="p-3 bg-black rounded-3">
+                                <p class="mb-1 text-secondary">Upcoming Races</p>
+                                <h3 class="mb-0">12</h3>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 bg-black rounded-3">
+                                <p class="mb-1 text-secondary">Active Teams</p>
+                                <h3 class="mb-0">10</h3>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 bg-black rounded-3">
+                                <p class="mb-1 text-secondary">Drivers</p>
+                                <h3 class="mb-0">22</h3>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 bg-black rounded-3">
+                                <p class="mb-1 text-secondary">Circuits</p>
+                                <h3 class="mb-0">18</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

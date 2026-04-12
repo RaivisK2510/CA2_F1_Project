@@ -6,3 +6,129 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+// Custom Theme Overrides
+body {
+  background: #050505;
+  color: #f2f2f2;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+a {
+  color: #ff2d2d;
+}
+
+a:hover,
+a:focus {
+  color: #ff6b6b;
+}
+
+.navbar,
+.dropdown-menu,
+.card,
+.modal-content,
+.table,
+.bg-light,
+.bg-white,
+.header,
+.footer {
+  background-color: #090909 !important;
+  color: #f2f2f2 !important;
+}
+
+.navbar-brand,
+.nav-link,
+.dropdown-item,
+.footer .text-muted,
+.footer p,
+.footer a {
+  color: #f2f2f2 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #ff2d2d !important;
+}
+
+.card {
+  border-color: #222 !important;
+}
+
+.card-body {
+  background-color: #111 !important;
+}
+
+.btn-primary {
+  background-color: #ff2d2d !important;
+  border-color: #ff2d2d !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background: #ff4242 !important;
+  border-color: #ff4242 !important;
+}
+
+.btn-outline-primary {
+  color: #ff2d2d !important;
+  border-color: #ff2d2d !important;
+}
+
+.btn-secondary {
+  background-color: #1f1f1f !important;
+  border-color: #333 !important;
+  color: #f2f2f2 !important;
+}
+
+.btn-light {
+  background-color: #1a1a1a !important;
+  border-color: #333 !important;
+  color: #f2f2f2 !important;
+}
+
+.table {
+  color: #f2f2f2 !important;
+}
+
+.table th,
+.table td,
+.table thead th {
+  border-color: #333 !important;
+}
+
+.form-control,
+.form-select {
+  background-color: #111 !important;
+  border-color: #333 !important;
+  color: #f2f2f2 !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #111 !important;
+  border-color: #ff2d2d !important;
+  box-shadow: 0 0 0 0.2rem rgba(255,45,45,.25) !important;
+}
+
+.text-muted,
+.text-secondary {
+  color: #b3b3b3 !important;
+}
+
+.bg-dark {
+  background-color: #050505 !important;
+}
+
+.dropdown-menu {
+  background-color: #111 !important;
+  border-color: #333 !important;
+}
+
+.navbar .dropdown-menu a {
+  color: #f2f2f2 !important;
+}

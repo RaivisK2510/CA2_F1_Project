@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'F1 Stats Hub') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -19,12 +19,12 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 bg-black text-white">
     <div id="app" class="d-flex flex-column flex-grow-1">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-black shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand text-danger fw-bold" href="{{ url('/') }}">
+                    {{ config('app.name', 'F1 Stats Hub') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -134,10 +134,10 @@
                 <hr class="my-4 border-secondary">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
-                        <p class="text-muted mb-0">&copy; {{ date('Y') }} {{ config('app.name', 'Laravel Blog') }}. All rights reserved.</p>
+                        <p class="text-secondary mb-0">&copy; {{ date('Y') }} {{ config('app.name', 'F1 Stats Hub') }}. All rights reserved.</p>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                        <p class="text-muted mb-0">Built with <i class="bi bi-heart-fill text-danger"></i> using Laravel</p>
+                        <p class="text-secondary mb-0">Built with <i class="bi bi-heart-fill text-danger"></i> using Laravel</p>
                     </div>
                 </div>
             </div>
