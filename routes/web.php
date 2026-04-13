@@ -88,6 +88,7 @@ Route::prefix('f1')->name('f1.')->group(function () {
     Route::get('/drivers', [F1Controller::class, 'drivers'])->name('drivers');
     Route::get('/drivers/{driver}', [F1Controller::class, 'driverShow'])->name('driver.show');
     Route::get('/teams', [F1Controller::class, 'teams'])->name('teams');
+    Route::get('/teams/{team}', [F1Controller::class, 'teamShow'])->name('team.show');
     Route::get('/circuits', [F1Controller::class, 'circuits'])->name('circuits');
     Route::get('/seasons', [F1Controller::class, 'seasons'])->name('seasons');
     Route::get('/races', [F1Controller::class, 'races'])->name('races');

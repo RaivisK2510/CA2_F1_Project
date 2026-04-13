@@ -62,6 +62,24 @@ class F1Controller extends Controller
         return view("f1.teams", compact("teams"));
     }
 
+    public function teamShow(Team $team)
+    {
+        $team->load(['drivers' => function($query) {
+            $query->where('is_active', true);
+        }, 'raceResults.race.season', 'raceResults.driver']);
+        
+        $stats = [
+            'total_races' => $team->raceResults()->count(),
+            'wins' => $team->raceResults()->where('position', 1)->count(),
+            'podiums' => $team->raceResults()->whereIn('position', [1, 2, 3])->count(),
+            'points' => $team->raceResults()->sum('points'),
+            'fastest_laps' => $team->raceResults()->where('fastest_lap', 1)->count(),
+            'drivers_count' => $team->drivers()->where('is_active', true)->count(),
+        ];
+
+        return view('f1.team', compact('team', 'stats'));
+    }
+
     public function circuits()
     {
         $circuits = Circuit::active()->get();
