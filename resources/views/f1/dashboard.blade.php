@@ -82,19 +82,19 @@
     <div class="row g-4">
         <div class="col-md-6">
             <div class="card border-0 shadow-sm">
-                <div class="card-header bg-danger text-white">
+                <div class="card-header bg-primary text-white">
                     <h5 class="card-title mb-0">Latest Drivers</h5>
                 </div>
                 <div class="card-body">
                     @forelse($latestDrivers as $driver)
                         <a href="{{ route('f1.driver.show', $driver) }}" class="text-decoration-none">
                             <div class="d-flex align-items-center p-2 mb-2 bg-light rounded hover-shadow">
-                                <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 40px; height: 40px;">
+                                <div class="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 40px; height: 40px;">
                                     {{ $driver->code }}
                                 </div>
                                 <div class="flex-grow-1">
-                                    <div class="fw-bold text-dark">{{ $driver->full_name }}</div>
-                                    <small class="text-muted">#{{ $driver->driver_number }} | {{ $driver->nationality }}</small>
+                                    <div class="fw-bold text-white">{{ $driver->full_name }}</div>
+                                    <small class="text-white-50">#{{ $driver->driver_number }} | {{ $driver->nationality }}</small>
                                 </div>
                             </div>
                         </a>
@@ -113,12 +113,12 @@
                     @forelse($latestTeams as $team)
                         <a href="{{ route('f1.team.show', $team) }}" class="text-decoration-none">
                             <div class="d-flex align-items-center p-2 mb-2 bg-light rounded hover-shadow">
-                                <div class="bg-primary text-white rounded d-flex align-items-center justify-content-center fw-bold me-3" style="width: 40px; height: 40px;">
+                                <div class="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 40px; height: 40px;">
                                     {{ $team->code }}
                                 </div>
                                 <div class="flex-grow-1">
-                                    <div class="fw-bold text-dark">{{ $team->name }}</div>
-                                    <small class="text-muted">{{ $team->country }}</small>
+                                    <div class="fw-bold text-white">{{ $team->name }}</div>
+                                    <small class="text-white-50">{{ $team->country }}</small>
                                 </div>
                             </div>
                         </a>

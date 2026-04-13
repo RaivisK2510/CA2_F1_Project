@@ -54,15 +54,8 @@
                 <div class="card border-0 shadow-sm h-100">
                     <a href="{{ route('f1.team.show', $team) }}" class="text-decoration-none">
                         <div class="card-header bg-gradient driver-header-hover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease; cursor: pointer;">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-white text-primary rounded d-flex align-items-center justify-content-center fw-bold me-3" style="width: 50px; height: 50px;">
-                                    {{ $team->code }}
-                                </div>
-                                <div>
-                                    <h5 class="card-title mb-0 text-white fw-bold">{{ $team->name }}</h5>
-                                    <small class="text-white-50">{{ $team->full_name }}</small>
-                                </div>
-                            </div>
+                            <h5 class="card-title mb-0 text-white fw-bold">{{ $team->name }}</h5>
+                            <small class="text-white-50">{{ $team->full_name }}</small>
                         </div>
                     </a>
                     <div class="card-body">
@@ -142,10 +135,6 @@
     background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%) !important;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
-}
-.driver-header-hover:hover .bg-white.text-primary {
-    background: white !important;
-    color: #ff0000 !important;
 }
 </style>
 
