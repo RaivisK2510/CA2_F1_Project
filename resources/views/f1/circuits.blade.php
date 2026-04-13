@@ -10,12 +10,51 @@
         <a href="{{ route('f1.dashboard') }}" class="btn btn-secondary">← Back to Dashboard</a>
     </div>
 
+    <form method="GET" action="{{ route('f1.circuits') }}" class="row g-3 mb-4 align-items-center">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input
+                    type="search"
+                    name="q"
+                    value="{{ $filters['q'] ?? '' }}"
+                    class="form-control"
+                    placeholder="Search circuits, name, country or city..."
+                    aria-label="Search circuits">
+                <button class="btn btn-outline-secondary" type="submit" aria-label="Search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-6 text-md-end">
+            <div class="d-inline-flex align-items-center">
+                <label for="sort" class="me-2 mb-0 text-muted">Sort by</label>
+
+                <select id="sort" name="sort" class="form-select form-select-sm me-2" style="width:auto; display:inline-block;">
+                    <option value="name" {{ ( $filters['sort'] ?? 'name') === 'name' ? 'selected' : '' }}>Name</option>
+                    <option value="country" {{ ( $filters['sort'] ?? '') === 'country' ? 'selected' : '' }}>Country</option>
+                    <option value="length" {{ ( $filters['sort'] ?? '') === 'length' ? 'selected' : '' }}>Length</option>
+                    <option value="corners" {{ ( $filters['sort'] ?? '') === 'corners' ? 'selected' : '' }}>Corners</option>
+                    <option value="first_gp" {{ ( $filters['sort'] ?? '') === 'first_gp' ? 'selected' : '' }}>First GP</option>
+                    <option value="races_held" {{ ( $filters['sort'] ?? '') === 'races_held' ? 'selected' : '' }}>Races Held</option>
+                </select>
+
+                <select id="dir" name="dir" class="form-select form-select-sm me-2" style="width:auto; display:inline-block;">
+                    <option value="asc" {{ ( $filters['dir'] ?? 'asc') === 'asc' ? 'selected' : '' }}>Asc</option>
+                    <option value="desc" {{ ( $filters['dir'] ?? '') === 'desc' ? 'selected' : '' }}>Desc</option>
+                </select>
+
+                <button class="btn btn-outline-secondary btn-sm" type="submit">Apply</button>
+            </div>
+        </div>
+    </form>
+
     <div class="row g-4">
         @forelse($circuits as $circuit)
             <div class="col-md-6 col-lg-4">
                 <div class="card border-0 shadow-sm h-100">
                     <a href="{{ route('f1.circuit.show', $circuit) }}" class="text-decoration-none">
-                        <div class="card-header bg-gradient circuit-header-hover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease; cursor: pointer;">
+                        <div class="card-header bg-gradient driver-header-hover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease; cursor: pointer;">
                             <h5 class="card-title mb-0 text-white fw-bold">{{ $circuit->name }}</h5>
                             <small class="text-white-50">{{ $circuit->full_name }}</small>
                         </div>
@@ -95,11 +134,13 @@
 </div>
 
 <style>
-.circuit-header-hover:hover {
+.driver-header-hover:hover, .team-header-hover:hover, .circuit-header-hover:hover {
     background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%) !important;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
 }
+.driver-header-hover:hover .bg-white.text-primary,
+.team-header-hover:hover .bg-white.text-primary,
 .circuit-header-hover:hover .bg-white {
     background: white !important;
     color: #ff0000 !important;

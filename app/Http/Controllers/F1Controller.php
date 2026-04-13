@@ -150,10 +150,49 @@ class F1Controller extends Controller
         return view("f1.team", compact("team", "stats"));
     }
 
-    public function circuits()
+    public function circuits(Request $request)
     {
-        $circuits = Circuit::active()->get();
-        return view("f1.circuits", compact("circuits"));
+        // Base query: active circuits
+        $query = Circuit::query()->where("is_active", true);
+
+        // Search: allow searching by name, full_name, country or city
+        if ($request->filled("q")) {
+            $q = $request->q;
+            $query->where(function ($w) use ($q) {
+                $w->where("name", "like", "%{$q}%")
+                    ->orWhere("full_name", "like", "%{$q}%")
+                    ->orWhere("country", "like", "%{$q}%")
+                    ->orWhere("city", "like", "%{$q}%");
+            });
+        }
+
+        // Sorting options mapped to DB columns
+        $allowedSorts = [
+            "name" => "name",
+            "country" => "country",
+            "length" => "length_km",
+            "corners" => "corners",
+            "first_gp" => "first_grand_prix",
+            "races_held" => "races_held",
+        ];
+
+        $sortKey = $request->get("sort", "name");
+        $dir = strtolower($request->get("dir", ""));
+
+        // Default direction: numeric fields -> desc, name/country -> asc
+        if (!in_array($dir, ["asc", "desc"])) {
+            $dir = in_array($sortKey, ["length", "corners", "races_held"])
+                ? "desc"
+                : "asc";
+        }
+
+        $sortColumn = $allowedSorts[$sortKey] ?? "name";
+        $circuits = $query->orderBy($sortColumn, $dir)->get();
+
+        // Pass current filters back to the view so the UI can reflect them
+        $filters = $request->only(["q", "sort", "dir"]);
+
+        return view("f1.circuits", compact("circuits", "filters"));
     }
 
     public function circuitShow(Circuit $circuit)
