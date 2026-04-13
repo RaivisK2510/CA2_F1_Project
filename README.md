@@ -1,6 +1,6 @@
 # F1 Stats Hub
 
-A comprehensive Formula 1 statistics and data management application built with Laravel 10, designed as a boilerplate for students to learn and build upon.
+A comprehensive Formula 1 statistics and data management application built with Laravel 10.
 
 ## Features
 
