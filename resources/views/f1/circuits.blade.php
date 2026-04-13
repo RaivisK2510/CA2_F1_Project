@@ -23,28 +23,24 @@
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
                                     <div class="fw-bold text-primary">Country</div>
-                                    <div class="small text-muted">Country</div>
                                     <div class="fw-bold">{{ $circuit->country }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
                                     <div class="fw-bold text-info">City</div>
-                                    <div class="small text-muted">City</div>
                                     <div class="fw-bold">{{ $circuit->city }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-secondary">Length</div>
-                                    <div class="small text-muted">Length</div>
+                                    <div class="fw-bold text-danger">Length</div>
                                     <div class="fw-bold">{{ $circuit->length_km }} km</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
                                     <div class="fw-bold text-warning">Corners</div>
-                                    <div class="small text-muted">Corners</div>
                                     <div class="fw-bold">{{ $circuit->corners }}</div>
                                 </div>
                             </div>

@@ -32,21 +32,18 @@
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
                                     <div class="fw-bold text-primary">Total Races</div>
-                                    <div class="small text-muted">Total Races</div>
                                     <div class="fw-bold">{{ $season->total_races }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
                                     <div class="fw-bold text-success">Completed</div>
-                                    <div class="small text-muted">Completed</div>
                                     <div class="fw-bold">{{ $season->completed_races }}</div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="p-2 bg-light rounded text-center">
                                     <div class="fw-bold text-info">Progress</div>
-                                    <div class="small text-muted">Progress</div>
                                     <div class="progress mt-1" style="height: 6px;">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: {{ $season->completion_percentage }}%" aria-valuenow="{{ $season->completion_percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>

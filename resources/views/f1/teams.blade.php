@@ -30,28 +30,24 @@
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
                                     <div class="fw-bold text-warning">Championships</div>
-                                    <div class="small text-muted">Championships</div>
                                     <div class="fw-bold">{{ $team->world_championships }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
                                     <div class="fw-bold text-danger">Wins</div>
-                                    <div class="small text-muted">Wins</div>
                                     <div class="fw-bold">{{ $team->race_wins }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
-                                    <div class="fw-bold text-secondary">Podiums</div>
-                                    <div class="small text-muted">Podiums</div>
+                                    <div class="fw-bold text-success">Podiums</div>
                                     <div class="fw-bold">{{ $team->podiums }}</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-2 bg-light rounded text-center">
                                     <div class="fw-bold text-info">Pole Positions</div>
-                                    <div class="small text-muted">Pole Positions</div>
                                     <div class="fw-bold">{{ $team->pole_positions }}</div>
                                 </div>
                             </div>
