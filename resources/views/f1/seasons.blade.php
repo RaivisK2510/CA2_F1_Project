@@ -10,12 +10,49 @@
         <a href="{{ route('f1.dashboard') }}" class="btn btn-secondary">← Back to Dashboard</a>
     </div>
 
+    <form method="GET" action="{{ route('f1.seasons') }}" class="row g-3 mb-4 align-items-center">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input
+                    type="search"
+                    name="q"
+                    value="{{ $filters['q'] ?? '' }}"
+                    class="form-control"
+                    placeholder="Search seasons by year, champion or description..."
+                    aria-label="Search seasons">
+                <button class="btn btn-outline-secondary" type="submit" aria-label="Search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-6 text-md-end">
+            <div class="d-inline-flex align-items-center">
+                <label for="sort" class="me-2 mb-0 text-muted">Sort by</label>
+
+                <select id="sort" name="sort" class="form-select form-select-sm me-2" style="width:auto; display:inline-block;">
+                    <option value="year" {{ ( $filters['sort'] ?? 'year') === 'year' ? 'selected' : '' }}>Year</option>
+                    <option value="races" {{ ( $filters['sort'] ?? '') === 'races' ? 'selected' : '' }}>Total Races</option>
+                    <option value="completed" {{ ( $filters['sort'] ?? '') === 'completed' ? 'selected' : '' }}>Completed Races</option>
+                    <option value="active" {{ ( $filters['sort'] ?? '') === 'active' ? 'selected' : '' }}>Active</option>
+                </select>
+
+                <select id="dir" name="dir" class="form-select form-select-sm me-2" style="width:auto; display:inline-block;">
+                    <option value="asc" {{ ( $filters['dir'] ?? 'desc') === 'asc' ? 'selected' : '' }}>Asc</option>
+                    <option value="desc" {{ ( $filters['dir'] ?? 'desc') === 'desc' ? 'selected' : '' }}>Desc</option>
+                </select>
+
+                <button class="btn btn-outline-secondary btn-sm" type="submit">Apply</button>
+            </div>
+        </div>
+    </form>
+
     <div class="row g-4">
         @forelse($seasons as $season)
             <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm h-100">
+                <div class="card border-0 shadow-sm h-100 hover-shadow">
                     <a href="{{ route('f1.season.show', $season) }}" class="text-decoration-none">
-                        <div class="card-header bg-gradient season-header-hover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease; cursor: pointer;">
+                        <div class="card-header bg-gradient driver-header-hover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease; cursor: pointer;">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h5 class="card-title mb-0 text-white fw-bold">{{ $season->year }}</h5>
                                 @if($season->is_active)
@@ -81,7 +118,11 @@
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <div class="text-muted small">Season Dates</div>
-                                            <div class="fw-semibold">{{ $season->start_date->format('M d, Y') }} - {{ $season->end_date->format('M d, Y') }}</div>
+                                            <div class="fw-semibold">
+                                                {{ optional($season->start_date)->format('M d, Y') ?? 'TBA' }}
+                                                -
+                                                {{ optional($season->end_date)->format('M d, Y') ?? 'TBA' }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -101,17 +142,22 @@
         @endforelse
     </div>
 </div>
-</div>
 
 <style>
-.season-header-hover:hover {
+.driver-header-hover:hover, .team-header-hover:hover, .season-header-hover:hover {
     background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%) !important;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
 }
+.driver-header-hover:hover .bg-white.text-primary,
+.team-header-hover:hover .bg-white.text-primary,
 .season-header-hover:hover .bg-white {
     background: white !important;
     color: #ff0000 !important;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 </style>
 

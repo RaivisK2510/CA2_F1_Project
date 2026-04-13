@@ -214,10 +214,52 @@ class F1Controller extends Controller
         return view("f1.circuit", compact("circuit", "stats"));
     }
 
-    public function seasons()
+    public function seasons(Request $request)
     {
-        $seasons = Season::with(["championDriver", "championTeam"])->get();
-        return view("f1.seasons", compact("seasons"));
+        // Base query: include champions relations
+        $query = Season::with(["championDriver", "championTeam"]);
+
+        // Search: match year, description, champion driver (first+last) or champion team name
+        if ($request->filled("q")) {
+            $q = $request->q;
+            $query->where(function ($w) use ($q) {
+                $w->where("year", "like", "%{$q}%")
+                    ->orWhere("description", "like", "%{$q}%")
+                    ->orWhereHas("championDriver", function ($dq) use ($q) {
+                        $dq->whereRaw(
+                            "CONCAT(first_name, ' ', last_name) LIKE ?",
+                            ["%{$q}%"],
+                        );
+                    })
+                    ->orWhereHas("championTeam", function ($tq) use ($q) {
+                        $tq->where("name", "like", "%{$q}%");
+                    });
+            });
+        }
+
+        // Sorting: map logical keys to DB columns
+        $allowedSorts = [
+            "year" => "year",
+            "races" => "total_races",
+            "completed" => "completed_races",
+            "active" => "is_active",
+        ];
+
+        $sortKey = $request->get("sort", "year");
+        $dir = strtolower($request->get("dir", ""));
+
+        // Default direction: numeric fields -> desc, year -> desc
+        if (!in_array($dir, ["asc", "desc"])) {
+            $dir = in_array($sortKey, ["races", "completed"]) ? "desc" : "desc";
+        }
+
+        $sortColumn = $allowedSorts[$sortKey] ?? "year";
+        $seasons = $query->orderBy($sortColumn, $dir)->get();
+
+        // Return filters so the view can mirror the UI state
+        $filters = $request->only(["q", "sort", "dir"]);
+
+        return view("f1.seasons", compact("seasons", "filters"));
     }
 
     public function seasonShow(Season $season)
