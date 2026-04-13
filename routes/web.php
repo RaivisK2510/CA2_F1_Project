@@ -36,6 +36,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/drivers', [AdminController::class, 'driversIndex'])->name('drivers.index');
         Route::get('/drivers/create', [AdminController::class, 'driversCreate'])->name('drivers.create');
         Route::post('/drivers', [AdminController::class, 'driversStore'])->name('drivers.store');
+        Route::get('/drivers/{driver}', [AdminController::class, 'driversShow'])->name('drivers.show');
         Route::get('/drivers/{driver}/edit', [AdminController::class, 'driversEdit'])->name('drivers.edit');
         Route::put('/drivers/{driver}', [AdminController::class, 'driversUpdate'])->name('drivers.update');
         Route::delete('/drivers/{driver}', [AdminController::class, 'driversDestroy'])->name('drivers.destroy');
@@ -85,6 +86,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 Route::prefix('f1')->name('f1.')->group(function () {
     Route::get('/', [F1Controller::class, 'dashboard'])->name('dashboard');
     Route::get('/drivers', [F1Controller::class, 'drivers'])->name('drivers');
+    Route::get('/drivers/{driver}', [F1Controller::class, 'driverShow'])->name('driver.show');
     Route::get('/teams', [F1Controller::class, 'teams'])->name('teams');
     Route::get('/circuits', [F1Controller::class, 'circuits'])->name('circuits');
     Route::get('/seasons', [F1Controller::class, 'seasons'])->name('seasons');

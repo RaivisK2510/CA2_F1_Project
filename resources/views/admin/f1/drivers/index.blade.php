@@ -41,7 +41,11 @@
                             <tbody>
                                 @forelse($drivers as $driver)
                                     <tr>
-                                        <td>{{ $driver->first_name }} {{ $driver->last_name }}</td>
+                                        <td>
+                                            <a href="{{ route('admin.f1.drivers.show', $driver) }}" class="text-decoration-none">
+                                                {{ $driver->first_name }} {{ $driver->last_name }}
+                                            </a>
+                                        </td>
                                         <td><span class="badge bg-secondary">{{ $driver->code }}</span></td>
                                         <td>{{ $driver->number }}</td>
                                         <td>{{ $driver->nationality }}</td>
@@ -62,13 +66,16 @@
                                         </td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                                <a href="{{ route('admin.f1.drivers.edit', $driver) }}" class="btn btn-sm btn-outline-primary">
+                                                <a href="{{ route('admin.f1.drivers.show', $driver) }}" class="btn btn-sm btn-outline-info" title="View Profile">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
+                                                <a href="{{ route('admin.f1.drivers.edit', $driver) }}" class="btn btn-sm btn-outline-primary" title="Edit">
                                                     <i class="bi bi-pencil"></i>
                                                 </a>
                                                 <form action="{{ route('admin.f1.drivers.destroy', $driver) }}" method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this driver?')">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete" onclick="return confirm('Are you sure you want to delete this driver?')">
                                                         <i class="bi bi-trash"></i>
                                                     </button>
                                                 </form>

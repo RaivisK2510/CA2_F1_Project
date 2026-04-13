@@ -41,6 +41,21 @@ class F1Controller extends Controller
         return view("f1.drivers", compact("drivers"));
     }
 
+    public function driverShow(Driver $driver)
+    {
+        $driver->load(['team', 'raceResults.race.season', 'raceResults.team']);
+        
+        $stats = [
+            'total_races' => $driver->raceResults()->count(),
+            'wins' => $driver->raceResults()->where('position', 1)->count(),
+            'podiums' => $driver->raceResults()->whereIn('position', [1, 2, 3])->count(),
+            'points' => $driver->raceResults()->sum('points'),
+            'fastest_laps' => $driver->raceResults()->where('fastest_lap', 1)->count(),
+        ];
+
+        return view('f1.driver', compact('driver', 'stats'));
+    }
+
     public function teams()
     {
         $teams = Team::with("raceResults")->active()->get();

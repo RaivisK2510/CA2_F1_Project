@@ -131,6 +131,21 @@ class AdminController extends Controller
         return redirect()->route('admin.f1.drivers.index')->with('success', 'Driver updated successfully.');
     }
 
+    public function driversShow(Driver $driver)
+    {
+        $driver->load(['team', 'raceResults.race.season', 'raceResults.team']);
+        
+        $stats = [
+            'total_races' => $driver->raceResults()->count(),
+            'wins' => $driver->raceResults()->where('position', 1)->count(),
+            'podiums' => $driver->raceResults()->whereIn('position', [1, 2, 3])->count(),
+            'points' => $driver->raceResults()->sum('points'),
+            'fastest_laps' => $driver->raceResults()->where('fastest_lap', 1)->count(),
+        ];
+
+        return view('admin.f1.drivers.show', compact('driver', 'stats'));
+    }
+
     public function driversDestroy(Driver $driver)
     {
         $driver->delete();
