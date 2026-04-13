@@ -284,18 +284,64 @@ class F1Controller extends Controller
         return view("f1.season", compact("season", "stats"));
     }
 
-    public function races()
+    public function races(Request $request)
     {
-        $races = Race::with([
+        // Base query with the same eager loads used previously
+        $query = Race::with([
             "season",
             "circuit",
             "raceResults.driver",
             "raceResults.team",
-        ])
+        ]);
+
+        // Search: match race name, full_name, season year, circuit name or circuit full_name
+        if ($request->filled("q")) {
+            $q = $request->q;
+            $query->where(function ($w) use ($q) {
+                $w->where("name", "like", "%{$q}%")
+                    ->orWhere("full_name", "like", "%{$q}%")
+                    ->orWhereHas("season", function ($sq) use ($q) {
+                        $sq->where("year", "like", "%{$q}%");
+                    })
+                    ->orWhereHas("circuit", function ($cq) use ($q) {
+                        $cq->where("name", "like", "%{$q}%")->orWhere(
+                            "full_name",
+                            "like",
+                            "%{$q}%",
+                        );
+                    });
+            });
+        }
+
+        // Sorting options mapped to DB columns; sensible defaults provided
+        $allowedSorts = [
+            "date" => "race_date",
+            "name" => "name",
+            "season" => "season_id",
+            "circuit" => "circuit_id",
+        ];
+
+        $sortKey = $request->get("sort", "date");
+        $dir = strtolower($request->get("dir", ""));
+
+        // Default direction: date/season/circuit -> desc, name -> asc
+        if (!in_array($dir, ["asc", "desc"])) {
+            $dir = $sortKey === "name" ? "asc" : "desc";
+        }
+
+        $sortColumn = $allowedSorts[$sortKey] ?? "race_date";
+
+        // Apply sorting. For related entities (season/circuit) we fall back to sorting by the FK column
+        // which is acceptable for most cases; complex ordering by related name can be added later.
+        $races = $query
+            ->orderBy($sortColumn, $dir)
             ->orderByDesc("race_date")
             ->get();
 
-        return view("f1.races", compact("races"));
+        // Return current filters so the view can reflect UI state
+        $filters = $request->only(["q", "sort", "dir"]);
+
+        return view("f1.races", compact("races", "filters"));
     }
 
     public function raceShow(Race $race)
