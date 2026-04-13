@@ -9,9 +9,10 @@
         </div>
     </div>
 
-    <div class="row g-4">
-        <div class="col-md-6 col-xl-3">
-            <div class="card shadow-sm border-0 h-100">
+    <!-- Use Bootstrap row-cols so cards reliably wrap into 1/2/3 columns on xs/sm/md+ -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card shadow-sm border-0 h-100 rounded-3">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Users</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['users'] }}</p>
@@ -21,8 +22,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-xl-3">
-            <div class="card shadow-sm border-0 h-100">
+
+        <div class="col">
+            <div class="card shadow-sm border-0 h-100 rounded-3">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Races</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['races'] }}</p>
@@ -32,8 +34,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-xl-3">
-            <div class="card shadow-sm border-0 h-100">
+
+        <div class="col">
+            <div class="card shadow-sm border-0 h-100 rounded-3">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Teams</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['teams'] }}</p>
@@ -43,8 +46,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-xl-3">
-            <div class="card shadow-sm border-0 h-100">
+
+        <div class="col">
+            <div class="card shadow-sm border-0 h-100 rounded-3">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Circuits</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['circuits'] }}</p>
@@ -54,11 +58,9 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row g-4 mt-3">
-        <div class="col-md-6 col-xl-3">
-            <div class="card shadow-sm border-0 h-100">
+        <div class="col">
+            <div class="card shadow-sm border-0 h-100 rounded-3">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Drivers</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['drivers'] }}</p>
@@ -68,8 +70,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-xl-3">
-            <div class="card shadow-sm border-0 h-100">
+
+        <div class="col">
+            <div class="card shadow-sm border-0 h-100 rounded-3">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Seasons</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['seasons'] }}</p>
@@ -80,4 +83,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

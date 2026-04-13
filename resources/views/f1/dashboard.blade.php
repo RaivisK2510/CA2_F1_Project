@@ -131,40 +131,31 @@
         <div class="col">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-dark text-white">
-                    <h5 class="card-title mb-0">Quick Navigation</h5>
+                    <h5 class="card-title mb-0 text-center">Quick Navigation</h5>
                 </div>
                 <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-md-6 col-lg-3">
-                            <a href="{{ route('f1.drivers') }}" class="btn btn-danger btn-lg w-100 d-flex align-items-center justify-content-center gap-2">
-                                <i class="bi bi-person"></i>
-                                <span>Drivers</span>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <a href="{{ route('f1.teams') }}" class="btn btn-danger btn-lg w-100 d-flex align-items-center justify-content-center gap-2">
-                                <i class="bi bi-building"></i>
-                                <span>Teams</span>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <a href="{{ route('f1.circuits') }}" class="btn btn-danger btn-lg w-100 d-flex align-items-center justify-content-center gap-2">
-                                <i class="bi bi-geo-alt"></i>
-                                <span>Circuits</span>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <a href="{{ route('f1.seasons') }}" class="btn btn-danger btn-lg w-100 d-flex align-items-center justify-content-center gap-2">
-                                <i class="bi bi-calendar"></i>
-                                <span>Seasons</span>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <a href="{{ route('f1.races') }}" class="btn btn-danger btn-lg w-100 d-flex align-items-center justify-content-center gap-2">
-                                <i class="bi bi-flag"></i>
-                                <span>Races</span>
-                            </a>
-                        </div>
+                    <!-- single horizontal row, allows horizontal scrolling on small screens -->
+                    <div class="d-flex gap-3 flex-row flex-nowrap overflow-auto py-2 justify-content-center align-items-center">
+                        <a href="{{ route('f1.drivers') }}" class="btn btn-danger btn-lg d-flex align-items-center justify-content-center gap-2 flex-shrink-0" style="min-width:160px;">
+                            <i class="bi bi-person"></i>
+                            <span>Drivers</span>
+                        </a>
+                        <a href="{{ route('f1.teams') }}" class="btn btn-danger btn-lg d-flex align-items-center justify-content-center gap-2 flex-shrink-0" style="min-width:160px;">
+                            <i class="bi bi-building"></i>
+                            <span>Teams</span>
+                        </a>
+                        <a href="{{ route('f1.circuits') }}" class="btn btn-danger btn-lg d-flex align-items-center justify-content-center gap-2 flex-shrink-0" style="min-width:160px;">
+                            <i class="bi bi-geo-alt"></i>
+                            <span>Circuits</span>
+                        </a>
+                        <a href="{{ route('f1.seasons') }}" class="btn btn-danger btn-lg d-flex align-items-center justify-content-center gap-2 flex-shrink-0" style="min-width:160px;">
+                            <i class="bi bi-calendar"></i>
+                            <span>Seasons</span>
+                        </a>
+                        <a href="{{ route('f1.races') }}" class="btn btn-danger btn-lg d-flex align-items-center justify-content-center gap-2 flex-shrink-0" style="min-width:160px;">
+                            <i class="bi bi-flag"></i>
+                            <span>Races</span>
+                        </a>
                     </div>
                 </div>
             </div>
