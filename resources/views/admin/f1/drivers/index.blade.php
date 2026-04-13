@@ -41,11 +41,7 @@
                             <tbody>
                                 @forelse($drivers as $driver)
                                     <tr>
-                                        <td>
-                                            <a href="{{ route('admin.f1.drivers.show', $driver) }}" class="text-decoration-none">
-                                                {{ $driver->first_name }} {{ $driver->last_name }}
-                                            </a>
-                                        </td>
+                                        <td><a>{{ $driver->first_name }} {{ $driver->last_name }}</a></td>
                                         <td><span class="badge bg-secondary">{{ $driver->code }}</span></td>
                                         <td>{{ $driver->number }}</td>
                                         <td>{{ $driver->nationality }}</td>
@@ -66,9 +62,7 @@
                                         </td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                                <a href="{{ route('admin.f1.drivers.show', $driver) }}" class="btn btn-sm btn-outline-info" title="View Profile">
-                                                    <i class="bi bi-eye"></i>
-                                                </a>
+
                                                 <a href="{{ route('admin.f1.drivers.edit', $driver) }}" class="btn btn-sm btn-outline-primary" title="Edit">
                                                     <i class="bi bi-pencil"></i>
                                                 </a>
