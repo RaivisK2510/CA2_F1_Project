@@ -376,3 +376,9 @@ This project is open-sourced software licensed under the [MIT license](https://o
 Created as part of the Server Side Development module of Second Year Stage 2 of the Coumputing in Software Development at Dundalk Institute of Technology for grading in CA 2.
 
 Based on modern Laravel practices and inspired by the Laravel community.
+
+Leonas Stanislovaitis
+D00280989@student.dkit.ie
+
+Raivis Krumins
+D00279149@student.dkit.ie
