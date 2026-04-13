@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="year" class="form-label">Season Year</label>
+                                    <label for="year" class="form-label">Season Year <span class="text-danger">*</span></label>
                                     <input type="number" class="form-control @error('year') is-invalid @enderror" 
                                            id="year" name="year" value="{{ old('year', $season->year) }}" 
                                            min="1950" max="{{ date('Y') + 1 }}" required>
@@ -31,7 +31,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label for="total_races" class="form-label">Number of Races</label>
+                                    <label for="total_races" class="form-label">Number of Races <span class="text-danger">*</span></label>
                                     <input type="number" class="form-control @error('total_races') is-invalid @enderror" 
                                            id="total_races" name="total_races" value="{{ old('total_races', $season->total_races) }}" 
                                            min="1" max="30" required>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label for="start_date" class="form-label">Start Date</label>
+                                    <label for="start_date" class="form-label">Start Date <span class="text-danger">*</span></label>
                                     <input type="date" class="form-control @error('start_date') is-invalid @enderror" 
                                            id="start_date" name="start_date" value="{{ old('start_date', $season->start_date?->format('Y-m-d')) }}" required>
                                     @error('start_date')
@@ -52,10 +52,35 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label for="end_date" class="form-label">End Date</label>
+                                    <label for="end_date" class="form-label">End Date <span class="text-danger">*</span></label>
                                     <input type="date" class="form-control @error('end_date') is-invalid @enderror" 
                                            id="end_date" name="end_date" value="{{ old('end_date', $season->end_date?->format('Y-m-d')) }}" required>
                                     @error('end_date')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="completed_races" class="form-label">Completed Races (Optional)</label>
+                                    <input type="number" class="form-control @error('completed_races') is-invalid @enderror" 
+                                           id="completed_races" name="completed_races" value="{{ old('completed_races', $season->completed_races) }}" 
+                                           min="0">
+                                    @error('completed_races')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="season_image" class="form-label">Season Image URL (Optional)</label>
+                                    <input type="text" class="form-control @error('season_image') is-invalid @enderror" 
+                                           id="season_image" name="season_image" value="{{ old('season_image', $season->season_image) }}" 
+                                           placeholder="https://example.com/image.jpg">
+                                    @error('season_image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -70,6 +95,21 @@
                                             Active Season
                                         </label>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Season Description (Optional)</label>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" 
+                                              id="description" name="description" rows="3" 
+                                              placeholder="Enter season highlights, notable changes, etc.">{{ old('description', $season->description) }}</textarea>
+                                    <small class="form-text text-muted">Maximum 5000 characters</small>
+                                    @error('description')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

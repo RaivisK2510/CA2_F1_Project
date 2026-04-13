@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Race Name</label>
+                                    <label for="name" class="form-label">Race Name <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
                                            id="name" name="name" value="{{ old('name', $race->name) }}" required>
                                     @error('name')
@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="full_name" class="form-label">Full Name</label>
+                                    <label for="full_name" class="form-label">Full Name <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control @error('full_name') is-invalid @enderror"
                                            id="full_name" name="full_name" value="{{ old('full_name', $race->full_name) }}" required>
                                     @error('full_name')
@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="official_name" class="form-label">Official Name</label>
+                                    <label for="official_name" class="form-label">Official Name (Optional)</label>
                                     <input type="text" class="form-control @error('official_name') is-invalid @enderror"
                                            id="official_name" name="official_name" value="{{ old('official_name', $race->official_name) }}">
                                     @error('official_name')
@@ -53,7 +53,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label for="round_number" class="form-label">Round</label>
+                                    <label for="round_number" class="form-label">Round <span class="text-danger">*</span></label>
                                     <input type="number" class="form-control @error('round_number') is-invalid @enderror"
                                            id="round_number" name="round_number" value="{{ old('round_number', $race->round_number) }}" min="1" max="25" required>
                                     @error('round_number')
@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label for="race_date" class="form-label">Race Date</label>
+                                    <label for="race_date" class="form-label">Race Date <span class="text-danger">*</span></label>
                                     <input type="date" class="form-control @error('race_date') is-invalid @enderror"
                                            id="race_date" name="race_date" value="{{ old('race_date', $race->race_date?->format('Y-m-d')) }}" required>
                                     @error('race_date')
@@ -73,7 +73,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label for="race_time" class="form-label">Race Time</label>
+                                    <label for="race_time" class="form-label">Race Time (Optional)</label>
                                     <input type="time" class="form-control @error('race_time') is-invalid @enderror"
                                            id="race_time" name="race_time" value="{{ old('race_time', $race->race_time?->format('H:i')) }}">
                                     @error('race_time')
@@ -83,7 +83,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label for="laps" class="form-label">Laps</label>
+                                    <label for="laps" class="form-label">Laps <span class="text-danger">*</span></label>
                                     <input type="number" class="form-control @error('laps') is-invalid @enderror"
                                            id="laps" name="laps" value="{{ old('laps', $race->laps) }}" min="1" required>
                                     @error('laps')
@@ -96,7 +96,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="race_distance_km" class="form-label">Distance (km)</label>
+                                    <label for="race_distance_km" class="form-label">Distance (km) <span class="text-danger">*</span></label>
                                     <input type="number" step="0.1" class="form-control @error('race_distance_km') is-invalid @enderror"
                                            id="race_distance_km" name="race_distance_km" value="{{ old('race_distance_km', $race->race_distance_km) }}" min="0" required>
                                     @error('race_distance_km')
@@ -106,7 +106,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="season_id" class="form-label">Season</label>
+                                    <label for="season_id" class="form-label">Season <span class="text-danger">*</span></label>
                                     <select class="form-select @error('season_id') is-invalid @enderror" id="season_id" name="season_id" required>
                                         <option value="">Choose season</option>
                                         @foreach($seasons as $season)
@@ -122,7 +122,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="circuit_id" class="form-label">Circuit</label>
+                                    <label for="circuit_id" class="form-label">Circuit <span class="text-danger">*</span></label>
                                     <select class="form-select @error('circuit_id') is-invalid @enderror" id="circuit_id" name="circuit_id" required>
                                         <option value="">Choose circuit</option>
                                         @foreach($circuits as $circuit)
@@ -141,7 +141,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="weather_conditions" class="form-label">Weather</label>
+                                    <label for="weather_conditions" class="form-label">Weather (Optional)</label>
                                     <input type="text" class="form-control @error('weather_conditions') is-invalid @enderror"
                                            id="weather_conditions" name="weather_conditions" value="{{ old('weather_conditions', $race->weather_conditions) }}">
                                     @error('weather_conditions')
@@ -151,7 +151,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="race_report" class="form-label">Race Report</label>
+                                    <label for="race_report" class="form-label">Race Report (Optional)</label>
                                     <textarea class="form-control @error('race_report') is-invalid @enderror" id="race_report" name="race_report" rows="3">{{ old('race_report', $race->race_report) }}</textarea>
                                     @error('race_report')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -172,6 +172,78 @@
                                         <input class="form-check-input @error('is_active') is-invalid @enderror" type="checkbox" id="is_active" name="is_active" value="1" {{ old('is_active', $race->is_active) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="is_active">Active</label>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="fastest_lap_time" class="form-label">Fastest Lap Time (Optional)</label>
+                                    <input type="text" class="form-control @error('fastest_lap_time') is-invalid @enderror"
+                                           id="fastest_lap_time" name="fastest_lap_time" value="{{ old('fastest_lap_time', $race->fastest_lap_time) }}" placeholder="e.g. 1:24.567">
+                                    @error('fastest_lap_time')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="fastest_lap_driver_id" class="form-label">Fastest Lap Driver (Optional)</label>
+                                    <select class="form-select @error('fastest_lap_driver_id') is-invalid @enderror" id="fastest_lap_driver_id" name="fastest_lap_driver_id">
+                                        <option value="">Select driver</option>
+                                        @foreach($seasons as $season)
+                                            @foreach($season->drivers ?? [] as $driver)
+                                                <option value="{{ $driver->id }}" {{ old('fastest_lap_driver_id', $race->fastest_lap_driver_id) == $driver->id ? 'selected' : '' }}>
+                                                    {{ $driver->name }} ({{ $driver->code }})
+                                                </option>
+                                            @endforeach
+                                        @endforeach
+                                    </select>
+                                    @error('fastest_lap_driver_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="pole_position_time" class="form-label">Pole Position Time (Optional)</label>
+                                    <input type="text" class="form-control @error('pole_position_time') is-invalid @enderror"
+                                           id="pole_position_time" name="pole_position_time" value="{{ old('pole_position_time', $race->pole_position_time) }}" placeholder="e.g. 1:23.456">
+                                    @error('pole_position_time')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="pole_position_driver_id" class="form-label">Pole Position Driver (Optional)</label>
+                                    <select class="form-select @error('pole_position_driver_id') is-invalid @enderror" id="pole_position_driver_id" name="pole_position_driver_id">
+                                        <option value="">Select driver</option>
+                                        @foreach($seasons as $season)
+                                            @foreach($season->drivers ?? [] as $driver)
+                                                <option value="{{ $driver->id }}" {{ old('pole_position_driver_id', $race->pole_position_driver_id) == $driver->id ? 'selected' : '' }}>
+                                                    {{ $driver->name }} ({{ $driver->code }})
+                                                </option>
+                                            @endforeach
+                                        @endforeach
+                                    </select>
+                                    @error('pole_position_driver_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="race_image" class="form-label">Race Image URL (Optional)</label>
+                                    <input type="text" class="form-control @error('race_image') is-invalid @enderror"
+                                           id="race_image" name="race_image" value="{{ old('race_image', $race->race_image) }}" placeholder="https://example.com/image.jpg">
+                                    @error('race_image')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
