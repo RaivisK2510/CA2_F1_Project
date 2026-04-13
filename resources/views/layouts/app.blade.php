@@ -45,6 +45,7 @@
                                 <li><a class="dropdown-item {{ request()->routeIs('f1.teams') ? 'active' : '' }}" href="{{ route('f1.teams') }}">Teams</a></li>
                                 <li><a class="dropdown-item {{ request()->routeIs('f1.circuits') ? 'active' : '' }}" href="{{ route('f1.circuits') }}">Circuits</a></li>
                                 <li><a class="dropdown-item {{ request()->routeIs('f1.seasons') ? 'active' : '' }}" href="{{ route('f1.seasons') }}">Seasons</a></li>
+                                <li><a class="dropdown-item {{ request()->routeIs('f1.races') ? 'active' : '' }}" href="{{ route('f1.races') }}">Races</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -111,6 +112,7 @@
                             <li class="mb-2"><a href="{{ route('f1.drivers') }}" class="text-muted text-decoration-none">Drivers</a></li>
                             <li class="mb-2"><a href="{{ route('f1.teams') }}" class="text-muted text-decoration-none">Teams</a></li>
                             <li class="mb-2"><a href="{{ route('f1.circuits') }}" class="text-muted text-decoration-none">Circuits</a></li>
+                            <li class="mb-2"><a href="{{ route('f1.races') }}" class="text-muted text-decoration-none">Races</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 mb-4 mb-md-0">

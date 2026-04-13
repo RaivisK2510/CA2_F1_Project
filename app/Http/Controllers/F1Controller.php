@@ -20,42 +20,56 @@ class F1Controller extends Controller
             'active_seasons' => Season::where('is_active', true)->count(),
         ];
 
-        $latestDrivers = Driver::active()->orderBy('created_at', 'desc')->take(5)->get();
-        $latestTeams = Team::active()->orderBy('created_at', 'desc')->take(5)->get();
+        $latestDrivers = Driver::active()
+            ->orderBy("created_at", "desc")
+            ->take(5)
+            ->get();
+        $latestTeams = Team::active()
+            ->orderBy("created_at", "desc")
+            ->take(5)
+            ->get();
 
-        return view('f1.dashboard', compact('stats', 'latestDrivers', 'latestTeams'));
+        return view(
+            "f1.dashboard",
+            compact("stats", "latestDrivers", "latestTeams"),
+        );
     }
 
     public function drivers()
     {
-        $drivers = Driver::with('raceResults')->active()->get();
-        return view('f1.drivers', compact('drivers'));
+        $drivers = Driver::with("raceResults")->active()->get();
+        return view("f1.drivers", compact("drivers"));
     }
 
     public function teams()
     {
-        $teams = Team::with('raceResults')->active()->get();
-        return view('f1.teams', compact('teams'));
+        $teams = Team::with("raceResults")->active()->get();
+        return view("f1.teams", compact("teams"));
     }
 
     public function circuits()
     {
         $circuits = Circuit::active()->get();
-        return view('f1.circuits', compact('circuits'));
+        return view("f1.circuits", compact("circuits"));
     }
 
     public function seasons()
     {
-        $seasons = Season::with(['championDriver', 'championTeam'])->get();
-        return view('f1.seasons', compact('seasons'));
+        $seasons = Season::with(["championDriver", "championTeam"])->get();
+        return view("f1.seasons", compact("seasons"));
     }
 
     public function races()
     {
-        $races = Race::with(['season', 'circuit', 'raceResults.driver', 'raceResults.team'])
-            ->orderByDesc('race_date')
+        $races = Race::with([
+            "season",
+            "circuit",
+            "raceResults.driver",
+            "raceResults.team",
+        ])
+            ->orderByDesc("race_date")
             ->get();
 
-        return view('f1.races', compact('races'));
+        return view("f1.races", compact("races"));
     }
 }
