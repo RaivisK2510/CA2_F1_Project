@@ -10,6 +10,44 @@
         <a href="{{ route('f1.dashboard') }}" class="btn btn-secondary">← Back to Dashboard</a>
     </div>
 
+    <form method="GET" action="{{ route('f1.drivers') }}" class="row g-3 mb-4 align-items-center">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input
+                    type="search"
+                    name="q"
+                    value="{{ $filters['q'] ?? '' }}"
+                    class="form-control"
+                    placeholder="Search drivers, code or nationality..."
+                    aria-label="Search drivers">
+                <button class="btn btn-outline-secondary" type="submit" aria-label="Search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-6 text-md-end">
+            <div class="d-inline-flex align-items-center">
+                <label for="sort" class="me-2 mb-0 text-muted">Sort by</label>
+
+                <select id="sort" name="sort" class="form-select form-select-sm me-2" style="width:auto; display:inline-block;">
+                    <option value="name" {{ ( $filters['sort'] ?? 'name') === 'name' ? 'selected' : '' }}>Name</option>
+                    <option value="wins" {{ ( $filters['sort'] ?? '') === 'wins' ? 'selected' : '' }}>Wins</option>
+                    <option value="points" {{ ( $filters['sort'] ?? '') === 'points' ? 'selected' : '' }}>Points</option>
+                    <option value="championships" {{ ( $filters['sort'] ?? '') === 'championships' ? 'selected' : '' }}>Championships</option>
+                    <option value="number" {{ ( $filters['sort'] ?? '') === 'number' ? 'selected' : '' }}>Car Number</option>
+                </select>
+
+                <select id="dir" name="dir" class="form-select form-select-sm me-2" style="width:auto; display:inline-block;">
+                    <option value="asc" {{ ( $filters['dir'] ?? 'asc') === 'asc' ? 'selected' : '' }}>Asc</option>
+                    <option value="desc" {{ ( $filters['dir'] ?? '') === 'desc' ? 'selected' : '' }}>Desc</option>
+                </select>
+
+                <button class="btn btn-outline-secondary btn-sm" type="submit">Apply</button>
+            </div>
+        </div>
+    </form>
+
     <div class="row g-4">
         @forelse($drivers as $driver)
             <div class="col-md-6 col-lg-4">

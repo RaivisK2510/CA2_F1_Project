@@ -9,8 +9,8 @@
         </div>
     </div>
 
-    <div class="row g-4 mb-4">
-        <div class="col-md-6 col-lg-3">
+    <div class="stats-flex mb-4">
+        <div class="col">
             <a href="{{ route('f1.drivers') }}" class="text-decoration-none">
                 <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
                     <div class="card-body text-center">
@@ -23,7 +23,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col">
             <a href="{{ route('f1.teams') }}" class="text-decoration-none">
                 <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
                     <div class="card-body text-center">
@@ -36,7 +36,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col">
             <a href="{{ route('f1.circuits') }}" class="text-decoration-none">
                 <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
                     <div class="card-body text-center">
@@ -49,7 +49,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col">
             <a href="{{ route('f1.seasons') }}" class="text-decoration-none">
                 <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
                     <div class="card-body text-center">
@@ -58,6 +58,21 @@
                         </div>
                         <h5 class="card-title">Seasons</h5>
                         <p class="display-4 fw-bold text-warning mb-0">{{ $stats['total_seasons'] }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- New Races card -->
+        <div class="col">
+            <a href="{{ route('f1.races') }}" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-flag fs-1 text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Races</h5>
+                        <!-- DEBUG: If total_races is missing from the controller, show 0 to avoid an empty card -->
+                        <p class="display-4 fw-bold text-primary mb-0">{{ $stats['total_races'] ?? \App\Models\Race::count() }}</p>
                     </div>
                 </div>
             </a>
@@ -117,6 +132,40 @@
 </div>
 
 <style>
+/* Force top stat cards into a single responsive flex row on large screens so they fit cleanly */
+.stats-flex {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;       /* default: allow wrapping on small screens */
+    align-items: stretch;
+    margin-left: -0.5rem;  /* small negative margins to counter card spacing if needed */
+    margin-right: -0.5rem;
+}
+.stats-flex > .col {
+    /* let each item take equal available space and shrink when necessary */
+    flex: 1 1 0;
+    min-width: 0; /* allow children to shrink below their content width */
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.stats-flex .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* On large screens keep them on a single non-wrapping line and allow shrink-to-fit */
+@media (min-width: 992px) {
+    .stats-flex {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .stats-flex > .col {
+        flex: 1 1 0;
+    }
+}
+
+/* Keep hover styles */
 .dashboard-card-hover {
     transition: all 0.3s ease;
 }
