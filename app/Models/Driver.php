@@ -13,42 +13,42 @@ class Driver extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'code',
-        'driver_number',
-        'date_of_birth',
-        'nationality',
-        'place_of_birth',
-        'height_cm',
-        'weight_kg',
-        'bio',
-        'profile_image',
-        'debut_year',
-        'retirement_year',
-        'wins',
-        'podiums',
-        'pole_positions',
-        'fastest_laps',
-        'career_points',
-        'world_championships',
-        'is_active',
-        'team_id',
+        "first_name",
+        "last_name",
+        "code",
+        "driver_number",
+        "date_of_birth",
+        "nationality",
+        "place_of_birth",
+        "height_cm",
+        "weight_kg",
+        "bio",
+        "profile_image",
+        "debut_year",
+        "retirement_year",
+        "wins",
+        "podiums",
+        "pole_positions",
+        "fastest_laps",
+        "career_points",
+        "world_championships",
+        "is_active",
+        "team_id",
     ];
 
     protected $casts = [
-        'date_of_birth' => 'date',
-        'debut_year' => 'date',
-        'retirement_year' => 'date',
-        'height_cm' => 'integer',
-        'weight_kg' => 'integer',
-        'wins' => 'integer',
-        'podiums' => 'integer',
-        'pole_positions' => 'integer',
-        'fastest_laps' => 'integer',
-        'career_points' => 'integer',
-        'world_championships' => 'integer',
-        'is_active' => 'boolean',
+        "date_of_birth" => "date",
+        "debut_year" => "date",
+        "retirement_year" => "date",
+        "height_cm" => "integer",
+        "weight_kg" => "integer",
+        "wins" => "integer",
+        "podiums" => "integer",
+        "pole_positions" => "integer",
+        "fastest_laps" => "integer",
+        "career_points" => "integer",
+        "world_championships" => "integer",
+        "is_active" => "boolean",
     ];
 
     public function team(): BelongsTo
@@ -63,7 +63,15 @@ class Driver extends Model
 
     public function championships(): MorphMany
     {
-        return $this->morphMany(Championship::class, 'championable');
+        return $this->morphMany(Championship::class, "championable");
+    }
+
+    /**
+     * Get all favorites for this driver.
+     */
+    public function favorites(): MorphMany
+    {
+        return $this->morphMany(Favorite::class, "favoritable");
     }
 
     public function getFullNameAttribute(): string
@@ -73,11 +81,11 @@ class Driver extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('is_active', true);
+        return $query->where("is_active", true);
     }
 
     public function scopeByNationality($query, string $nationality)
     {
-        return $query->where('nationality', $nationality);
+        return $query->where("nationality", $nationality);
     }
 }

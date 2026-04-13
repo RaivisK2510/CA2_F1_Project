@@ -7,9 +7,22 @@
             <h1 class="display-5 fw-bold mb-2">{{ $circuit->name }}</h1>
             <p class="text-muted">{{ $circuit->full_name }}</p>
         </div>
-        <a href="{{ route('f1.circuits') }}" class="btn btn-secondary">
-            <i class="bi bi-arrow-left"></i> Back to Circuits
-        </a>
+        <div class="d-flex gap-2">
+            @auth
+                <button class="btn btn-warning favorite-btn"
+                        id="favorite-btn-{{ $circuit->id }}"
+                        data-model="circuit"
+                        data-id="{{ $circuit->id }}"
+                        data-favorited="{{ Auth::user()->hasFavorited($circuit) ? 'true' : 'false' }}"
+                        onclick="toggleFavorite('circuit', {{ $circuit->id }})">
+                    <i class="bi bi-star{{ Auth::user()->hasFavorited($circuit) ? '-fill' : '' }}"></i>
+                    {{ Auth::user()->hasFavorited($circuit) ? 'Favorited' : 'Favorite' }}
+                </button>
+            @endauth
+            <a href="{{ route('f1.circuits') }}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back to Circuits
+            </a>
+        </div>
     </div>
 
     <div class="row g-4 mb-4">
@@ -176,4 +189,55 @@
         </div>
     </div>
 </div>
+
+<script>
+    function toggleFavorite(model, id) {
+        const btn = document.getElementById(`favorite-btn-${id}`);
+
+        // Prevent multiple rapid clicks
+        if (btn.disabled) return;
+        btn.disabled = true;
+
+        fetch(`/favorites/${model}/${id}`, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                const icon = btn.querySelector('i');
+                const isFavorited = data.is_favorited;
+
+                // Update button appearance
+                if (isFavorited) {
+                    icon.className = 'bi bi-star-fill';
+                    btn.textContent = '';
+                    btn.appendChild(icon);
+                    btn.appendChild(document.createTextNode(' Favorited'));
+                } else {
+                    icon.className = 'bi bi-star';
+                    btn.textContent = '';
+                    btn.appendChild(icon);
+                    btn.appendChild(document.createTextNode(' Favorite'));
+                }
+            } else {
+                alert('Error: ' + (data.message || 'Failed to update favorite'));
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to update favorite. Please try again.');
+        })
+        .finally(() => {
+            btn.disabled = false;
+        });
+    }
+</script>
 @endsection

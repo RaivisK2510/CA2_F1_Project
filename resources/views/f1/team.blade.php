@@ -10,9 +10,22 @@ use App\Models\Driver;
             <h1 class="display-5 fw-bold mb-2">{{ $team->name }}</h1>
             <p class="text-muted">Complete team profile and performance statistics</p>
         </div>
-        <a href="{{ route('f1.teams') }}" class="btn btn-secondary">
-            <i class="bi bi-arrow-left"></i> Back to Teams
-        </a>
+        <div class="d-flex gap-2">
+            @auth
+                <button class="btn btn-warning favorite-btn"
+                        id="favorite-btn-{{ $team->id }}"
+                        data-model="team"
+                        data-id="{{ $team->id }}"
+                        data-favorited="{{ Auth::user()->hasFavorited($team) ? 'true' : 'false' }}"
+                        onclick="toggleFavorite('team', {{ $team->id }})">
+                    <i class="bi bi-star{{ Auth::user()->hasFavorited($team) ? '-fill' : '' }}"></i>
+                    {{ Auth::user()->hasFavorited($team) ? 'Favorited' : 'Favorite' }}
+                </button>
+            @endauth
+            <a href="{{ route('f1.teams') }}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back to Teams
+            </a>
+        </div>
     </div>
 
     <div class="row g-4 mb-4">
@@ -194,7 +207,7 @@ use App\Models\Driver;
                         return $result->race->id;
                     });
                 @endphp
-                
+
                 @foreach($groupedResults as $raceId => $results)
                     <div class="border rounded p-3 mb-3">
                         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -209,7 +222,7 @@ use App\Models\Driver;
                                             @php
                                                 $positionBadge = 'secondary';
                                                 $positionText = $result->position_text;
-                                                
+
                                                 if ($result->position == 1) {
                                                     $positionBadge = 'warning';
                                                 } elseif ($result->position <= 3) {
@@ -250,3 +263,54 @@ use App\Models\Driver;
     </div>
 </div>
 @endsection
+
+<script>
+    function toggleFavorite(model, id) {
+        const btn = document.getElementById(`favorite-btn-${id}`);
+
+        // Prevent multiple rapid clicks
+        if (btn.disabled) return;
+        btn.disabled = true;
+
+        fetch(`/favorites/${model}/${id}`, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                const icon = btn.querySelector('i');
+                const isFavorited = data.is_favorited;
+
+                // Update button appearance
+                if (isFavorited) {
+                    icon.className = 'bi bi-star-fill';
+                    btn.textContent = '';
+                    btn.appendChild(icon);
+                    btn.appendChild(document.createTextNode(' Favorited'));
+                } else {
+                    icon.className = 'bi bi-star';
+                    btn.textContent = '';
+                    btn.appendChild(icon);
+                    btn.appendChild(document.createTextNode(' Favorite'));
+                }
+            } else {
+                alert('Error: ' + (data.message || 'Failed to update favorite'));
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to update favorite. Please try again.');
+        })
+        .finally(() => {
+            btn.disabled = false;
+        });
+    }
+</script>
