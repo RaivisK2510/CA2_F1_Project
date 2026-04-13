@@ -8,8 +8,8 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">Manage Races</h4>
                     <div>
-                        <a href="{{ route('admin.f1.dashboard') }}" class="btn btn-secondary">
-                            <i class="bi bi-arrow-left"></i> Back to Dashboard
+                        <a href="{{ route('admin.index') }}" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Back to Admin
                         </a>
                         <a href="{{ route('admin.f1.races.create') }}" class="btn btn-primary">
                             <i class="bi bi-plus"></i> Add Race

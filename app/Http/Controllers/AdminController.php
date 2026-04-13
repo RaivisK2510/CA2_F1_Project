@@ -64,7 +64,10 @@ class AdminController extends Controller
             'total_results' => RaceResult::count(),
         ];
 
-        return view('admin.f1.dashboard', compact('stats'));
+        $latestDrivers = Driver::orderBy('created_at', 'desc')->take(5)->get();
+        $latestTeams = Team::orderBy('created_at', 'desc')->take(5)->get();
+
+        return view('admin.f1.dashboard', compact('stats', 'latestDrivers', 'latestTeams'));
     }
 
     // Drivers CRUD

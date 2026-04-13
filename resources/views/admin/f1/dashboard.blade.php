@@ -53,14 +53,100 @@
                         </div>
                     </div>
 
-                    <!-- Additional Stats -->
+                    <!-- Recent Data Sections -->
                     <div class="row mb-4">
                         <div class="col-md-6">
                             <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Latest Drivers</h5>
+                                        <a href="{{ route('admin.f1.drivers.index') }}" class="btn btn-primary btn-sm">Manage Drivers</a>
+                                    </div>
+                                </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">Races</h5>
-                                    <h3 class="text-white">{{ $stats['total_races'] }}</h3>
-                                    <a href="{{ route('admin.f1.races.index') }}" class="btn btn-light btn-sm mt-2">Manage</a>
+                                    @if(isset($latestDrivers) && $latestDrivers->count() > 0)
+                                        <div class="list-group list-group-flush">
+                                            @foreach($latestDrivers->take(3) as $driver)
+                                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <strong>{{ $driver->full_name }}</strong>
+                                                        <br><small class="text-muted">#{{ $driver->driver_number }} | {{ $driver->nationality }}</small>
+                                                    </div>
+                                                    <span class="badge bg-danger">{{ $driver->code }}</span>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <div class="text-center mt-2">
+                                            <small class="text-muted">{{ $stats['total_drivers'] }} total drivers</small>
+                                        </div>
+                                    @else
+                                        <p class="text-muted text-center">No drivers found</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Latest Teams</h5>
+                                        <a href="{{ route('admin.f1.teams.index') }}" class="btn btn-success btn-sm">Manage Teams</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    @if(isset($latestTeams) && $latestTeams->count() > 0)
+                                        <div class="list-group list-group-flush">
+                                            @foreach($latestTeams->take(3) as $team)
+                                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <strong>{{ $team->name }}</strong>
+                                                        <br><small class="text-muted">{{ $team->country }}</small>
+                                                    </div>
+                                                    <span class="badge bg-info">{{ $team->code }}</span>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <div class="text-center mt-2">
+                                            <small class="text-muted">{{ $stats['total_teams'] }} total teams</small>
+                                        </div>
+                                    @else
+                                        <p class="text-muted text-center">No teams found</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Circuits</h5>
+                                        <a href="{{ route('admin.f1.circuits.index') }}" class="btn btn-info btn-sm">Manage Circuits</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h3 class="text-info">{{ $stats['total_circuits'] }}</h3>
+                                        <p class="text-muted">Total circuits in database</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Seasons</h5>
+                                        <a href="{{ route('admin.f1.seasons.index') }}" class="btn btn-warning btn-sm">Manage Seasons</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h3 class="text-warning">{{ $stats['total_seasons'] }}</h3>
+                                        <p class="text-muted">Total seasons in database</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
