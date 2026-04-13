@@ -1,19 +1,20 @@
-# F1 Stats Hub Boilerplate
+# F1 Stats Hub
 
-A modern, full-featured motorsport data management application built with Laravel 10, designed as a boilerplate for students to learn and build upon.
+A comprehensive Formula 1 statistics and data management application built with Laravel 10, designed as a boilerplate for students to learn and build upon.
 
 ## Features
 
-- ✅ Complete CRUD functionality for blog posts
+- ✅ Complete CRUD functionality for F1 race results
 - ✅ User authentication (Register, Login, Logout)
-- ✅ Post ownership & authorization policies
-- ✅ Image upload support for post featured images
-- ✅ Automatic slug generation from post titles
+- ✅ Manage multiple seasons, circuits, drivers, and teams
+- ✅ Track race results with positions and points
+- ✅ User favorites/watchlist functionality
+- ✅ Championship tracking and statistics
 - ✅ Responsive Bootstrap UI
 - ✅ Modern Laravel best practices
 - ✅ Route model binding
 - ✅ Form validation
-- ✅ Pagination support
+- ✅ Database seeding with sample data
 
 ## Technology Stack
 
@@ -41,8 +42,8 @@ Follow these steps to set up the project on your local machine:
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repository-url>
-cd 26blog
+git clone <https://github.com/RaivisK2510/CA2_F1_Project>
+cd CA2_F1_Project
 ```
 
 ### 2. Install PHP dependencies
@@ -65,16 +66,18 @@ Copy the example environment file and configure it:
 cp .env.example .env
 ```
 
-Edit the `.env` file and configure your database settings:
+Edit the `.env.example` file and configure your database settings:
 
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=blog_db
+DB_DATABASE=f1_stats_hub
 DB_USERNAME=root
 DB_PASSWORD=your_password
 ```
+
+Then rename to .env and leave in root folder.
 
 ### 5. Generate application key
 
@@ -87,14 +90,14 @@ php artisan key:generate
 Create a MySQL database that matches your `.env` configuration:
 
 ```sql
-CREATE DATABASE blog_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE f1_stats_hub CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 Or using command line:
 
 ```bash
 mysql -u root -p
-CREATE DATABASE blog_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE f1_stats_hub CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 EXIT;
 ```
 
@@ -104,15 +107,23 @@ EXIT;
 php artisan migrate
 ```
 
-### 8. Create storage link
+### 8. Seed the database
 
-The application stores uploaded images in the storage directory. Create a symbolic link:
+Populate the database with sample F1 data:
+
+```bash
+php artisan db:seed
+```
+
+### 9. Create storage link
+
+The application stores uploaded files in the storage directory. Create a symbolic link:
 
 ```bash
 php artisan storage:link
 ```
 
-### 9. Build frontend assets
+### 10. Build frontend assets
 
 ```bash
 npm run dev
@@ -124,7 +135,7 @@ For production:
 npm run build
 ```
 
-### 10. Start the development server
+### 11. Start the development server
 
 ```bash
 php artisan serve
@@ -134,106 +145,116 @@ The application will be available at `http://localhost:8000`
 
 ## Usage Guide
 
-### For Students
-
-This boilerplate provides a solid foundation for learning Laravel and building your own blog application. Here's how to get started:
-
 #### 1. Register a User Account
 
 1. Visit `http://localhost:8000`
 2. Click "Register" in the top navigation
-3. Create your account
+3. Create your account with your email and password
 
-#### 2. Create Your First Post
+#### 2. Explore the Data
 
-1. After logging in, click "Create New Post"
-2. Fill in the title and description
-3. Optionally upload a featured image
-4. Click "Create Post"
+1. After logging in, browse through Seasons, Circuits, Drivers, and Teams
+2. View race results and championship statistics
+3. Add races to your favorites
 
-#### 3. Explore the Code
+#### 3. Create and Manage Race Results
 
-Key files to study:
+1. Change you user to an admin in your database
+2. Navigate to the race results section
+3. Click "Add Race Result"
+4. Select a Season, Circuit, Driver, and Team
+5. Enter the finishing position, points, and status
+6. Click "Save"
+
+#### 4. Explore the Code
+
+Key files to examine:
 
 - **Routes**: `routes/web.php` - Defines all application routes
-- **Controller**: `app/Http/Controllers/PostController.php` - Handles blog logic
-- **Model**: `app/Models/Post.php` - Defines post data structure and relationships
-- **Migration**: `database/migrations/*_create_posts_table.php` - Database schema
-- **Policy**: `app/Policies/PostPolicy.php` - Authorization rules
-- **Views**: `resources/views/posts/` - Frontend templates
+- **Controllers**: `app/Http/Controllers/` - Handles application logic
+- **Models**: `app/Models/` - Defines data structures and relationships
+- **Migrations**: `database/migrations/` - Database schema definitions
+- **Seeders**: `database/seeders/` - Sample data initialization
+- **Views**: `resources/views/` - Frontend templates
 
 ## Project Structure
 
 ```
-26blog/
+CA2_F1_Project/
 ├── app/
 │   ├── Http/
-│   │   └── Controllers/
-│   │       └── PostController.php      # Main blog controller
+│   │   └── Controllers/              # Application logic
 │   ├── Models/
-│   │   ├── Post.php                    # Post model with relationships
-│   │   └── User.php                    # User model
-│   └── Policies/
-│       └── PostPolicy.php              # Post authorization logic
+│   │   ├── Championship.php          # Championship model
+│   │   ├── Circuit.php               # Circuit model
+│   │   ├── Driver.php                # Driver model
+│   │   ├── Race.php                  # Race model
+│   │   ├── RaceResult.php            # Race result model
+│   │   ├── Season.php                # Season model
+│   │   ├── Team.php                  # Team model
+│   │   ├── Favorite.php              # Favorite model
+│   │   └── User.php                  # User model
+│   └── Policies/                     # Authorization policies
 ├── database/
-│   └── migrations/
-│       └── *_create_posts_table.php    # Posts table schema
+│   ├── migrations/                   # Database schema
+│   ├── factories/                    # Model factories for testing
+│   └── seeders/                      # Database seeders
 ├── resources/
 │   └── views/
-│       ├── layouts/
-│       │   └── app.blade.php           # Main layout template
-│       ├── posts/
-│       │   ├── index.blade.php         # List all posts
-│       │   ├── create.blade.php        # Create post form
-│       │   ├── edit.blade.php          # Edit post form
-│       │   └── show.blade.php          # Single post view
-│       └── auth/                       # Authentication views
+│       ├── layouts/                  # Layout templates
+│       ├── seasons/                  # Season views
+│       ├── circuits/                 # Circuit views
+│       ├── drivers/                  # Driver views
+│       ├── teams/                    # Team views
+│       ├── races/                    # Race views
+│       ├── race-results/             # Race result views
+│       └── auth/                     # Authentication views
 └── routes/
-    └── web.php                         # Route definitions
+    └── web.php                       # Route definitions
 ```
 
 ## Key Concepts to Learn
 
 ### 1. MVC Architecture
 
-- **Models**: Data structure and business logic (`app/Models/Post.php`)
-- **Views**: User interface templates (`resources/views/posts/*.blade.php`)
-- **Controllers**: Request handling and response logic (`app/Http/Controllers/PostController.php`)
+- **Models**: Data structure and business logic (`app/Models/`)
+- **Views**: User interface templates (`resources/views/`)
+- **Controllers**: Request handling and response logic (`app/Http/Controllers/`)
 
 ### 2. Eloquent ORM
 
-The Post model demonstrates:
+The models demonstrate:
 - Mass assignment with `$fillable`
-- Relationships (belongsTo User)
+- Relationships (hasMany, belongsTo, belongsToMany)
 - Model events and traits
 
 ### 3. Route Model Binding
 
 ```php
-Route::resource('posts', PostController::class);
+Route::resource('races', RaceController::class);
 ```
 
 This creates all CRUD routes automatically.
 
 ### 4. Authorization
 
-The `PostPolicy` ensures users can only edit/delete their own posts.
+Policies ensure users can only perform authorized actions.
 
 ### 5. Form Validation
 
-See the `store()` and `update()` methods in `PostController` for validation examples.
+Controllers implement validation rules for all input data.
 
-### 6. File Uploads
+### 6. Database Seeding
 
-The controller handles image uploads and stores them in the `storage/app/public` directory.
+The seeders populate the database with realistic F1 data for development and testing.
 
 ## Common Tasks
 
-### Adding a New Field to Posts
+### Adding a New Field to a Model
 
 1. Create a migration:
    ```bash
-   php artisan make:migration add_excerpt_to_posts_table
+   php artisan make:migration add_field_to_table
    ```
 
 2. Edit the migration file to add the column
@@ -243,7 +264,7 @@ The controller handles image uploads and stores them in the `storage/app/public`
    php artisan migrate
    ```
 
-4. Add the field to the Post model's `$fillable` array
+4. Add the field to the Model's `$fillable` array
 
 5. Update the controller validation rules
 
@@ -251,26 +272,34 @@ The controller handles image uploads and stores them in the `storage/app/public`
 
 ### Creating a Seeder
 
-Create fake data for testing:
+Create sample data for testing:
 
 ```bash
-php artisan make:seeder PostSeeder
-php artisan db:seed --class=PostSeeder
+php artisan make:seeder YourSeeder
+php artisan db:seed --class=YourSeeder
 ```
 
 ### Creating a Factory
 
-Generate test data:
+Generate test data automatically:
 
 ```bash
-php artisan make:factory PostFactory --model=Post
+php artisan make:factory YourFactory --model=YourModel
+```
+
+### Running Fresh Migrations with Seeding
+
+Reset the database and repopulate with seed data:
+
+```bash
+php artisan migrate:fresh --seed
 ```
 
 ## Troubleshooting
 
 ### Storage link not working
 
-If uploaded images don't display:
+If files don't display properly:
 
 ```bash
 php artisan storage:link
@@ -303,20 +332,29 @@ npm install
 npm run dev
 ```
 
+### Seeding issues
+
+If seeders fail, try running migrations fresh first:
+
+```bash
+php artisan migrate:fresh
+php artisan db:seed
+```
+
 ## Extending the Application
 
 Ideas for student projects:
 
-1. **Add Comments**: Create a Comment model and allow users to comment on posts
-2. **Categories**: Implement post categories and filtering
-3. **Tags**: Add tagging functionality to posts
-4. **Search**: Implement full-text search for posts
-5. **Rich Text Editor**: Integrate TinyMCE or similar for formatted content
-6. **API**: Create a RESTful API for the blog
+1. **Advanced Statistics**: Create detailed championship standings and statistics views
+2. **Race Calendar**: Build an interactive race calendar with filters
+3. **Driver Profiles**: Enhance driver pages with career statistics and achievements
+4. **Team Analysis**: Add team performance analysis and comparisons
+5. **Search Functionality**: Implement full-text search across drivers, teams, and races
+6. **API**: Create a RESTful API for the application
 7. **Testing**: Add PHPUnit tests for controllers and models
 8. **Admin Panel**: Create an admin dashboard with statistics
-9. **Email Notifications**: Send notifications when posts are published
-10. **Social Sharing**: Add social media share buttons
+9. **Email Notifications**: Send notifications for race results
+10. **Data Visualization**: Integrate charts for championship standings and statistics
 
 ## Resources
 
@@ -335,7 +373,6 @@ This project is open-sourced software licensed under the [MIT license](https://o
 
 ## Credits
 
-Created as a teaching resource for college students learning web development with Laravel.
+Created as part of the Server Side Development module of Second Year Stage 2 of the Coumputing in Software Development at Dundalk Institute of Technology for grading in CA 2.
 
 Based on modern Laravel practices and inspired by the Laravel community.
-
