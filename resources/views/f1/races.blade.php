@@ -31,7 +31,11 @@
                                 <tbody>
                                     @foreach($races as $race)
                                         <tr>
-                                            <td>{{ $race->name }}</td>
+                                            <td>
+                                        <a href="{{ route('f1.race.show', $race) }}" class="text-decoration-none">
+                                            {{ $race->name }}
+                                        </a>
+                                    </td>
                                             <td>{{ optional($race->circuit)->name ?? 'Unknown' }}</td>
                                             <td>{{ optional($race->season)->year ?? 'Unknown' }}</td>
                                             <td>{{ optional($race->race_date)->format('M d, Y') }}</td>
@@ -53,4 +57,14 @@
         </div>
     </div>
 </div>
+</div>
+
+<style>
+.race-name:hover {
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+}
+</style>
+
 @endsection

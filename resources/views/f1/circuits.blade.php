@@ -14,10 +14,12 @@
         @forelse($circuits as $circuit)
             <div class="col-md-6 col-lg-4">
                 <div class="card border-0 shadow-sm h-100">
-                    <div class="card-header bg-success text-white">
-                        <h5 class="card-title mb-0">{{ $circuit->name }}</h5>
-                        <small>{{ $circuit->full_name }}</small>
-                    </div>
+                    <a href="{{ route('f1.circuit.show', $circuit) }}" class="text-decoration-none">
+                        <div class="card-header bg-gradient circuit-header-hover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease; cursor: pointer;">
+                            <h5 class="card-title mb-0 text-white fw-bold">{{ $circuit->name }}</h5>
+                            <small class="text-white-50">{{ $circuit->full_name }}</small>
+                        </div>
+                    </a>
                     <div class="card-body">
                         <div class="row g-2 mb-3">
                             <div class="col-6">
@@ -90,4 +92,18 @@
         @endforelse
     </div>
 </div>
+</div>
+
+<style>
+.circuit-header-hover:hover {
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+}
+.circuit-header-hover:hover .bg-white {
+    background: white !important;
+    color: #ff0000 !important;
+}
+</style>
+
 @endsection

@@ -14,19 +14,21 @@
         @forelse($seasons as $season)
             <div class="col-md-6 col-lg-4">
                 <div class="card border-0 shadow-sm h-100">
-                    <div class="card-header bg-warning text-dark">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="card-title mb-0 fw-bold">{{ $season->year }}</h5>
-                            @if($season->is_active)
-                                <span class="badge bg-success">Active</span>
-                            @else
-                                <span class="badge bg-secondary">Completed</span>
+                    <a href="{{ route('f1.season.show', $season) }}" class="text-decoration-none">
+                        <div class="card-header bg-gradient season-header-hover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease; cursor: pointer;">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="card-title mb-0 text-white fw-bold">{{ $season->year }}</h5>
+                                @if($season->is_active)
+                                    <span class="badge bg-success">Active</span>
+                                @else
+                                    <span class="badge bg-secondary">Completed</span>
+                                @endif
+                            </div>
+                            @if($season->description)
+                                <small class="text-white-50">{{ $season->description }}</small>
                             @endif
                         </div>
-                        @if($season->description)
-                            <small class="text-muted">{{ $season->description }}</small>
-                        @endif
-                    </div>
+                    </a>
                     <div class="card-body">
                         <div class="row g-2 mb-3">
                             <div class="col-6">
@@ -99,4 +101,18 @@
         @endforelse
     </div>
 </div>
+</div>
+
+<style>
+.season-header-hover:hover {
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+}
+.season-header-hover:hover .bg-white {
+    background: white !important;
+    color: #ff0000 !important;
+}
+</style>
+
 @endsection

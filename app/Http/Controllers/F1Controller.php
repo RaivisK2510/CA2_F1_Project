@@ -86,10 +86,35 @@ class F1Controller extends Controller
         return view("f1.circuits", compact("circuits"));
     }
 
+    public function circuitShow(Circuit $circuit)
+    {
+        $circuit->load(['races.season', 'races.raceResults.driver', 'races.raceResults.team']);
+        
+        $stats = [
+            'total_races' => $circuit->races()->count(),
+            'completed_races' => $circuit->races()->where('is_completed', true)->count(),
+        ];
+
+        return view('f1.circuit', compact('circuit', 'stats'));
+    }
+
     public function seasons()
     {
         $seasons = Season::with(["championDriver", "championTeam"])->get();
         return view("f1.seasons", compact("seasons"));
+    }
+
+    public function seasonShow(Season $season)
+    {
+        $season->load(['races.circuit', 'races.raceResults.driver', 'races.raceResults.team', 'championDriver', 'championTeam']);
+        
+        $stats = [
+            'total_races' => $season->races()->count(),
+            'completed_races' => $season->races()->where('is_completed', true)->count(),
+            'completion_pct' => $season->completion_percentage,
+        ];
+
+        return view('f1.season', compact('season', 'stats'));
     }
 
     public function races()
@@ -104,5 +129,12 @@ class F1Controller extends Controller
             ->get();
 
         return view("f1.races", compact("races"));
+    }
+
+    public function raceShow(Race $race)
+    {
+        $race->load(['season', 'circuit', 'raceResults.driver.team', 'raceResults.team', 'fastestLapDriver', 'polePositionDriver']);
+        
+        return view('f1.race', compact('race'));
     }
 }

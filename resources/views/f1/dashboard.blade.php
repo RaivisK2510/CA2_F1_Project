@@ -2,164 +2,131 @@
 
 @section('content')
 <div class="container py-5">
-    <div class="row mb-4">
-        <div class="col">
-            <h1 class="display-4 fw-bold text-center mb-4">F1 Stats Hub Dashboard</h1>
-            <p class="lead text-center text-muted">Your ultimate destination for Formula 1 statistics and race data</p>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-5 fw-bold mb-2">F1 Stats Hub</h1>
+            <p class="text-muted">Welcome to the Formula 1 statistics dashboard</p>
         </div>
     </div>
 
-    <!-- Stats Cards -->
-    <div class="row g-4 mb-5">
+    <div class="row g-4 mb-4">
         <div class="col-md-6 col-lg-3">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-body text-center">
-                    <div class="mb-3">
-                        <i class="bi bi-person fs-1 text-danger"></i>
+            <a href="{{ route('f1.drivers') }}" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-person fs-1 text-danger"></i>
+                        </div>
+                        <h5 class="card-title">Drivers</h5>
+                        <p class="display-4 fw-bold text-danger mb-0">{{ $stats['total_drivers'] }}</p>
                     </div>
-                    <h5 class="card-title">Total Drivers</h5>
-                    <p class="display-4 fw-bold text-danger mb-0">{{ $stats['total_drivers'] }}</p>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-body text-center">
-                    <div class="mb-3">
-                        <i class="bi bi-building fs-1 text-danger"></i>
+            <a href="{{ route('f1.teams') }}" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-building fs-1 text-danger"></i>
+                        </div>
+                        <h5 class="card-title">Teams</h5>
+                        <p class="display-4 fw-bold text-danger mb-0">{{ $stats['total_teams'] }}</p>
                     </div>
-                    <h5 class="card-title">Total Teams</h5>
-                    <p class="display-4 fw-bold text-danger mb-0">{{ $stats['total_teams'] }}</p>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-body text-center">
-                    <div class="mb-3">
-                        <i class="bi bi-geo-alt fs-1 text-danger"></i>
+            <a href="{{ route('f1.circuits') }}" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-geo-alt fs-1 text-success"></i>
+                        </div>
+                        <h5 class="card-title">Circuits</h5>
+                        <p class="display-4 fw-bold text-success mb-0">{{ $stats['total_circuits'] }}</p>
                     </div>
-                    <h5 class="card-title">Total Circuits</h5>
-                    <p class="display-4 fw-bold text-danger mb-0">{{ $stats['total_circuits'] }}</p>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-body text-center">
-                    <div class="mb-3">
-                        <i class="bi bi-calendar fs-1 text-danger"></i>
+            <a href="{{ route('f1.seasons') }}" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-calendar fs-1 text-warning"></i>
+                        </div>
+                        <h5 class="card-title">Seasons</h5>
+                        <p class="display-4 fw-bold text-warning mb-0">{{ $stats['total_seasons'] }}</p>
                     </div>
-                    <h5 class="card-title">Total Seasons</h5>
-                    <p class="display-4 fw-bold text-danger mb-0">{{ $stats['total_seasons'] }}</p>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
-    <!-- Latest Data -->
-    <div class="row g-4 mb-5">
-        <!-- Latest Drivers -->
-        <div class="col-lg-6">
-            <div class="card border-0 shadow-sm h-100">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm">
                 <div class="card-header bg-danger text-white">
                     <h5 class="card-title mb-0">Latest Drivers</h5>
                 </div>
                 <div class="card-body">
-                    <div class="list-group list-group-flush">
-                        @forelse($latestDrivers as $driver)
-                            <div class="list-group-item border-0 px-0">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-shrink-0 me-3">
-                                        <span class="badge bg-danger fs-6">{{ $driver->code }}</span>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <h6 class="mb-1">{{ $driver->full_name }}</h6>
-                                        <small class="text-muted">
-                                            {{ $driver->world_championships }} Championships | {{ $driver->wins }} Wins
-                                        </small>
-                                    </div>
+                    @forelse($latestDrivers as $driver)
+                        <a href="{{ route('f1.driver.show', $driver) }}" class="text-decoration-none">
+                            <div class="d-flex align-items-center p-2 mb-2 bg-light rounded hover-shadow">
+                                <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 40px; height: 40px;">
+                                    {{ $driver->code }}
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="fw-bold text-dark">{{ $driver->full_name }}</div>
+                                    <small class="text-muted">#{{ $driver->driver_number }} | {{ $driver->nationality }}</small>
                                 </div>
                             </div>
-                        @empty
-                            <div class="text-center py-4 text-muted">
-                                <i class="bi bi-person-x fs-1"></i>
-                                <p class="mt-2">No drivers found</p>
-                            </div>
-                        @endforelse
-                    </div>
+                        </a>
+                    @empty
+                        <p class="text-muted">No drivers found.</p>
+                    @endforelse
                 </div>
             </div>
         </div>
-
-        <!-- Latest Teams -->
-        <div class="col-lg-6">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-header bg-danger text-white">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
                     <h5 class="card-title mb-0">Latest Teams</h5>
                 </div>
                 <div class="card-body">
-                    <div class="list-group list-group-flush">
-                        @forelse($latestTeams as $team)
-                            <div class="list-group-item border-0 px-0">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-shrink-0 me-3">
-                                        <span class="badge bg-danger fs-6">{{ $team->code }}</span>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <h6 class="mb-1">{{ $team->name }}</h6>
-                                        <small class="text-muted">
-                                         {{ $team->race_wins }} Wins | {{ $team->world_championships }} Championships
-                                        </small>
-                                    </div>
+                    @forelse($latestTeams as $team)
+                        <a href="{{ route('f1.team.show', $team) }}" class="text-decoration-none">
+                            <div class="d-flex align-items-center p-2 mb-2 bg-light rounded hover-shadow">
+                                <div class="bg-primary text-white rounded d-flex align-items-center justify-content-center fw-bold me-3" style="width: 40px; height: 40px;">
+                                    {{ $team->code }}
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="fw-bold text-dark">{{ $team->name }}</div>
+                                    <small class="text-muted">{{ $team->country }}</small>
                                 </div>
                             </div>
-                        @empty
-                            <div class="text-center py-4 text-muted">
-                                <i class="bi bi-building-x fs-1"></i>
-                                <p class="mt-2">No teams found</p>
-                            </div>
-                        @endforelse
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quick Navigation -->
-    <div class="row">
-        <div class="col">
-            <div class="card border-0 shadow-sm">
-                <div class="card-header bg-dark text-white">
-                    <h5 class="card-title mb-0 text-center">Quick Navigation</h5>
-                </div>
-                <div class="card-body">
-                    <!-- single horizontal row, allows horizontal scrolling on small screens -->
-                    <div class="d-flex gap-3 flex-row flex-nowrap overflow-auto py-2 justify-content-center align-items-center">
-                        <a href="{{ route('f1.drivers') }}" class="btn btn-danger btn-lg d-flex align-items-center justify-content-center gap-2 flex-shrink-0" style="min-width:160px;">
-                            <i class="bi bi-person"></i>
-                            <span>Drivers</span>
                         </a>
-                        <a href="{{ route('f1.teams') }}" class="btn btn-danger btn-lg d-flex align-items-center justify-content-center gap-2 flex-shrink-0" style="min-width:160px;">
-                            <i class="bi bi-building"></i>
-                            <span>Teams</span>
-                        </a>
-                        <a href="{{ route('f1.circuits') }}" class="btn btn-danger btn-lg d-flex align-items-center justify-content-center gap-2 flex-shrink-0" style="min-width:160px;">
-                            <i class="bi bi-geo-alt"></i>
-                            <span>Circuits</span>
-                        </a>
-                        <a href="{{ route('f1.seasons') }}" class="btn btn-danger btn-lg d-flex align-items-center justify-content-center gap-2 flex-shrink-0" style="min-width:160px;">
-                            <i class="bi bi-calendar"></i>
-                            <span>Seasons</span>
-                        </a>
-                        <a href="{{ route('f1.races') }}" class="btn btn-danger btn-lg d-flex align-items-center justify-content-center gap-2 flex-shrink-0" style="min-width:160px;">
-                            <i class="bi bi-flag"></i>
-                            <span>Races</span>
-                        </a>
-                    </div>
+                    @empty
+                        <p class="text-muted">No teams found.</p>
+                    @endforelse
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+.dashboard-card-hover {
+    transition: all 0.3s ease;
+}
+.dashboard-card-hover:hover {
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+}
+.hover-shadow:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+</style>
 @endsection

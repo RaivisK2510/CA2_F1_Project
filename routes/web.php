@@ -90,8 +90,11 @@ Route::prefix('f1')->name('f1.')->group(function () {
     Route::get('/teams', [F1Controller::class, 'teams'])->name('teams');
     Route::get('/teams/{team}', [F1Controller::class, 'teamShow'])->name('team.show');
     Route::get('/circuits', [F1Controller::class, 'circuits'])->name('circuits');
+    Route::get('/circuits/{circuit}', [F1Controller::class, 'circuitShow'])->name('circuit.show');
     Route::get('/seasons', [F1Controller::class, 'seasons'])->name('seasons');
+    Route::get('/seasons/{season}', [F1Controller::class, 'seasonShow'])->name('season.show');
     Route::get('/races', [F1Controller::class, 'races'])->name('races');
+    Route::get('/races/{race}', [F1Controller::class, 'raceShow'])->name('race.show');
 });
 
 Route::fallback(function () {
