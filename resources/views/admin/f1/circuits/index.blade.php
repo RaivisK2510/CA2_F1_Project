@@ -81,7 +81,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        {{ $circuits->links() }}
+                        {{ $circuits->links('vendor.pagination.bootstrap-5') }}
                     </div>
                 </div>
             </div>

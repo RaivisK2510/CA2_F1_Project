@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        {{ $races->links() }}
+                        {{ $races->links('vendor.pagination.bootstrap-5') }}
                     </div>
                 </div>
             </div>

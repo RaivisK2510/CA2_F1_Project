@@ -28,9 +28,9 @@
     <div class="row g-4 mb-4">
         <div class="col-md-8">
             <div class="card border-0 shadow-sm h-100">
-                <div class="card-header bg-danger text-white">
+                <div class="card-header bg-primary text-white">
                     <div class="d-flex align-items-center">
-                        <div class="bg-white text-danger rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 60px; height: 60px;">
+                        <div class="bg-white rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 60px; height: 60px;">
                             {{ $driver->code }}
                         </div>
                         <div>

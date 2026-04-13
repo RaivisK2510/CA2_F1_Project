@@ -28,9 +28,9 @@
     <div class="row g-4 mb-4">
         <div class="col-md-8">
             <div class="card border-0 shadow-sm h-100">
-                <div class="card-header bg-danger text-white">
+                <div class="card-header bg-primary text-white">
                     <div class="d-flex align-items-center">
-                        <div class="bg-white text-danger rounded d-flex align-items-center justify-content-center fw-bold me-3" style="width: 60px; height: 60px;">
+                        <div class="bg-white rounded d-flex align-items-center justify-content-center fw-bold me-3" style="width: 60px; height: 60px;">
                             R{{ $race->round_number }}
                         </div>
                         <div>
@@ -52,7 +52,7 @@
                                 <div class="fw-bold text-info">Season</div>
                                 <div class="fw-bold">
                                     @if($race->season)
-                                        <a href="{{ route('f1.season.show', $race->season) }}" class="text-decoration-none">{{ $race->season->year }}</a>
+                                        <a href="{{ route('f1.season.show', $race->season) }}" class="text-decoration-none text-white">{{ $race->season->year }}</a>
                                     @else
                                         Unknown
                                     @endif
@@ -84,7 +84,7 @@
                                 <div class="fw-bold text-success">Circuit</div>
                                 <div class="fw-bold">
                                     @if($race->circuit)
-                                        <a href="{{ route('f1.circuit.show', $race->circuit) }}" class="text-decoration-none">{{ $race->circuit->name }}</a>
+                                        <a href="{{ route('f1.circuit.show', $race->circuit) }}" class="text-decoration-none text-white">{{ $race->circuit->name }}</a>
                                     @else
                                         Unknown
                                     @endif

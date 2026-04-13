@@ -256,3 +256,43 @@ a:focus {
 .navbar .dropdown-menu a {
     color: #f2f2f2 !important;
 }
+
+/* Pagination styling */
+.pagination {
+    gap: 0.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.pagination .page-link {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    min-width: auto !important;
+    line-height: 1.5 !important;
+    background-color: #111 !important;
+    border-color: #333 !important;
+    color: #f2f2f2 !important;
+}
+
+.pagination .page-link:hover,
+.pagination .page-link:focus {
+    background-color: #ff2d2d !important;
+    border-color: #ff2d2d !important;
+    color: #ffffff !important;
+}
+
+.pagination .page-item.active .page-link {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    background-color: #ff2d2d !important;
+    border-color: #ff2d2d !important;
+    color: #ffffff !important;
+}
+
+.pagination .page-item.disabled .page-link {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    background-color: #111 !important;
+    border-color: #333 !important;
+    color: #666 !important;
+}

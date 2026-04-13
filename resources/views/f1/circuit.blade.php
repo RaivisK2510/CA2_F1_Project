@@ -30,7 +30,7 @@
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-header bg-success text-white">
                     <div class="d-flex align-items-center">
-                        <div class="bg-white text-success rounded d-flex align-items-center justify-content-center fw-bold me-3" style="width: 60px; height: 60px;">
+                        <div class="bg-white rounded d-flex align-items-center justify-content-center fw-bold me-3" style="width: 60px; height: 60px;">
                             {{ substr($circuit->name, 0, 3) }}
                         </div>
                         <div>

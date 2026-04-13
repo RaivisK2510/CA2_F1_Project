@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        {{ $drivers->links() }}
+                        {{ $drivers->links('vendor.pagination.bootstrap-5') }}
                     </div>
                 </div>
             </div>
