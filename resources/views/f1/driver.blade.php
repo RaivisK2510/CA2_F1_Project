@@ -3,9 +3,14 @@
 @section('content')
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h1 class="display-5 fw-bold mb-2">{{ $driver->full_name }}</h1>
-            <p class="text-muted">Complete driver profile and career statistics</p>
+        <div class="d-flex align-items-center gap-4">
+            @if($driver->profile_image)
+                <img src="{{ $driver->profile_image }}" alt="{{ $driver->full_name }}" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" onerror="this.parentElement.style.display='none'">
+            @endif
+            <div>
+                <h1 class="display-5 fw-bold mb-2">{{ $driver->full_name }}</h1>
+                <p class="text-muted">Complete driver profile and career statistics</p>
+            </div>
         </div>
         <div class="d-flex gap-2">
             @auth
