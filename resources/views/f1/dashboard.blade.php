@@ -7,6 +7,9 @@
             <h1 class="display-5 fw-bold mb-2">F1 Stats Hub</h1>
             <p class="text-muted">Welcome to the Formula 1 statistics dashboard</p>
         </div>
+        <div>
+            <img src="https://i.imgur.com/mf5yZBZ.png" alt="F1 Banner" style="max-width: 500px; height: auto; border-radius: 12px;" onerror="this.style.display='none'">
+        </div>
     </div>
 
     <div class="stats-flex mb-4">
