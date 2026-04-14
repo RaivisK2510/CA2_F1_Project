@@ -3,9 +3,17 @@
 @section('content')
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h1 class="display-5 fw-bold mb-2">{{ $circuit->name }}</h1>
-            <p class="text-muted">{{ $circuit->full_name }}</p>
+        <div class="d-flex align-items-center gap-4">
+            @if($circuit->circuit_image)
+                <img src="{{ $circuit->circuit_image }}" alt="{{ $circuit->name }}" class="rounded" style="max-width: 120px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
+            @endif
+            <div>
+                <h1 class="display-5 fw-bold mb-2">{{ $circuit->name }}</h1>
+                <p class="text-muted">{{ $circuit->full_name }}</p>
+            </div>
+            @if($circuit->layout_image)
+                <img src="{{ $circuit->layout_image }}" alt="{{ $circuit->name }} Layout" class="rounded" style="max-width: 200px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
+            @endif
         </div>
         <div class="d-flex gap-2">
             @auth

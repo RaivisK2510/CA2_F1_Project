@@ -93,7 +93,7 @@
                                     <div class="card-header bg-gradient driver-header-hover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease; cursor: pointer;">
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div class="d-flex align-items-center">
-                                                <div class="bg-white text-danger rounded-circle d-flex align-items-center justify-content-center fw-bold me-2" style="width: 50px; height: 50px;">
+                                                <div class="bg-white rounded-circle d-flex align-items-center justify-content-center fw-bold me-2" style="width: 50px; height: 50px;">
                                                     {{ $driver->code }}
                                                 </div>
                                                 <div>
@@ -327,7 +327,7 @@
                                     <div class="card-header bg-gradient driver-header-hover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease; cursor: pointer;">
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div class="d-flex align-items-center">
-                                                <div class="bg-white text-danger rounded d-flex align-items-center justify-content-center fw-bold me-2" style="width: 50px; height: 50px;">
+                                                <div class="bg-white rounded d-flex align-items-center justify-content-center fw-bold me-2" style="width: 50px; height: 50px;">
                                                     R{{ $race->round_number }}
                                                 </div>
                                                 <div>

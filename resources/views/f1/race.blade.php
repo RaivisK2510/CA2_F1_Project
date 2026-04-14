@@ -3,9 +3,14 @@
 @section('content')
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h1 class="display-5 fw-bold mb-2">{{ $race->name }}</h1>
-            <p class="text-muted">{{ $race->full_name }}</p>
+        <div class="d-flex align-items-center gap-4">
+            @if($race->race_image)
+                <img src="{{ $race->race_image }}" alt="{{ $race->name }}" class="rounded" style="max-width: 150px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
+            @endif
+            <div>
+                <h1 class="display-5 fw-bold mb-2">{{ $race->name }}</h1>
+                <p class="text-muted">{{ $race->full_name }}</p>
+            </div>
         </div>
         <div class="d-flex gap-2">
             @auth

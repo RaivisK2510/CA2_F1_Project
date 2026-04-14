@@ -3,9 +3,14 @@
 @section('content')
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h1 class="display-5 fw-bold mb-2">{{ $season->year }} Season</h1>
-            <p class="text-muted">Complete season overview and race results</p>
+        <div class="d-flex align-items-center gap-4">
+            @if($season->season_image)
+                <img src="{{ $season->season_image }}" alt="{{ $season->year }} Season" class="rounded" style="max-width: 150px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
+            @endif
+            <div>
+                <h1 class="display-5 fw-bold mb-2">{{ $season->year }} Season</h1>
+                <p class="text-muted">Complete season overview and race results</p>
+            </div>
         </div>
         <div class="d-flex gap-2">
             @auth
