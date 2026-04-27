@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+
+    <title><?php echo e(config('app.name', 'F1 Stats Hub')); ?></title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Scripts -->
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
+</head>
+<body class="d-flex flex-column min-vh-100 bg-black text-white">
+    <div id="app" class="d-flex flex-column flex-grow-1">
+        <nav class="navbar navbar-expand-md navbar-dark bg-black shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="<?php echo e(url('/')); ?>">
+                    F1 Stats Hub
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link <?php echo e(request()->routeIs('f1.dashboard') ? 'active' : ''); ?>" href="<?php echo e(route('f1.dashboard')); ?>">F1 Dashboard</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="f1Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                F1 Stats
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="f1Dropdown">
+                                <li><a class="dropdown-item <?php echo e(request()->routeIs('f1.drivers') ? 'active' : ''); ?>" href="<?php echo e(route('f1.drivers')); ?>">Drivers</a></li>
+                                <li><a class="dropdown-item <?php echo e(request()->routeIs('f1.teams') ? 'active' : ''); ?>" href="<?php echo e(route('f1.teams')); ?>">Teams</a></li>
+                                <li><a class="dropdown-item <?php echo e(request()->routeIs('f1.circuits') ? 'active' : ''); ?>" href="<?php echo e(route('f1.circuits')); ?>">Circuits</a></li>
+                                <li><a class="dropdown-item <?php echo e(request()->routeIs('f1.seasons') ? 'active' : ''); ?>" href="<?php echo e(route('f1.seasons')); ?>">Seasons</a></li>
+                                <li><a class="dropdown-item <?php echo e(request()->routeIs('f1.races') ? 'active' : ''); ?>" href="<?php echo e(route('f1.races')); ?>">Races</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        <?php if(auth()->guard()->guest()): ?>
+                            <?php if(Route::has('login')): ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
+                                </li>
+                            <?php endif; ?>
+
+                            <?php if(Route::has('register')): ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
+                                </li>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <?php echo e(Auth::user()->name); ?>
+
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo e(route('profile')); ?>"><?php echo e(__('My Profile')); ?></a>
+
+                                    <?php if(Auth::user()->is_admin): ?>
+                                        <a class="dropdown-item" href="<?php echo e(route('admin.index')); ?>"><?php echo e(__('Admin Dashboard')); ?></a>
+                                    <?php endif; ?>
+
+                                    <hr class="dropdown-divider">
+
+                                    <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        <?php echo e(__('Logout')); ?>
+
+                                    </a>
+
+                                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
+                                        <?php echo csrf_field(); ?>
+                                    </form>
+                                </div>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="flex-grow-1">
+            <?php if(session('success')): ?>
+                <div class="container mt-3">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo e(session('success')); ?>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <?php if(session('error')): ?>
+                <div class="container mt-3">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?php echo e(session('error')); ?>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <?php echo $__env->yieldContent('content'); ?>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white mt-auto" style="position: relative; z-index: 1;">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <h5 class="fw-bold mb-3"><?php echo e(config('app.name', 'F1 Stats Hub')); ?></h5>
+                        <p class="text-muted">Your ultimate destination for Formula 1 statistics, driver standings, team performance, and race results.</p>
+                    </div>
+                    <div class="col-md-2 mb-4 mb-md-0">
+                        <h6 class="fw-bold mb-3">F1 Stats</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="<?php echo e(route('f1.dashboard')); ?>" class="text-muted text-decoration-none">Dashboard</a></li>
+                            <li class="mb-2"><a href="<?php echo e(route('f1.drivers')); ?>" class="text-muted text-decoration-none">Drivers</a></li>
+                            <li class="mb-2"><a href="<?php echo e(route('f1.teams')); ?>" class="text-muted text-decoration-none">Teams</a></li>
+                            <li class="mb-2"><a href="<?php echo e(route('f1.circuits')); ?>" class="text-muted text-decoration-none">Circuits</a></li>
+                            <li class="mb-2"><a href="<?php echo e(route('f1.races')); ?>" class="text-muted text-decoration-none">Races</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 mb-4 mb-md-0">
+                        <h6 class="fw-bold mb-3">Resources</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="https://laravel.com/docs" target="_blank" class="text-muted text-decoration-none">Documentation</a></li>
+                            <li class="mb-2"><a href="https://github.com" target="_blank" class="text-muted text-decoration-none">GitHub</a></li>
+                            <li class="mb-2"><a href="https://laracasts.com" target="_blank" class="text-muted text-decoration-none">Laracasts</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="fw-bold mb-3">Connect</h6>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="#" class="text-muted"><i class="bi bi-twitter fs-4"></i></a>
+                            <a href="#" class="text-muted"><i class="bi bi-github fs-4"></i></a>
+                            <a href="#" class="text-muted"><i class="bi bi-linkedin fs-4"></i></a>
+                            <a href="#" class="text-muted"><i class="bi bi-envelope fs-4"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4 border-secondary">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                        <p class="text-secondary mb-0">&copy; <?php echo e(date('Y')); ?> <?php echo e(config('app.name', 'F1 Stats Hub')); ?>. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <p class="text-secondary mb-0">Built with <i class="bi bi-heart-fill text-danger"></i> using Laravel</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+<?php /**PATH /home/leo/Code/Server Side/CA2_F1_Project/resources/views/layouts/app.blade.php ENDPATH**/ ?>
