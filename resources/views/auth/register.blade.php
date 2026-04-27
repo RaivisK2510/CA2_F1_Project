@@ -69,9 +69,53 @@
                             </div>
                         </div>
                     </form>
+
+                    <div class="d-flex align-items-center my-4">
+                        <hr class="flex-grow-1">
+                        <span class="px-3 text-muted small">or continue with</span>
+                        <hr class="flex-grow-1">
+                    </div>
+
+                    <div class="text-center">
+                        <a href="{{ route('social.redirect', 'google') }}" class="btn btn-outline-danger d-inline-flex align-items-center justify-content-center gap-2 px-4 py-2">
+                            <i class="bi bi-google"></i>
+                            <span>Sign in with Google</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+body {
+    background: url('/img/sitebg.gif') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+.container {
+    position: relative;
+    z-index: 1;
+}
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+}
+.card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+</style>
 @endsection

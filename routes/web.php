@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\F1Controller;
 use App\Http\Controllers\FavoritesController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,17 @@ Route::get("/", function () {
 })->name("home");
 
 Auth::routes();
+
+// Social Login Routes
+Route::prefix("auth")->group(function () {
+    Route::get("/{provider}", [SocialiteController::class, "redirect"])->name(
+        "social.redirect",
+    );
+    Route::get("/{provider}/callback", [
+        SocialiteController::class,
+        "callback",
+    ])->name("social.callback");
+});
 
 Route::get("/dashboard", [
     App\Http\Controllers\HomeController::class,

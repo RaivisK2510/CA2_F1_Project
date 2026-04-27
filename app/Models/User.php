@@ -17,7 +17,15 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ["name", "email", "password", "is_admin"];
+    protected $fillable = [
+        "name",
+        "email",
+        "password",
+        "is_admin",
+        "provider",
+        "provider_id",
+        "avatar",
+    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -36,6 +44,45 @@ class User extends Authenticatable
         "password" => "hashed",
         "is_admin" => "boolean",
     ];
+
+    /**
+     * Find or create a user from a social provider.
+     */
+    public static function findOrCreateFromSocial(
+        string $provider,
+        $socialUser,
+    ): self {
+        $existing = self::where("provider", $provider)
+            ->where("provider_id", $socialUser->getId())
+            ->first();
+
+        if ($existing) {
+            return $existing;
+        }
+
+        // Check if a user with this email already exists
+        $user = self::where("email", $socialUser->getEmail())->first();
+
+        if ($user) {
+            // Link the social account to existing user
+            $user->update([
+                "provider" => $provider,
+                "provider_id" => $socialUser->getId(),
+                "avatar" => $socialUser->getAvatar(),
+            ]);
+            return $user;
+        }
+
+        // Create a brand new user
+        return self::create([
+            "name" => $socialUser->getName() ?? $socialUser->getNickname(),
+            "email" => $socialUser->getEmail(),
+            "password" => null,
+            "provider" => $provider,
+            "provider_id" => $socialUser->getId(),
+            "avatar" => $socialUser->getAvatar(),
+        ]);
+    }
 
     public function isAdmin(): bool
     {
