@@ -2,6 +2,12 @@
 
 A comprehensive Formula 1 statistics and data management application built with Laravel 10.
 
+GIF HERE
+
+Authors:
+Leonas Stanislovaitis - https://www.linkedin.com/in/leonas-stanislovaitis/
+Raivis Krumins - https://www.linkedin.com/in/raivis-krumins/
+
 ## Features
 
 - ✅ Complete CRUD functionality for F1 race results
