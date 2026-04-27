@@ -4,6 +4,8 @@ A comprehensive Formula 1 statistics and data management application built with 
 
 ![Alt Text](./public/img/README.gif)
 
+https://f1laravelprojectapp-bed5f9fwcegnh5g4.spaincentral-01.azurewebsites.net/f1
+
 # Authors:
 
 Leonas Stanislovaitis - https://www.linkedin.com/in/leonas-stanislovaitis/
