@@ -187,7 +187,7 @@ body::before {
                             @foreach($driver->raceResults->sortByDesc('race.race_date') as $result)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('f1.races') }}" class="text-decoration-none">
+                                        <a href="{{ route('f1.races') }}" class="text-decoration-none text-white">
                                             {{ $result->race->name }}
                                         </a>
                                     </td>

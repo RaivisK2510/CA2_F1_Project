@@ -4,10 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="card rounded-4 overflow-hidden shadow-sm">
+                <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">Edit Result for {{ $raceResult->race->name }}</h4>
-                    <a href="{{ route('admin.f1.races.edit', $raceResult->race) }}" class="btn btn-secondary">
+                    <a href="{{ route('admin.f1.races.edit', $raceResult->race) }}" class="btn btn-light">
                         <i class="bi bi-arrow-left"></i> Back to Race
                     </a>
                 </div>
@@ -211,4 +211,37 @@
         </div>
     </div>
 </div>
+<style>
+body {
+    background: url('/img/sitebg.gif') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+.container {
+    position: relative;
+    z-index: 1;
+}
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+}
+.card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.list-group-item {
+    background: transparent;
+}
+</style>
 @endsection

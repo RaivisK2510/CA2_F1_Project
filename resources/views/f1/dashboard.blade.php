@@ -14,7 +14,7 @@
 
     <div class="stats-flex mb-4">
         <div class="col">
-            <a href="{{ route('f1.drivers') }}" class="text-decoration-none">
+            <a href="{{ route('f1.drivers') }}" class="text-decoration-none d-block">
                 <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
                     <div class="card-body text-center">
                         <div class="mb-3">
@@ -27,7 +27,7 @@
             </a>
         </div>
         <div class="col">
-            <a href="{{ route('f1.teams') }}" class="text-decoration-none">
+            <a href="{{ route('f1.teams') }}" class="text-decoration-none d-block">
                 <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
                     <div class="card-body text-center">
                         <div class="mb-3">
@@ -40,7 +40,7 @@
             </a>
         </div>
         <div class="col">
-            <a href="{{ route('f1.circuits') }}" class="text-decoration-none">
+            <a href="{{ route('f1.circuits') }}" class="text-decoration-none d-block">
                 <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
                     <div class="card-body text-center">
                         <div class="mb-3">
@@ -53,7 +53,7 @@
             </a>
         </div>
         <div class="col">
-            <a href="{{ route('f1.seasons') }}" class="text-decoration-none">
+            <a href="{{ route('f1.seasons') }}" class="text-decoration-none d-block">
                 <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
                     <div class="card-body text-center">
                         <div class="mb-3">
@@ -67,7 +67,7 @@
         </div>
         <!-- New Races card -->
         <div class="col">
-            <a href="{{ route('f1.races') }}" class="text-decoration-none">
+            <a href="{{ route('f1.races') }}" class="text-decoration-none d-block">
                 <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
                     <div class="card-body text-center">
                         <div class="mb-3">
@@ -84,7 +84,7 @@
 
     <div class="row g-4">
         <div class="col-md-6">
-            <div class="card border-0 shadow-sm">
+            <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
                 <div class="card-header bg-primary text-white">
                     <h5 class="card-title mb-0">Latest Drivers</h5>
                 </div>
@@ -108,7 +108,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card border-0 shadow-sm">
+            <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
                 <div class="card-header bg-primary text-white">
                     <h5 class="card-title mb-0">Latest Teams</h5>
                 </div>
@@ -155,6 +155,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    border-radius: 1rem !important;
+    overflow: hidden;
 }
 
 /* On large screens keep them on a single non-wrapping line and allow shrink-to-fit */

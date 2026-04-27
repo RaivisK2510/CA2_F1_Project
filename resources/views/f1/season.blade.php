@@ -150,7 +150,7 @@
 
     <!-- Races in this Season -->
     <div class="card border-0 shadow-sm">
-        <div class="card-header bg-danger text-white">
+        <div class="card-header bg-primary text-white">
             <h5 class="card-title mb-0">Races</h5>
         </div>
         <div class="card-body">
@@ -226,12 +226,6 @@ body::before {
 .container.py-5 {
     position: relative;
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 12px;
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
 }
 </style>
 

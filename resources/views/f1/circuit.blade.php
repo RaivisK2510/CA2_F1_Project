@@ -81,7 +81,7 @@
                         </div>
                         <div class="col-6">
                             <div class="p-2 bg-light rounded text-center">
-                                <div class="fw-bold text-secondary">Direction</div>
+                                <div class="fw-bold text-danger">Direction</div>
                                 <div class="fw-bold">{{ $circuit->direction }}</div>
                             </div>
                         </div>
@@ -161,7 +161,7 @@
                 @foreach($circuit->races->sortByDesc('race_date') as $race)
                     <div class="border rounded p-3 mb-3">
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <a href="{{ route('f1.race.show', $race) }}" class="text-decoration-none">
+                            <a href="{{ route('f1.race.show', $race) }}" class="text-decoration-none text-white">
                                 <h6 class="mb-0 fw-bold">{{ $race->name }}</h6>
                             </a>
                             <small class="text-muted">{{ optional($race->season)->year ?? 'Unknown' }} | {{ $race->race_date ? $race->race_date->format('M d, Y') : 'TBD' }}</small>

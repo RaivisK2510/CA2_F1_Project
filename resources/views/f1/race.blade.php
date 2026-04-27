@@ -142,7 +142,7 @@ body::before {
                     @if($race->polePositionDriver)
                         <div class="p-2 bg-light rounded mb-2">
                             <div class="text-muted small">Pole Position</div>
-                            <a href="{{ route('f1.driver.show', $race->polePositionDriver) }}" class="text-decoration-none">
+                            <a href="{{ route('f1.driver.show', $race->polePositionDriver) }}" class="text-decoration-none text-white">
                                 <div class="fw-bold">{{ $race->polePositionDriver->full_name }}</div>
                             </a>
                         </div>
@@ -150,7 +150,7 @@ body::before {
                     @if($race->fastestLapDriver)
                         <div class="p-2 bg-light rounded mb-2">
                             <div class="text-muted small">Fastest Lap</div>
-                            <a href="{{ route('f1.driver.show', $race->fastestLapDriver) }}" class="text-decoration-none">
+                            <a href="{{ route('f1.driver.show', $race->fastestLapDriver) }}" class="text-decoration-none text-white">
                                 <div class="fw-bold">{{ $race->fastestLapDriver->full_name }}</div>
                             </a>
                             @if($race->fastest_lap_time)
@@ -163,7 +163,7 @@ body::before {
                             <div class="text-muted small">Race Winner</div>
                             @php $winner = $race->raceResults->firstWhere('position', 1); @endphp
                             @if($winner && $winner->driver)
-                                <a href="{{ route('f1.driver.show', $winner->driver) }}" class="text-decoration-none">
+                                <a href="{{ route('f1.driver.show', $winner->driver) }}" class="text-decoration-none text-white">
                                     <div class="fw-bold">{{ $winner->driver->full_name }}</div>
                                 </a>
                                 <small class="text-muted">{{ optional($winner->team)->name ?? '' }}</small>
@@ -215,7 +215,7 @@ body::before {
                                     </td>
                                     <td>
                                         @if($result->driver)
-                                            <a href="{{ route('f1.driver.show', $result->driver) }}" class="text-decoration-none">
+                                            <a href="{{ route('f1.driver.show', $result->driver) }}" class="text-decoration-none text-white">
                                                 {{ $result->driver->full_name }}
                                             </a>
                                         @else

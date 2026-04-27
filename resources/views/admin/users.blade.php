@@ -17,7 +17,7 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 
-    <div class="card border-0 shadow-sm">
+    <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover mb-0">
@@ -66,4 +66,37 @@
         {{ $users->links('vendor.pagination.bootstrap-5') }}
     </div>
 </div>
+<style>
+body {
+    background: url('/img/sitebg.gif') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+.container {
+    position: relative;
+    z-index: 1;
+}
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+}
+.card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.list-group-item {
+    background: transparent;
+}
+</style>
 @endsection

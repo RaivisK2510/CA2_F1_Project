@@ -12,7 +12,7 @@
     <!-- Use Bootstrap row-cols so cards reliably wrap into 1/2/3 columns on xs/sm/md+ -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         <div class="col">
-            <div class="card shadow-sm border-0 h-100 rounded-3">
+            <div class="card shadow-sm h-100 rounded-4 overflow-hidden">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Users</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['users'] }}</p>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="col">
-            <div class="card shadow-sm border-0 h-100 rounded-3">
+            <div class="card shadow-sm h-100 rounded-4 overflow-hidden">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Races</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['races'] }}</p>
@@ -36,7 +36,7 @@
         </div>
 
         <div class="col">
-            <div class="card shadow-sm border-0 h-100 rounded-3">
+            <div class="card shadow-sm h-100 rounded-4 overflow-hidden">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Teams</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['teams'] }}</p>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="col">
-            <div class="card shadow-sm border-0 h-100 rounded-3">
+            <div class="card shadow-sm h-100 rounded-4 overflow-hidden">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Circuits</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['circuits'] }}</p>
@@ -60,7 +60,7 @@
         </div>
 
         <div class="col">
-            <div class="card shadow-sm border-0 h-100 rounded-3">
+            <div class="card shadow-sm h-100 rounded-4 overflow-hidden">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Drivers</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['drivers'] }}</p>
@@ -72,7 +72,7 @@
         </div>
 
         <div class="col">
-            <div class="card shadow-sm border-0 h-100 rounded-3">
+            <div class="card shadow-sm h-100 rounded-4 overflow-hidden">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Seasons</h5>
                     <p class="card-text display-6 mb-0">{{ $counts['seasons'] }}</p>
@@ -84,4 +84,36 @@
         </div>
     </div>
 </div>
+<style>
+body {
+    background: url('/img/sitebg.gif') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+.container {
+    position: relative;
+    z-index: 1;
+}
+.card {
+    background: rgba(255, 255, 255, 0.95);
+}
+.card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.list-group-item {
+    background: transparent;
+}
+</style>
 @endsection

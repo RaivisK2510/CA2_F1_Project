@@ -28,7 +28,7 @@
 
     <div class="row g-4">
         <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
                 <div class="card-body text-center p-4">
                     <div class="mb-3">
                         <i class="bi bi-speedometer2 fs-1" style="color: #ff0000;"></i>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
                 <div class="card-body text-center p-4">
                     <div class="mb-3">
                         <i class="bi bi-people-fill fs-1" style="color: #ff0000;"></i>
@@ -52,7 +52,7 @@
         </div>
 
         <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
                 <div class="card-body text-center p-4">
                     <div class="mb-3">
                         <i class="bi bi-flag-fill fs-1" style="color: #ff0000;"></i>
