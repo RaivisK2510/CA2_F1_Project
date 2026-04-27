@@ -4,8 +4,10 @@ A comprehensive Formula 1 statistics and data management application built with 
 
 GIF HERE
 
-Authors:
+# Authors:
+
 Leonas Stanislovaitis - https://www.linkedin.com/in/leonas-stanislovaitis/
+
 Raivis Krumins - https://www.linkedin.com/in/raivis-krumins/
 
 ## Features
