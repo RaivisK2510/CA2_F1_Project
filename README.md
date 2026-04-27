@@ -2,7 +2,7 @@
 
 A comprehensive Formula 1 statistics and data management application built with Laravel 10.
 
-GIF HERE
+![Alt Text](./public/img/README.gif)
 
 # Authors:
 
