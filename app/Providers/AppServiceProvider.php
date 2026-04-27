@@ -28,19 +28,10 @@ class AppServiceProvider extends ServiceProvider
         if (app()->environment('production')) {
             \URL::forceScheme('https');
 
-            // This is the specific fix for Vite assets
+            // Force Vite asset URLs to use HTTPS with the Azure domain
             Vite::useScriptTagAttributes([
                 'crossorigin' => 'anonymous',
             ]);
-
-            // Force the asset URL to be HTTPS
-            Vite::useBuildDirectory('build');
-            $this->app->bind('vite.manifest', function ($app) {
-                return new \Illuminate\Foundation\Vite(
-                    $app->make('path.public').'/build/manifest.json',
-                    'https://f1laravelprojectapp-bed5f9fwcegnh5g4.spaincentral-01.azurewebsites.net/build'
-                );
-            });
         }
     }
 }
