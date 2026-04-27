@@ -29,24 +29,29 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Full Name</th>
-                                    <th>Country</th>
-                                    <th>Founded</th>
-                                    <th>Team Chief</th>
-                                    <th>Drivers</th>
+                                    <th class="d-none d-sm-table-cell">Full Name</th>
+                                    <th class="d-none d-sm-table-cell">Country</th>
+                                    <th class="d-none d-md-table-cell">Founded</th>
+                                    <th class="d-none d-lg-table-cell">Team Chief</th>
+                                    <th class="d-none d-sm-table-cell">Drivers</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <th class="text-end">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse($teams as $team)
                                     <tr>
-                                        <td><strong>{{ $team->name }}</strong></td>
-                                        <td>{{ $team->full_name }}</td>
-                                        <td>{{ $team->country }}</td>
-                                        <td>{{ $team->founded_year }}</td>
-                                        <td>{{ $team->team_chief }}</td>
                                         <td>
+                                            <div class="d-flex flex-column">
+                                                <strong>{{ $team->name }}</strong>
+                                                <small class="d-sm-none text-muted">{{ $team->full_name }} | {{ $team->country }}</small>
+                                            </div>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">{{ $team->full_name }}</td>
+                                        <td class="d-none d-sm-table-cell">{{ $team->country }}</td>
+                                        <td class="d-none d-md-table-cell">{{ $team->founded_year }}</td>
+                                        <td class="d-none d-lg-table-cell">{{ $team->team_chief }}</td>
+                                        <td class="d-none d-sm-table-cell">
                                             <span class="badge bg-info">{{ $team->drivers_count }}</span>
                                         </td>
                                         <td>
@@ -56,7 +61,7 @@
                                                 <span class="badge bg-danger">Inactive</span>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="text-end">
                                             <div class="btn-group" role="group">
                                                 <a href="{{ route('admin.f1.teams.edit', $team) }}" class="btn btn-sm btn-outline-primary">
                                                     <i class="bi bi-pencil"></i>

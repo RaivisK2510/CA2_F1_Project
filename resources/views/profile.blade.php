@@ -28,7 +28,7 @@ body::before {
     <!-- User Profile Header -->
     <div class="row mb-5">
         <div class="col-md-12">
-            <div class="card border-0 shadow-sm">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
                 <div class="card-header bg-gradient driver-header-hover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease; cursor: pointer;">
                     <h3 class="card-title mb-0 text-white fw-bold">
                         <i class="bi bi-person-circle"></i> My Profile

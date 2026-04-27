@@ -307,7 +307,7 @@
                         </div>
 
                         <!-- Form Actions -->
-                        <div class="d-flex justify-content-end gap-2">
+                        <div class="d-flex justify-content-end gap-2 flex-wrap">
                             <a href="{{ route('admin.f1.circuits.index') }}" class="btn btn-secondary">Cancel</a>
                             <button type="submit" class="btn btn-primary">
                                 <i class="bi bi-plus-circle"></i> Create Circuit

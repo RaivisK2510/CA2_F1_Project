@@ -9,7 +9,7 @@
                 <h1 class="display-3 fw-bold mb-4">F1 Stats Hub</h1>
                 <p class="lead mb-4 text-secondary">Your command center for Formula 1 results, drivers, teams, and race history.</p>
                 <p class="fs-5 mb-4 text-secondary">Explore the latest F1 dashboards, manage race data, and follow every circuit in a sleek black and red interface.</p>
-                <div class="d-flex gap-3 justify-content-center">
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
                     <a href="{{ route('f1.races') }}" class="btn btn-lg px-4" style="background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); border: none; color: white;">View Races</a>
                     <a href="{{ route('f1.drivers') }}" class="btn btn-lg px-4" style="background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); border: none; color: white;">Drivers</a>
                 </div>
@@ -28,7 +28,7 @@
 
     <div class="row g-4">
         <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm rounded-3">
+            <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
                 <div class="card-body text-center p-4">
                     <div class="mb-3">
                         <i class="bi bi-speedometer2 fs-1" style="color: #ff0000;"></i>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm rounded-3">
+            <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
                 <div class="card-body text-center p-4">
                     <div class="mb-3">
                         <i class="bi bi-people-fill fs-1" style="color: #ff0000;"></i>
@@ -52,7 +52,7 @@
         </div>
 
         <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm rounded-3">
+            <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
                 <div class="card-body text-center p-4">
                     <div class="mb-3">
                         <i class="bi bi-flag-fill fs-1" style="color: #ff0000;"></i>
@@ -84,25 +84,25 @@
                     </div>
                     <div class="row g-3 text-white">
                         <div class="col-6">
-                            <div class="p-3 bg-black rounded-3">
+                            <div class="p-3 bg-black rounded-3 overflow-hidden">
                                 <p class="mb-1 text-secondary">Upcoming Races</p>
                                 <h3 class="mb-0">12</h3>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="p-3 bg-black rounded-3">
+                            <div class="p-3 bg-black rounded-3 overflow-hidden">
                                 <p class="mb-1 text-secondary">Active Teams</p>
                                 <h3 class="mb-0">10</h3>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="p-3 bg-black rounded-3">
+                            <div class="p-3 bg-black rounded-3 overflow-hidden">
                                 <p class="mb-1 text-secondary">Drivers</p>
                                 <h3 class="mb-0">22</h3>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="p-3 bg-black rounded-3">
+                            <div class="p-3 bg-black rounded-3 overflow-hidden">
                                 <p class="mb-1 text-secondary">Circuits</p>
                                 <h3 class="mb-0">18</h3>
                             </div>
@@ -113,4 +113,39 @@
         </div>
     </div>
 </div>
+
+<style>
+/* Responsive adjustments for home page */
+@media (max-width: 767.98px) {
+    .bg-black.text-white.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    .bg-black.text-white.py-5 .display-3 {
+        font-size: 2rem;
+    }
+    .container.py-5.my-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    .container.py-5.my-5 .display-5 {
+        font-size: 1.5rem;
+    }
+    .bg-dark.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    .bg-dark.py-5 .display-6 {
+        font-size: 1.4rem;
+    }
+    .rounded-4.overflow-hidden {
+        padding: 1rem !important;
+    }
+    .rounded-4.overflow-hidden .col-6 .p-3 {
+        padding: 0.75rem !important;
+    }
+}
+</style>
 @endsection

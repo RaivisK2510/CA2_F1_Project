@@ -28,31 +28,34 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Code</th>
-                                    <th>Number</th>
-                                    <th>Nationality</th>
-                                    <th>Team</th>
-                                    <th>Date of Birth</th>
+                                    <th>Name / Number</th>
+                                    <th class="d-none d-sm-table-cell">Code</th>
+                                    <th class="d-none d-sm-table-cell">Nationality</th>
+                                    <th class="d-none d-md-table-cell">Team</th>
+                                    <th class="d-none d-lg-table-cell">DOB</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <th class="text-end">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse($drivers as $driver)
                                     <tr>
-                                        <td><a>{{ $driver->first_name }} {{ $driver->last_name }}</a></td>
-                                        <td><span class="badge bg-secondary">{{ $driver->code }}</span></td>
-                                        <td>{{ $driver->number }}</td>
-                                        <td>{{ $driver->nationality }}</td>
                                         <td>
+                                            <div class="d-flex flex-column">
+                                                <span><a>{{ $driver->first_name }} {{ $driver->last_name }}</a></span>
+                                                <small class="d-sm-none text-muted">#{{ $driver->number }} | {{ $driver->code }}</small>
+                                            </div>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell"><span class="badge bg-secondary">{{ $driver->code }}</span></td>
+                                        <td class="d-none d-sm-table-cell">{{ $driver->nationality }}</td>
+                                        <td class="d-none d-md-table-cell">
                                             @if($driver->team)
                                                 {{ $driver->team->name }}
                                             @else
                                                 <span class="text-muted">No Team</span>
                                             @endif
                                         </td>
-                                        <td>{{ optional($driver->date_of_birth)->format('M d, Y') ?? 'Unknown' }}</td>
+                                        <td class="d-none d-lg-table-cell">{{ optional($driver->date_of_birth)->format('M d, Y') ?? 'Unknown' }}</td>
                                         <td>
                                             @if($driver->is_active)
                                                 <span class="badge bg-success">Active</span>
@@ -60,9 +63,8 @@
                                                 <span class="badge bg-danger">Inactive</span>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="text-end">
                                             <div class="btn-group" role="group">
-
                                                 <a href="{{ route('admin.f1.drivers.edit', $driver) }}" class="btn btn-sm btn-outline-primary" title="Edit">
                                                     <i class="bi bi-pencil"></i>
                                                 </a>

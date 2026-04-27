@@ -29,26 +29,31 @@
                             <thead>
                                 <tr>
                                     <th>Year</th>
-                                    <th>Races</th>
-                                    <th>Champion Driver</th>
-                                    <th>Champion Team</th>
+                                    <th class="d-none d-sm-table-cell">Races</th>
+                                    <th class="d-none d-md-table-cell">Champion Driver</th>
+                                    <th class="d-none d-md-table-cell">Champion Team</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <th class="text-end">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse($seasons as $season)
                                     <tr>
-                                        <td><strong>{{ $season->year }}</strong></td>
-                                        <td>{{ $season->total_races }}</td>
                                         <td>
+                                            <div class="d-flex flex-column">
+                                                <strong>{{ $season->year }}</strong>
+                                                <small class="d-sm-none text-muted">{{ $season->total_races }} races</small>
+                                            </div>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">{{ $season->total_races }}</td>
+                                        <td class="d-none d-md-table-cell">
                                             @if($season->championDriver)
                                                 {{ $season->championDriver->name }}
                                             @else
                                                 <span class="text-muted">Not set</span>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="d-none d-md-table-cell">
                                             @if($season->championTeam)
                                                 {{ $season->championTeam->name }}
                                             @else
@@ -62,7 +67,7 @@
                                                 <span class="badge bg-danger">Inactive</span>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="text-end">
                                             <div class="btn-group" role="group">
                                                 <a href="{{ route('admin.f1.seasons.edit', $season) }}" class="btn btn-sm btn-outline-primary">
                                                     <i class="bi bi-pencil"></i>

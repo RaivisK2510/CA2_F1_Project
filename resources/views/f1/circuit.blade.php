@@ -2,20 +2,20 @@
 
 @section('content')
 <div class="container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div class="d-flex align-items-center gap-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div class="d-flex align-items-center gap-3 flex-wrap">
             @if($circuit->circuit_image)
-                <img src="{{ $circuit->circuit_image }}" alt="{{ $circuit->name }}" class="rounded" style="max-width: 120px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
+                <img src="{{ $circuit->circuit_image }}" alt="{{ $circuit->name }}" class="rounded" style="max-width: 80px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
             @endif
             <div>
                 <h1 class="display-5 fw-bold mb-2">{{ $circuit->name }}</h1>
                 <p class="text-muted">{{ $circuit->full_name }}</p>
             </div>
             @if($circuit->layout_image)
-                <img src="{{ $circuit->layout_image }}" alt="{{ $circuit->name }} Layout" class="rounded" style="max-width: 200px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
+                <img src="{{ $circuit->layout_image }}" alt="{{ $circuit->name }} Layout" class="rounded d-none d-md-block" style="max-width: 200px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
             @endif
         </div>
-        <div class="d-flex gap-2">
+        <div class="d-flex gap-2 flex-wrap">
             @auth
                 <button class="btn btn-warning favorite-btn"
                         id="favorite-btn-{{ $circuit->id }}"

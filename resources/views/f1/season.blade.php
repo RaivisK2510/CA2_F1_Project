@@ -2,17 +2,17 @@
 
 @section('content')
 <div class="container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div class="d-flex align-items-center gap-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div class="d-flex align-items-center gap-3 flex-wrap">
             @if($season->season_image)
-                <img src="{{ $season->season_image }}" alt="{{ $season->year }} Season" class="rounded" style="max-width: 150px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
+                <img src="{{ $season->season_image }}" alt="{{ $season->year }} Season" class="rounded" style="max-width: 80px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
             @endif
             <div>
                 <h1 class="display-5 fw-bold mb-2">{{ $season->year }} Season</h1>
                 <p class="text-muted">Complete season overview and race results</p>
             </div>
         </div>
-        <div class="d-flex gap-2">
+        <div class="d-flex gap-2 flex-wrap">
             @auth
                 <button class="btn btn-warning favorite-btn"
                         id="favorite-btn-{{ $season->id }}"

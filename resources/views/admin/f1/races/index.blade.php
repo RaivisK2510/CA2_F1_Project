@@ -29,22 +29,27 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Circuit</th>
-                                    <th>Season</th>
-                                    <th>Date</th>
+                                    <th class="d-none d-sm-table-cell">Circuit</th>
+                                    <th class="d-none d-sm-table-cell">Season</th>
+                                    <th class="d-none d-md-table-cell">Date</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <th class="text-end">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse($races as $race)
                                     <tr>
-                                        <td>{{ $race->name }}</td>
-                                        <td>{{ optional($race->circuit)->name ?? 'Unknown' }}</td>
-                                        <td>{{ optional($race->season)->year ?? 'Unknown' }}</td>
-                                        <td>{{ optional($race->race_date)->format('M d, Y') }}</td>
-                                        <td>{{ $race->status }}</td>
                                         <td>
+                                            <div class="d-flex flex-column">
+                                                <span>{{ $race->name }}</span>
+                                                <small class="d-sm-none text-muted">{{ optional($race->circuit)->name ?? 'Unknown' }} | {{ optional($race->season)->year ?? 'Unknown' }}</small>
+                                            </div>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">{{ optional($race->circuit)->name ?? 'Unknown' }}</td>
+                                        <td class="d-none d-sm-table-cell">{{ optional($race->season)->year ?? 'Unknown' }}</td>
+                                        <td class="d-none d-md-table-cell">{{ optional($race->race_date)->format('M d, Y') }}</td>
+                                        <td>{{ $race->status }}</td>
+                                        <td class="text-end">
                                             <div class="btn-group" role="group">
                                                 <a href="{{ route('admin.f1.races.edit', $race) }}" class="btn btn-sm btn-outline-primary">
                                                     <i class="bi bi-pencil"></i>

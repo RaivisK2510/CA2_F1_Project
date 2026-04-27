@@ -28,20 +28,20 @@ body::before {
 }
 </style>
 <div class="container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div class="d-flex align-items-center gap-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div class="d-flex align-items-center gap-3 flex-wrap">
             @if($team->logo)
-                <img src="{{ $team->logo }}" alt="{{ $team->name }} Logo" class="rounded" style="max-width: 120px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
+                <img src="{{ $team->logo }}" alt="{{ $team->name }} Logo" class="rounded" style="max-width: 80px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
             @endif
             <div>
                 <h1 class="display-5 fw-bold mb-2">{{ $team->name }}</h1>
                 <p class="text-muted">Complete team profile and performance statistics</p>
             </div>
             @if($team->car_image)
-                <img src="{{ $team->car_image }}" alt="{{ $team->name }} Car" class="rounded" style="max-width: 300px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
+                <img src="{{ $team->car_image }}" alt="{{ $team->name }} Car" class="rounded d-none d-md-block" style="max-width: 300px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
             @endif
         </div>
-        <div class="d-flex gap-2">
+        <div class="d-flex gap-2 flex-wrap">
             @auth
                 <button class="btn btn-warning favorite-btn"
                         id="favorite-btn-{{ $team->id }}"

@@ -151,8 +151,8 @@
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-end">
-                            <a href="{{ route('admin.f1.seasons.index') }}" class="btn btn-secondary me-2">Cancel</a>
+                        <div class="d-flex justify-content-end gap-2 flex-wrap">
+                            <a href="{{ route('admin.f1.seasons.index') }}" class="btn btn-secondary">Cancel</a>
                             <button type="submit" class="btn btn-primary">Update Season</button>
                         </div>
                     </form>

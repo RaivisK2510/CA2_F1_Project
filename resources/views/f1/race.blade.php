@@ -21,17 +21,17 @@ body::before {
 }
 </style>
 <div class="container py-5" style="position: relative; z-index: 1;">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div class="d-flex align-items-center gap-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div class="d-flex align-items-center gap-3 flex-wrap">
             @if($race->race_image)
-                <img src="{{ $race->race_image }}" alt="{{ $race->name }}" class="rounded" style="max-width: 150px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
+                <img src="{{ $race->race_image }}" alt="{{ $race->name }}" class="rounded" style="max-width: 80px; height: auto; object-fit: contain;" onerror="this.style.display='none'">
             @endif
             <div>
                 <h1 class="display-5 fw-bold mb-2">{{ $race->name }}</h1>
                 <p class="text-muted">{{ $race->full_name }}</p>
             </div>
         </div>
-        <div class="d-flex gap-2">
+        <div class="d-flex gap-2 flex-wrap">
             @auth
                 <button class="btn btn-warning favorite-btn"
                         id="favorite-btn-{{ $race->id }}"

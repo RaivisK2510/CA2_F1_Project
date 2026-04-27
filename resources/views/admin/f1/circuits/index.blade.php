@@ -29,26 +29,31 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Full Name</th>
-                                    <th>Country</th>
-                                    <th>City</th>
-                                    <th>Length (km)</th>
-                                    <th>Corners</th>
-                                    <th>First GP</th>
+                                    <th class="d-none d-sm-table-cell">Full Name</th>
+                                    <th class="d-none d-sm-table-cell">Country</th>
+                                    <th class="d-none d-md-table-cell">City</th>
+                                    <th class="d-none d-md-table-cell">Length</th>
+                                    <th class="d-none d-lg-table-cell">Corners</th>
+                                    <th class="d-none d-lg-table-cell">First GP</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <th class="text-end">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse($circuits as $circuit)
                                     <tr>
-                                        <td><strong>{{ $circuit->name }}</strong></td>
-                                        <td>{{ $circuit->full_name }}</td>
-                                        <td>{{ $circuit->country }}</td>
-                                        <td>{{ $circuit->city }}</td>
-                                        <td>{{ $circuit->length_km }}</td>
-                                        <td>{{ $circuit->corners }}</td>
-                                        <td>{{ $circuit->first_grand_prix }}</td>
+                                        <td>
+                                            <div class="d-flex flex-column">
+                                                <strong>{{ $circuit->name }}</strong>
+                                                <small class="d-sm-none text-muted">{{ $circuit->full_name }} | {{ $circuit->country }}</small>
+                                            </div>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">{{ $circuit->full_name }}</td>
+                                        <td class="d-none d-sm-table-cell">{{ $circuit->country }}</td>
+                                        <td class="d-none d-md-table-cell">{{ $circuit->city }}</td>
+                                        <td class="d-none d-md-table-cell">{{ $circuit->length_km }}</td>
+                                        <td class="d-none d-lg-table-cell">{{ $circuit->corners }}</td>
+                                        <td class="d-none d-lg-table-cell">{{ $circuit->first_grand_prix }}</td>
                                         <td>
                                             @if($circuit->is_active)
                                                 <span class="badge bg-success">Active</span>
@@ -56,7 +61,7 @@
                                                 <span class="badge bg-danger">Inactive</span>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="text-end">
                                             <div class="btn-group" role="group">
                                                 <a href="{{ route('admin.f1.circuits.edit', $circuit) }}" class="btn btn-sm btn-outline-primary">
                                                     <i class="bi bi-pencil"></i>

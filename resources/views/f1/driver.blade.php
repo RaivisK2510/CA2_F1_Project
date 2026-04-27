@@ -26,8 +26,8 @@ body::before {
 }
 </style>
 <div class="container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div class="d-flex align-items-center gap-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div class="d-flex align-items-center gap-3 flex-wrap">
             @if($driver->profile_image)
                 <img src="{{ $driver->profile_image }}" alt="{{ $driver->full_name }}" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" onerror="this.parentElement.style.display='none'">
             @endif
@@ -36,7 +36,7 @@ body::before {
                 <p class="text-muted">Complete driver profile and career statistics</p>
             </div>
         </div>
-        <div class="d-flex gap-2">
+        <div class="d-flex gap-2 flex-wrap">
             @auth
                 <button class="btn btn-warning favorite-btn"
                         id="favorite-btn-{{ $driver->id }}"
@@ -73,27 +73,27 @@ body::before {
                 </div>
                 <div class="card-body">
                     <div class="row g-2 mb-3">
-                        <div class="col-6">
+                        <div class="col-3 col-md-6">
                             <div class="p-2 bg-light rounded text-center">
-                                <div class="fw-bold text-warning">Championships</div>
+                                <div class="fw-bold text-warning small">Championships</div>
                                 <div class="fw-bold">{{ $driver->world_championships }}</div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-3 col-md-6">
                             <div class="p-2 bg-light rounded text-center">
-                                <div class="fw-bold text-danger">Wins</div>
+                                <div class="fw-bold text-danger small">Wins</div>
                                 <div class="fw-bold">{{ $driver->wins }}</div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-3 col-md-6">
                             <div class="p-2 bg-light rounded text-center">
-                                <div class="fw-bold text-success">Podiums</div>
+                                <div class="fw-bold text-success small">Podiums</div>
                                 <div class="fw-bold">{{ $driver->podiums }}</div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-3 col-md-6">
                             <div class="p-2 bg-light rounded text-center">
-                                <div class="fw-bold text-primary">Points</div>
+                                <div class="fw-bold text-primary small">Points</div>
                                 <div class="fw-bold">{{ $driver->career_points }}</div>
                             </div>
                         </div>

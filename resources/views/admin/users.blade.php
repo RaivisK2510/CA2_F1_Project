@@ -25,9 +25,9 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Email</th>
+                            <th class="d-none d-sm-table-cell">Email</th>
                             <th>Role</th>
-                            <th>Joined</th>
+                            <th class="d-none d-md-table-cell">Joined</th>
                             <th class="text-end">Actions</th>
                         </tr>
                     </thead>
@@ -35,10 +35,15 @@
                         @forelse ($users as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>
+                                    <div class="d-flex flex-column">
+                                        <span>{{ $user->name }}</span>
+                                        <small class="d-sm-none text-muted">{{ $user->email }}</small>
+                                    </div>
+                                </td>
+                                <td class="d-none d-sm-table-cell">{{ $user->email }}</td>
                                 <td>{{ $user->is_admin ? 'Admin' : 'User' }}</td>
-                                <td>{{ $user->created_at->format('Y-m-d') }}</td>
+                                <td class="d-none d-md-table-cell">{{ $user->created_at->format('Y-m-d') }}</td>
                                 <td class="text-end">
                                     @if ($user->id !== auth()->id())
                                         <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Delete this user?');">

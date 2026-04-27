@@ -248,8 +248,8 @@
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-end mb-4">
-                            <a href="{{ route('admin.f1.races.index') }}" class="btn btn-secondary me-2">Cancel</a>
+                        <div class="d-flex justify-content-end mb-4 flex-wrap">
+                            <a href="{{ route('admin.f1.races.index') }}" class="btn btn-secondary">Cancel</a>
                             <button type="submit" class="btn btn-primary">Update Race</button>
                         </div>
                     </form>
@@ -269,25 +269,30 @@
                                     <table class="table table-sm table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Position</th>
+                                                <th>Pos</th>
                                                 <th>Driver</th>
-                                                <th>Team</th>
-                                                <th>Status</th>
-                                                <th>Points</th>
-                                                <th>Fastest Lap</th>
-                                                <th>Actions</th>
+                                                <th class="d-none d-sm-table-cell">Team</th>
+                                                <th class="d-none d-sm-table-cell">Status</th>
+                                                <th>Pts</th>
+                                                <th class="d-none d-md-table-cell">Fastest Lap</th>
+                                                <th class="text-end">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($raceResults as $result)
                                                 <tr>
-                                                    <td>{{ $result->position_display }}</td>
-                                                    <td>{{ optional($result->driver)->name ?? 'Unknown' }}</td>
-                                                    <td>{{ optional($result->team)->name ?? 'Unknown' }}</td>
-                                                    <td>{{ $result->status }}</td>
-                                                    <td>{{ $result->points }}</td>
-                                                    <td>{{ $result->fastest_lap ? 'Yes' : 'No' }}</td>
                                                     <td>
+                                                        <div class="d-flex flex-column">
+                                                            <span>{{ $result->position_display }}</span>
+                                                            <small class="d-sm-none text-muted">{{ optional($result->driver)->name ?? 'Unknown' }}</small>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{ optional($result->driver)->name ?? 'Unknown' }}</td>
+                                                    <td class="d-none d-sm-table-cell">{{ optional($result->team)->name ?? 'Unknown' }}</td>
+                                                    <td class="d-none d-sm-table-cell">{{ $result->status }}</td>
+                                                    <td>{{ $result->points }}</td>
+                                                    <td class="d-none d-md-table-cell">{{ $result->fastest_lap ? 'Yes' : 'No' }}</td>
+                                                    <td class="text-end">
                                                         <div class="btn-group" role="group">
                                                             <a href="{{ route('admin.f1.race_results.edit', $result) }}" class="btn btn-sm btn-outline-primary">
                                                                 <i class="bi bi-pencil"></i>

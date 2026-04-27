@@ -129,7 +129,7 @@
                     </div>
                     <div class="col-md-3">
                         <h6 class="fw-bold mb-3">Connect</h6>
-                        <div class="d-flex gap-3">
+                        <div class="d-flex gap-3 flex-wrap">
                             <a href="#" class="text-muted"><i class="bi bi-twitter fs-4"></i></a>
                             <a href="#" class="text-muted"><i class="bi bi-github fs-4"></i></a>
                             <a href="#" class="text-muted"><i class="bi bi-linkedin fs-4"></i></a>

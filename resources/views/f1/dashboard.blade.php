@@ -7,75 +7,73 @@
             <h1 class="display-5 fw-bold mb-2">F1 Stats Hub</h1>
             <p class="text-muted">Welcome to the Formula 1 statistics dashboard</p>
         </div>
-        <div>
+        <div class="d-none d-md-block">
             <img src="https://i.imgur.com/mf5yZBZ.png" alt="F1 Banner" style="max-width: 500px; height: auto; border-radius: 12px;" onerror="this.style.display='none'">
         </div>
     </div>
 
-    <div class="stats-flex mb-4">
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-5 g-2 g-sm-3 g-lg-4 mb-4">
         <div class="col">
-            <a href="{{ route('f1.drivers') }}" class="text-decoration-none d-block">
-                <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
-                    <div class="card-body text-center">
-                        <div class="mb-3">
-                            <i class="bi bi-person fs-1 text-danger"></i>
+            <a href="{{ route('f1.drivers') }}" class="text-decoration-none d-block h-100">
+                <div class="card border-0 shadow-sm h-100 dashboard-card-hover rounded-4 overflow-hidden">
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center py-4">
+                        <div class="mb-2">
+                            <i class="bi bi-person stat-icon text-danger"></i>
                         </div>
-                        <h5 class="card-title">Drivers</h5>
-                        <p class="display-4 fw-bold text-danger mb-0">{{ $stats['total_drivers'] }}</p>
+                        <h5 class="card-title fs-6 mb-1">Drivers</h5>
+                        <p class="fw-bold text-danger mb-0 stat-number">{{ $stats['total_drivers'] }}</p>
                     </div>
                 </div>
             </a>
         </div>
         <div class="col">
-            <a href="{{ route('f1.teams') }}" class="text-decoration-none d-block">
-                <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
-                    <div class="card-body text-center">
-                        <div class="mb-3">
-                            <i class="bi bi-building fs-1 text-danger"></i>
+            <a href="{{ route('f1.teams') }}" class="text-decoration-none d-block h-100">
+                <div class="card border-0 shadow-sm h-100 dashboard-card-hover rounded-4 overflow-hidden">
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center py-4">
+                        <div class="mb-2">
+                            <i class="bi bi-building stat-icon text-danger"></i>
                         </div>
-                        <h5 class="card-title">Teams</h5>
-                        <p class="display-4 fw-bold text-danger mb-0">{{ $stats['total_teams'] }}</p>
+                        <h5 class="card-title fs-6 mb-1">Teams</h5>
+                        <p class="fw-bold text-danger mb-0 stat-number">{{ $stats['total_teams'] }}</p>
                     </div>
                 </div>
             </a>
         </div>
         <div class="col">
-            <a href="{{ route('f1.circuits') }}" class="text-decoration-none d-block">
-                <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
-                    <div class="card-body text-center">
-                        <div class="mb-3">
-                            <i class="bi bi-geo-alt fs-1 text-success"></i>
+            <a href="{{ route('f1.circuits') }}" class="text-decoration-none d-block h-100">
+                <div class="card border-0 shadow-sm h-100 dashboard-card-hover rounded-4 overflow-hidden">
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center py-4">
+                        <div class="mb-2">
+                            <i class="bi bi-geo-alt stat-icon text-success"></i>
                         </div>
-                        <h5 class="card-title">Circuits</h5>
-                        <p class="display-4 fw-bold text-success mb-0">{{ $stats['total_circuits'] }}</p>
+                        <h5 class="card-title fs-6 mb-1">Circuits</h5>
+                        <p class="fw-bold text-success mb-0 stat-number">{{ $stats['total_circuits'] }}</p>
                     </div>
                 </div>
             </a>
         </div>
         <div class="col">
-            <a href="{{ route('f1.seasons') }}" class="text-decoration-none d-block">
-                <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
-                    <div class="card-body text-center">
-                        <div class="mb-3">
-                            <i class="bi bi-calendar fs-1 text-warning"></i>
+            <a href="{{ route('f1.seasons') }}" class="text-decoration-none d-block h-100">
+                <div class="card border-0 shadow-sm h-100 dashboard-card-hover rounded-4 overflow-hidden">
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center py-4">
+                        <div class="mb-2">
+                            <i class="bi bi-calendar stat-icon text-warning"></i>
                         </div>
-                        <h5 class="card-title">Seasons</h5>
-                        <p class="display-4 fw-bold text-warning mb-0">{{ $stats['total_seasons'] }}</p>
+                        <h5 class="card-title fs-6 mb-1">Seasons</h5>
+                        <p class="fw-bold text-warning mb-0 stat-number">{{ $stats['total_seasons'] }}</p>
                     </div>
                 </div>
             </a>
         </div>
-        <!-- New Races card -->
         <div class="col">
-            <a href="{{ route('f1.races') }}" class="text-decoration-none d-block">
-                <div class="card border-0 shadow-sm h-100 dashboard-card-hover">
-                    <div class="card-body text-center">
-                        <div class="mb-3">
-                            <i class="bi bi-flag fs-1 text-primary"></i>
+            <a href="{{ route('f1.races') }}" class="text-decoration-none d-block h-100">
+                <div class="card border-0 shadow-sm h-100 dashboard-card-hover rounded-4 overflow-hidden">
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center py-4">
+                        <div class="mb-2">
+                            <i class="bi bi-flag stat-icon text-primary"></i>
                         </div>
-                        <h5 class="card-title">Races</h5>
-                        <!-- DEBUG: If total_races is missing from the controller, show 0 to avoid an empty card -->
-                        <p class="display-4 fw-bold text-primary mb-0">{{ $stats['total_races'] ?? \App\Models\Race::count() }}</p>
+                        <h5 class="card-title fs-6 mb-1">Races</h5>
+                        <p class="fw-bold text-primary mb-0 stat-number">{{ $stats['total_races'] ?? \App\Models\Race::count() }}</p>
                     </div>
                 </div>
             </a>
@@ -135,38 +133,27 @@
 </div>
 
 <style>
-/* Force top stat cards into a single responsive flex row on large screens so they fit cleanly */
-.stats-flex {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;       /* default: allow wrapping on small screens */
-    align-items: stretch;
-    margin-left: -0.5rem;  /* small negative margins to counter card spacing if needed */
-    margin-right: -0.5rem;
+/* Responsive icon and number sizing */
+.stat-icon {
+    font-size: 1.5rem;
 }
-.stats-flex > .col {
-    /* let each item take equal available space and shrink when necessary */
-    flex: 1 1 0;
-    min-width: 0; /* allow children to shrink below their content width */
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+.stat-number {
+    font-size: 1.5rem;
 }
-.stats-flex .card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 1rem !important;
-    overflow: hidden;
-}
-
-/* On large screens keep them on a single non-wrapping line and allow shrink-to-fit */
-@media (min-width: 992px) {
-    .stats-flex {
-        flex-wrap: nowrap;
-        justify-content: space-between;
+@media (min-width: 576px) {
+    .stat-icon {
+        font-size: 1.75rem;
     }
-    .stats-flex > .col {
-        flex: 1 1 0;
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+@media (min-width: 992px) {
+    .stat-icon {
+        font-size: 2rem;
+    }
+    .stat-number {
+        font-size: 2.5rem;
     }
 }
 
