@@ -145,6 +145,32 @@
     background: white !important;
     color: #ff0000 !important;
 }
+body {
+    background: url('/img/sitebg.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+}
+.container.py-5 {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 12px;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+}
 </style>
 
 @endsection

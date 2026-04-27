@@ -1,7 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5">
+<style>
+body {
+    background: url('/img/sitebg.gif') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+</style>
+<div class="container py-5" style="position: relative; z-index: 1;">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div class="d-flex align-items-center gap-4">
             @if($race->race_image)

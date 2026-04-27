@@ -205,6 +205,35 @@
     </div>
 </div>
 
+<style>
+body {
+    background: url('/img/sitebg.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+}
+.container {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+</style>
+
 <script>
     function toggleFavorite(model, id) {
         const btn = document.getElementById(`favorite-btn-${id}`);

@@ -248,4 +248,30 @@
         });
     }
 </script>
+
+<style>
+body {
+    background-image: url('/img/sitebg.gif');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+}
+.container {
+    position: relative;
+    z-index: 1;
+}
+</style>
 @endsection

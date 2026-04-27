@@ -4,6 +4,29 @@
 @php
 use App\Models\Driver;
 @endphp
+<style>
+body {
+    background: url('/img/sitebg.gif') no-repeat center center fixed !important;
+    background-size: cover !important;
+    position: relative;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+}
+.container.py-5 {
+    position: relative;
+    z-index: 1;
+}
+</style>
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div class="d-flex align-items-center gap-4">

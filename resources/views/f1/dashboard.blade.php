@@ -169,6 +169,27 @@
 }
 
 /* Keep hover styles */
+body {
+    background: url('/img/sitebg.gif') no-repeat center center fixed !important;
+    background-size: cover !important;
+    position: relative;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+.container.py-5 {
+    position: relative;
+    z-index: 1;
+}
 .dashboard-card-hover {
     transition: all 0.3s ease;
 }
