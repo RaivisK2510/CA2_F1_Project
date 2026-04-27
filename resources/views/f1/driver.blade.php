@@ -2,28 +2,27 @@
 
 @section('content')
 <style>
-html, body {
-    background: url('{{ asset("img/sitebg.gif") }}') no-repeat center center fixed !important;
+body {
+    background: url('/img/sitebg.gif') no-repeat center center fixed !important;
     background-size: cover !important;
+    position: relative;
 }
 body::before {
     content: '';
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: inherit;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+    pointer-events: none;
 }
 .container.py-5 {
     position: relative;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 12px;
-    padding: 2rem 2rem !important;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
 }
 </style>
 <div class="container py-5">

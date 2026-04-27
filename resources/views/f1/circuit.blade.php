@@ -255,7 +255,6 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    position: relative;
 }
 body::before {
     content: '';
@@ -268,8 +267,9 @@ body::before {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     z-index: 0;
+    pointer-events: none;
 }
-.container {
+.container.py-5 {
     position: relative;
     z-index: 1;
 }

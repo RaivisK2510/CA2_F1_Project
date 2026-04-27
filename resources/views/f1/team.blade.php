@@ -8,7 +8,6 @@ use App\Models\Driver;
 body {
     background: url('/img/sitebg.gif') no-repeat center center fixed !important;
     background-size: cover !important;
-    position: relative;
 }
 body::before {
     content: '';
@@ -21,6 +20,7 @@ body::before {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     z-index: 0;
+    pointer-events: none;
 }
 .container.py-5 {
     position: relative;

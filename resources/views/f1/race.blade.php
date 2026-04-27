@@ -17,6 +17,7 @@ body::before {
     -webkit-backdrop-filter: blur(8px);
     z-index: 0;
     background: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
 }
 </style>
 <div class="container py-5" style="position: relative; z-index: 1;">

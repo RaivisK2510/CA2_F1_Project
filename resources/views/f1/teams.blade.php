@@ -5,7 +5,6 @@
 body {
     background: url('/img/sitebg.gif') no-repeat center center fixed !important;
     background-size: cover !important;
-    position: relative;
 }
 body::before {
     content: '';
@@ -18,6 +17,7 @@ body::before {
     -webkit-backdrop-filter: blur(8px);
     z-index: 0;
     background: rgba(0, 0, 0, 0.55);
+    pointer-events: none;
 }
 .container.py-5 {
     position: relative;

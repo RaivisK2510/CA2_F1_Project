@@ -221,8 +221,9 @@ body::before {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     z-index: 0;
+    pointer-events: none;
 }
-.container {
+.container.py-5 {
     position: relative;
     z-index: 1;
     background-color: rgba(255, 255, 255, 0.85);
